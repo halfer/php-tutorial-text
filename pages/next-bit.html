@@ -2,4 +2,86 @@
 
 <h2>Next bit</h2>
 
-<p>Carrying on...</p>
+<p>
+	Since we now have some data in our database, we can change our home page to render that data, rather
+	than the mock data it has now. It's worth noting though that the process of designing the page
+	with dummy data hasn't been a waste of time; using a mock-up is often a valuable part of deciding what
+	a page should contain, and where those elements should go. So, make these changes next:
+</p>
+
+<?php renderDiff('c651ad75057710db2d121bb3a63ceb33e8d9880e') ?>
+
+<div class="todo">
+	There's no value in adding <code>realpath</code> to the code on line 4.
+</div>
+
+<p>
+	The first few lines determine the file path to the database, and then we create a new PDO object with
+	<code>new PDO</code>, which we can use to access the database. We then use the <code>query</code>
+	method to run a SQL statement that reads the posts from the database.
+</p>
+
+<blockquote class="sidebar">
+	<div class="heading">
+		<p>What is a SELECT statement?</p>
+	</div>
+	<p>
+		The <code>SELECT</code> command is used to read from the database. For a single table, it takes a
+		format like this:
+	</p>
+		
+	<pre><code>SELECT
+	(column names in a list)
+FROM
+	(table)
+WHERE
+	(condition)
+ORDER BY
+	(column names to sort on)</code></pre>
+
+	<p>
+		The <code>WHERE</code> is optional, and is useful if we want to filter on some particular
+		feature of each row.
+	</p>
+
+	<p>The statement is often written on a single line, but it can be split up as here, for readability.</p>
+</blockquote>
+
+<p>
+	So, refresh your browser's view of <code>http://localhost/index.php</code>, and ensure that your
+	new changes render the posts from the database without errors. I'll then explain what is happening.
+</p>
+
+<p>
+	After connecting to the database, the query is used to retrieve column values for each table row,
+	returning ordering the rows in <code>created_at DESC</code> (i.e. in reverse creation order, or most
+	recent first). It then enters a loop (in this case a <code>while</code>) to render all the posts it
+	finds.
+</p>
+
+<p>
+	We use <code>$stmt->fetch()</code> to read the next available row, until the point when there are no
+	rows left. When that happens, this method will return false and the loop will exit.
+</p>
+
+<p>
+	For every row, there are two observations worth making. Firstly, rows are returned in an array, so we
+	access them using the array syntax such as <code>$row['title']</code>. Secondly, you'll see that
+	where text strings are output, they are wrapped in the <code>htmlspecialchars()</code> function. The
+	reason for this is that, if user input (a blog title or blog post in this case) contains angle brackets,
+	it could break the HTML used in the page layout, and worse, might let a user inject unauthorised
+	JavaScript that would be run on other people's computers.
+</p>
+
+<p>
+	You'll notice that most of the PHP code to deal with the database side of things is in the top half
+	of the file, and the second half is predominantly HTML. This isn't an accident: this arrangement creates
+	a healthy separation between the two, which makes each easier to work with. Of course, there are a few
+	cases where dynamic output is required inside the HTML, but these are kept deliberately short.
+</p>
+
+<div class="intermission">~</div>
+
+<p>
+	xxx
+</p>
