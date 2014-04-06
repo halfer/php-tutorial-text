@@ -390,7 +390,7 @@
 
 __NEWFILE__
 
-<h2>Next bit</h2>
+<h2>Using real data</h2>
 
 <p>
 	Since we now have some data in our database, we can change our home page to render that data, rather
@@ -473,5 +473,68 @@ ORDER BY
 <div class="intermission">~</div>
 
 <p>
-	xxx
+	The next step is to create a page to show individual posts. Add the following file:
 </p>
+
+<?php renderDiff('536e6c16d114954fd16d98566a73d9aabaaba338') ?>
+
+<p>
+	Now, it is our intention to link this page from individual posts on the home page. However, we've
+	not quite done that bit yet, so let's visit the new page manually, in order to test it. Open a
+	new tab, paste the link <code>http://localhost/view-post.php</code> into the address
+	bar, and check that a simple post appears.
+</p>
+
+<p>
+	
+	The connection to the database is the same as before, but we now have a <code>WHERE</code> clause
+	in our <code>SELECT</code> statement, and we are we are now using <code>prepare</code> and
+	<code>execute</code> to send the statement to the database driver.
+</p>
+	
+<p>
+	Let's take the <code>WHERE</code> statement first. In the home page, we ran a query without
+	this, because we wanted everything in the table. However it is more often the case that we
+	want to limit returned rows to those matching one or more conditions. This is where the
+	<code>WHERE</code> comes in. For our new page, we only want rows that have a specific id (and
+	since "id" is unique, we know we won't get more than one).
+</p>
+
+<p>
+	You'll notice that "id" is fixed to 1 (i.e. the first post). We'll fix that later, since of
+	course this should depend on the post the user clicks on.
+</p>
+
+<p>
+	The other change is swapping out the call to <code>query</code> with two new methods.
+	<code>prepare</code> is used to set up the statement, and indicates with a colon where values
+	should go (i.e. ":id"). The <code>execute</code> statement then runs the query, swapping
+	place-holders with real values (in this case, the number 1). This technique is known as
+	<em>parameterisation</em>, and is a good way to inject user-supplied input in a secure manner
+	(the post ID is not yet user-supplied, but it soon will be).
+</p>
+
+<p>
+	In fact, let's wire in the post page now. Make the following changes, and test that clicking
+	on each 'Read more' link shows the appropriate post.
+</p>
+
+<?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
+
+<p>
+	Alright, so let's make some nice easy changes now. A look at our index.php and view-post.php
+	files shows that our blog title and synopsis is repeated in both files. That's not good, since
+	if these things need to be amended, we need to change them more than once. Happily, the
+	solution is easy: we create a PHP file for the duplicated snippet, and then use
+	<code>require</code> to pull it in.
+</p>
+
+<?php renderDiff('f2b8629358c962b9d2b2cc508edff4759e9edb86') ?>
+
+<p>
+	Once that is done, we can see there is still some duplication, this time with the database
+	PHP code. So, let's fix that too! You'll notice here that we're using a subfolder for "lib";
+	this is a very common name for library code folders.
+</p>
+
+<?php renderDiff('2d30343a759c27e7e11e5153b7f0f46c58fd4b32') ?>
