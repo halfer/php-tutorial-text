@@ -129,6 +129,10 @@ ORDER BY
 	on each 'Read more' link shows the appropriate post.
 </p>
 
+<div class="todo">
+	The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
+	this is not the case.
+</div>
 <?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
 
 <p>
@@ -148,3 +152,4 @@ ORDER BY
 </p>
 
 <?php renderDiff('2d30343a759c27e7e11e5153b7f0f46c58fd4b32') ?>
+
