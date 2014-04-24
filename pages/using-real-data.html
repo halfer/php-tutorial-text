@@ -158,3 +158,31 @@ ORDER BY
 
 <?php renderDiff('2d30343a759c27e7e11e5153b7f0f46c58fd4b32') ?>
 
+<p>
+	The process of spotting code improvements (e.g. to reduce repetition) is known as
+	<em>refactoring</em>, and it can be thought of as "cleaning as you go". Projects that are
+	subject to these improvements are, at least in theory, more maintainable than ones that only
+	get feature changes.
+</p>
+
+<blockquote class="sidebar">
+	<div class="heading">
+		<p>What is a function?</p>
+	</div>
+	<p>
+		We saw in the common.php library a set of code blocks that start with the word
+		<code>function</code>. These are named blocks of code that can be called from different
+		places, and are an essential item in your toolkit. They help reduce duplication (since
+		you don't need to write code again) and they help improve modularity (since functions
+		can be stored in separate files).
+	</p>
+
+	<p>
+		The functions we've seen here all provide a <em>return value</em>, which is the result of
+		the function, and it can be of any type: a number, a string, whatever. This can either be
+		printed out to the screen, or more frequently, stored in a variable at the place it is
+		called. For example, the function <code>getRootPath()</code> gets the full directory
+		name of your web project on disk.
+	</p>
+</blockquote>
+

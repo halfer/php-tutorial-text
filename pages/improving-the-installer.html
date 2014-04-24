@@ -1,0 +1,38 @@
+
+
+<h2>Improving the installer</h2>
+
+<p>
+	At this juncture, I decided to tidy up the installer a bit more. Firstly, it would be nice to
+	see some data about what it has created; in the course of development you can expect
+	to wipe and recreate your test data hundreds of times, so it's worth making the output
+	useful.
+</p>
+
+<p>
+	Secondly, as it stands it demonstrates non-optimal techniques, and fixing that gives me an
+	opportunity to explain how to improve upon it. Broadly, the problem is that visiting the URL
+	changes the database, but it does not take into account that web addresses can receive visits
+	from automated software (e.g. search engines looking for new websites). To be sure that it
+	is a human who has requested an install, I've used a form with a "post" method (this is
+	explained in more detail later).
+</p>
+
+<p>
+	The changes here are quite substantial, so you may find it easier to copy and paste the whole
+	thing over the top of the old file. So, here's the diff:
+</p>
+
+<?php renderDiff('5b249d64009b5587b88a80be393cee0342e5da5f') ?>
+
+<p>
+	Finally, let's add some links so we can easily move to our next task after re-installing:
+</p>
+
+<?php renderDiff('5b007be9914dd76d71a077a89981eeabb7458a16') ?>
+
+<p>
+	As is our custom, delete your database file and re-run the installer. This time you should
+	have an "Install" button. All being well, it will do the same installation when you click it,
+	and then you can opt to go straight to the blog's home page.
+</p>
