@@ -14,10 +14,12 @@
 	break. Here we go:
 </p>
 
-<div class="todo">
-	We have a closing <code>div</code> here that probably has only changed in whitespace terms.
-	Remove this error.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		We have a closing <code>div</code> here that probably has only changed in whitespace terms.
+		Remove this error.
+	</div>
+<?php endif ?>
 
 <?php renderDiff('2db998b878d2c34119591c68cc754ea2fb756f4b') ?>
 

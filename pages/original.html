@@ -314,9 +314,11 @@
 	namely:
 </p>
 
-<div class="todo">
-	Shall I rebase <code>user_id</code> out of the code until later? This might be confusing.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		Shall I rebase <code>user_id</code> out of the code until later? This might be confusing.
+	</div>
+<?php endif ?>
 
 <ul>
 	<li>id: a unique identifier to help us tell posts apart</li>
@@ -346,10 +348,12 @@
 	do also read the comments in the code.
 </p>
 
-<div class="todo">
-	Re-running the installer on a fresh vhost just now resulted in permission errors when
-	trying to create the file. Can we add a check in the script?
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		Re-running the installer on a fresh vhost just now resulted in permission errors when
+		trying to create the file. Can we add a check in the script?
+	</div>
+<?php endif ?>
 
 <p>
 	The first half of the code is written in PHP. Here, we use a series of <code>if</code> statements
@@ -402,9 +406,11 @@ __NEWFILE__
 
 <?php renderDiff('c651ad75057710db2d121bb3a63ceb33e8d9880e') ?>
 
-<div class="todo">
-	There's no value in adding <code>realpath</code> to the code on line 4.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		There's no value in adding <code>realpath</code> to the code on line 4.
+	</div>
+<?php endif ?>
 
 <p>
 	The first few lines determine the file path to the database, and then we create a new PDO object with
@@ -520,10 +526,13 @@ ORDER BY
 	on each 'Read more' link shows the appropriate post.
 </p>
 
-<div class="todo">
-	The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
-	this is not the case.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
+		this is not the case.
+	</div>
+<?php endif ?>
+
 <?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
 
 <p>
@@ -560,10 +569,12 @@ __NEWFILE__
 	break. Here we go:
 </p>
 
-<div class="todo">
-	We have a closing <code>div</code> here that probably has only changed in whitespace terms.
-	Remove this error.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		We have a closing <code>div</code> here that probably has only changed in whitespace terms.
+		Remove this error.
+	</div>
+<?php endif ?>
 
 <?php renderDiff('2db998b878d2c34119591c68cc754ea2fb756f4b') ?>
 

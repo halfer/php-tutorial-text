@@ -11,9 +11,11 @@
 
 <?php renderDiff('c651ad75057710db2d121bb3a63ceb33e8d9880e') ?>
 
-<div class="todo">
-	There's no value in adding <code>realpath</code> to the code on line 4.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		There's no value in adding <code>realpath</code> to the code on line 4.
+	</div>
+<?php endif ?>
 
 <p>
 	The first few lines determine the file path to the database, and then we create a new PDO object with
@@ -129,10 +131,13 @@ ORDER BY
 	on each 'Read more' link shows the appropriate post.
 </p>
 
-<div class="todo">
-	The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
-	this is not the case.
-</div>
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
+		this is not the case.
+	</div>
+<?php endif ?>
+
 <?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
 
 <p>
