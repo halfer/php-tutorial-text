@@ -100,30 +100,61 @@
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
-		Currently finished writing up to here.
+		These last five items are refactoring/tidying. If this page gets too long, we could move
+		a couple of them to the next page?
 	</div>
 <?php endif ?>
 
-<p>Render paragraphs in comments</p>
+<p>
+	And now for some more tidying. The first tweaking opportunity I noticed was that the code to
+	make a comment safe to render to the screen, and to swap newlines for paragraph tags, might be
+	useful elsewhere in the future. So I've generalised that snippet of code in a function, and
+	then made use of it:
+</p>
+
 <?php renderDiff('fcf4ab21a9bae2bf86f0d26cc0acc1309a0c789b') ?>
+
+<p>
+	A nice simple one is up next. The code for install.php was rather bloated by the presence of the
+	large function at the start, and there's no reason why this couldn't be stored separately,
+	making the installer page easier to maintain. We refactored this one a while ago, but it's
+	perfectly fine to refactor again &mdash; you can think of the process as fairly iterative
+	anyway. So here's the diff, resulting in new file lib/install.php:
+</p>
+
+<?php renderDiff('81865f2f16d7237a4f9864f3756e5dce05e9e147') ?>
+
+<p>
+	When a comment is created, we use a snippet of code to create a timestamp in a format suitable
+	for the database server. Since that'll be useful for other things, let's convert that to a
+	reusable function:
+</p>
+
+<?php renderDiff('38d6c09faf1721560de1b6182cb477afb4110aa1') ?>
+
+<p>
+	I noticed that the installer creates its own database connection. Although there was no
+	pressing need to do so, I modified it so it uses a connection passed to it. This would make it
+	easier to run automated tests against it, for example &mdash; a custom test connection would be
+	passed to it, rather than the "hard-wired" one we have now removed.
+</p>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
-		These last four items are refactoring/tidying. At the least this section should be declared,
-		as per the last page, and if this page gets too long, we could move a couple of them to the
-		next page?
+		The commit contains more than the comment describes - there is an additional
+		check on the database file size. Can we rebase this into the code earlier?
 	</div>
 <?php endif ?>
 
-<p>Move install logic to separate file</p>
-<?php renderDiff('81865f2f16d7237a4f9864f3756e5dce05e9e147') ?>
-
-<p>Refactor SQL timestamp into new func, we'll need this next</p>
-<?php renderDiff('38d6c09faf1721560de1b6182cb477afb4110aa1') ?>
-
-<p>Send PDO object to create db function</p>
 <?php renderDiff('ed6aaadb0045735b2d723bc67967076958589ae5') ?>
 
-<p>Fix up out-of-date comment</p>
+<p>
+	The last tweak is very easy: a re-reading of some of the code showed that I'd not updated
+	a comment in line with a code change. Now, I could magic this away for the benefit of the
+	tutorial, but I rather like the opportunity to show that code is never perfect, and that
+	sometimes comments come out of sync with what they're meant to describe! So, just apply the
+	following diff, and we're done for this chapter.
+</p>
+
 <?php renderDiff('d28456262905f8e334903bc827325c7d062119a2') ?>
 
