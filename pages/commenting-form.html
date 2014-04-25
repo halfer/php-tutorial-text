@@ -3,10 +3,57 @@
 <h2>Commenting form</h2>
 
 <p>
-	[Introduce comment form stuff]
+	Righto, let's get onto a new solid block of functionality: allowing users to add comments.
+	This adds a new block of HTML in comment-form.php, which reports any errors when the comment
+	is made, a form to capture the usual comment information, and some business logic in
+	lib/view-post.php and view-post.php to glue it all together.
 </p>
 
 <?php renderDiff('109bd357fdc29c189081810f1da2fa0199661d6b') ?>
+
+<p>
+	Let us have a look in detail at view-post.php, which is the page called by the web server
+	when a single post is rendered. In the newly inserted code, we take these actions:
+</p>
+
+<ol>
+	<li>Reset the errors variable to null i.e. we do not yet know if they are any errors.</li>
+	<li>Detect if we are in a POST operation. If we are not (i.e. the page is just being rendered
+		normally, rather than submitting a form) then don't do any more of this new stuff.</li>
+	<li>Get the author name, website URL and comment message, and pass them to new
+		function <code>addCommentToPost()</code> for validation and saving.</li>
+	<li>This will return any resulting errors into the <code>$errors</code> array.</li>
+	<li>If the comment-adding function successfully saves a comment to the database,
+		redirect to self and exit. This will request the page again in GET mode.</li>
+	<li>If the comment save failed (perhaps because a mandatory field was not supplied) then
+		the errors array will contain the error message(s). Since this skips the
+		redirection phase, the form is rendered within the same call, which allows the errors
+		to be marked on the form.</li>
+</ol>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		If we get stuck for space, we could move this sidebar to the earlier
+		place where we refactored the installer from GET to POST.
+	</div>
+<?php endif ?>
+
+<div class="sidebar">
+	<div class="heading">
+		<p>What are GET and POST?</p>
+	</div>
+
+	<p>
+		(todo: make a reference that we refactored the installer from GET to POST, and why we did
+		that)
+	</p>
+</div>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		Currently finished writing up to here.
+	</div>
+<?php endif ?>
 
 <p>
 	[Handle the case of failed validation - if we fail validation, are there PHP warnings we are trying to plug?]
