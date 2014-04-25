@@ -36,3 +36,41 @@
 	have an "Install" button. All being well, it will do the same installation when you click it,
 	and then you can opt to go straight to the blog's home page.
 </p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		The rest of this page is refactoring/tidying, so make a comment to that effect.
+	</div>
+<?php endif ?>
+
+<p>
+	One of the things you may have noticed is that posts and comments are being marked as
+	written on a particular day, but with no time information. It is usual to record and show
+	this sort of data, so let's do that now. Don't forget to re-run the installer to test it!
+</p>
+
+<?php renderDiff('0d117cf12fd4ecd973101bccd3709c90d8634cda') ?>
+
+<p>
+	Following on from our last bit of refactoring, here's another nice item to tidy up. Arguably,
+	the view post page has too much business logic in it, and it would be more maintainable
+	to move this to a separate file. So, create "lib/view-post.php" and paste in the new content.
+</p>
+
+<?php renderDiff('5a02c57be7b99a97ee52a147a095e5a3f8080fb7') ?>
+
+<p>
+	One of the situations we have not yet catered for is the user requesting a blog article
+	that does not exist. We need to handle that based on the maxim that "if something can go
+	wrong, it will". There are a good few small changes here, but in essence our approach is
+	that if we cannot find a database row, we issue a browser redirect and show an error.
+</p>
+
+<?php renderDiff('6a1b41d4adea261b79f79abd26a602d57b861595') ?>
+
+<p>
+	Since the browser redirect is useful, it has been written as a function, and re-used by
+	the installer. Although there is no new data to install, it is a good idea to delete your
+	database file and re-install at this point, just to check it still works.
+</p>
+
