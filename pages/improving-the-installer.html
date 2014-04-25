@@ -2,6 +2,13 @@
 
 <h2>Improving the installer</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		I think the first person voice here is okay - the tutorial starts off with it, so it's
+		consistent.
+	</div>
+<?php endif ?>
+
 <p>
 	At this juncture, I decided to tidy up the installer a bit more. Firstly, it would be nice to
 	see some data about what it has created; in the course of development you can expect
@@ -18,9 +25,15 @@
 	explained in more detail later).
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		Check that the promised future note about POST actually materialises :)
+	</div>
+<?php endif ?>
+
 <p>
-	The changes here are quite substantial, so you may find it easier to copy and paste the whole
-	thing over the top of the old file. So, here's the diff:
+	The changes here are quite substantial, so you may find it easier to download the file, and
+	copy the whole thing over the top of the old version. So, here's the diff:
 </p>
 
 <?php renderDiff('5b249d64009b5587b88a80be393cee0342e5da5f') ?>
@@ -37,22 +50,28 @@
 	and then you can opt to go straight to the blog's home page.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo">
-		The rest of this page is refactoring/tidying, so make a comment to that effect.
-	</div>
-<?php endif ?>
+<div class="intermission">~</div>
 
 <p>
-	One of the things you may have noticed is that posts and comments are being marked as
-	written on a particular day, but with no time information. It is usual to record and show
-	this sort of data, so let's do that now. Don't forget to re-run the installer to test it!
+	Since our changes to the installer have been brief, let's do some refactoring and a couple of
+	minor functionality tweaks. Now, it could be said that this process of tidying seems rather
+	erratic, and that similar items of work should be neatly collected together. However, real-life
+	development rarely works that way: instead, a rough but usable solution is developed, and then
+	improvements and refactorings are added depending on user feedback, and often also on time
+	available.
+</p>
+
+<p>
+	So, here's our first small improvement task. One of the things you may have noticed is that
+	posts and comments are being marked as written on a particular day, but with no time
+	information. It is usual to record and show this sort of data, so let's do that now. Don't
+	forget to re-run the installer to test it!
 </p>
 
 <?php renderDiff('0d117cf12fd4ecd973101bccd3709c90d8634cda') ?>
 
 <p>
-	Following on from our last bit of refactoring, here's another nice item to tidy up. Arguably,
+	Following on from our last bit of refactoring, here's another opportunity to tidy code. Arguably,
 	the view post page has too much business logic in it, and it would be more maintainable
 	to move this to a separate file. So, create "lib/view-post.php" and paste in the new content.
 </p>
