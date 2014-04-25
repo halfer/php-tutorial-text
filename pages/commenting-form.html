@@ -44,26 +44,65 @@
 	</div>
 
 	<p>
-		(todo: make a reference that we refactored the installer from GET to POST, and why we did
-		that)
+		I've used these phrases a few times without explaining them, so let me do that now. GET and
+		POST are two kinds of <strong>HTTP operation</strong>, and can be thought of rather like a
+		mode that a web-connected device (like a browser or a server) operates in. Any web address
+		can be visited in either mode, and the web application can take a different course of
+		action depending on the mode used.
+	</p>
+	<p>
+		When we visit a web site normally &mdash; such as the home page of our blog, say &mdash;
+		we are in GET mode. This is the state that is suitable for <em>reading</em> things from
+		a web server. Some pages containing a <code>&lt;form&gt;</code> also operate in GET mode,
+		such as search forms, since these too are used to read information.
+	</p>
+	<p>
+		Forms that may result in data being saved, on the other hand, should use POST. You can
+		see this with the comment form we just installed; have a look for the
+		<code>method="post"</code> declaration in the form tag.
+	</p>
+	<p>
+		This was one of the reasons behind the earlier change to the installer: before the
+		modification, visiting the URL would reset the database, which breaks the rule that GET
+		operations are only for reading data. Swapping this to a POST form solved the issue.
 	</p>
 </div>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		This hash is in the wrong order - I felt it was best to do this before the
+		validation failure thing. In the long term maybe it would be simpler just to merge this
+		with the code that introduces the feature?
+	</div>
+<?php endif ?>
+
+<p>
+	Adding a comment doesn't work yet, as the <code>INSERT</code> command is missing a value for
+	the date of comment creation. Let's fix that now:
+</p>
+	
+<?php renderDiff('56046941508c1d47b1e36180e2245e6dfa6bac9c') ?>
+
+<p>
+	So, that gets the success case working. However, if you test a failure condition (empty name
+	field or an empty comment, the fields that <em>were</em> filled in now disappear. This is because
+	a form does not by default contain values, so we have to add them manually.	
+</p>
+
+<p>
+	Thus, we now set empty values for the GET case (no form submission) in view-post.php as well as
+	the already existing POST case. Where we output the user-supplied data, we pass it through
+	the PHP function <code>htmlspecialchars()</code>, which prevents any rendering problems if the
+	user has used any HTML characters such as angle brackets.
+</p>
+
+<?php renderDiff('51582d22e7ace119cee6d6023f2a0351cd0d6505') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
 		Currently finished writing up to here.
 	</div>
 <?php endif ?>
-
-<p>
-	[Handle the case of failed validation - if we fail validation, are there PHP warnings we are trying to plug?]
-</p>
-
-<?php renderDiff('51582d22e7ace119cee6d6023f2a0351cd0d6505') ?>
-
-<p>Add timestamp to insert so comment device works:</p>
-
-<?php renderDiff('56046941508c1d47b1e36180e2245e6dfa6bac9c') ?>
 
 <p>Render paragraphs in comments</p>
 <?php renderDiff('fcf4ab21a9bae2bf86f0d26cc0acc1309a0c789b') ?>
