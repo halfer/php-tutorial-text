@@ -2,6 +2,13 @@
 
 <h2>Adding some polish</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		The login system should examine <code>is_enabled</code> in the users table - I'd like to
+		add that here rather than rebase-cheating in the login chapter!
+	</div>
+<?php endif ?>
+
 <p>Add in home link for auth users</p>
 <?php renderDiff('714a41e119f4f537c99f619f4e52c2bc60e1c767') ?>
 

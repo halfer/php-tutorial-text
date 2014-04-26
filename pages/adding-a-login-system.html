@@ -2,18 +2,48 @@
 
 <h2>Adding a login system</h2>
 
+<p>
+	The next thing I decided to implement was a log-on system. This will allow a blog administrator
+	to write, edit and delete posts, and to delete comments. In this set of changes, I add a
+	users table, and allow the installer to create an admin user with a new password each time it
+	is run. So, make the following changes, and then re-create the database:
+</p>
+
+<?php renderDiff('6a97245ffe87c7ad3d5772af22f0d70a17ef9d0c') ?>
+
+<p>
+	There are two fields in the new user table that I added based on my experience rather than an
+	immediate need. These are <code>created_at</code>, which holds the date and time when the user
+	was first set up, and <code>is_enabled</code>, which allows us to turn users on and off. Most
+	user systems will find a practical use for these simple features during their lifetime.
+</p>
+
+<p>
+	You'll have noticed a comment in lib/install.php noting that the password is stored in plaintext.
+	This means that, as it stands, passwords would be stored literally, which is considered to be
+	very bad practice indeed. What we should do is to store passwords in an encoded, non-reversible
+	format, so that even if they are stolen they will be nearly impossible to read. This acts as a
+	form of protection should a cracker get through our security and steal our database.
+</p>
+
+<p>
+	So, let's make that improvement straight away:
+</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		Can we suppress submodules from appearing in diffs? I'm happy to just add notes on importing
+		this library manually.
+	</div>
+<?php endif ?>
+
+<?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
+
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
 		Currently finished writing up to here.
 	</div>
 <?php endif ?>
-
-<p>Add user table, create user row when installing</p>
-
-<?php renderDiff('6a97245ffe87c7ad3d5772af22f0d70a17ef9d0c') ?>
-
-<p>Add password hashing capability</p>
-<?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
 
 <p>Add skeleton for login screen</p>
 <?php renderDiff('61b6ddedaaaed08fc19c26473e862093d52f674d') ?>
