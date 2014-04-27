@@ -952,7 +952,10 @@ __NEWFILE__
 </p>
 
 <p>
-	So, let's make that improvement straight away:
+	So, let's make that improvement straight away. To do so, we'll need a library that is build
+	into PHP 5.5 (or later). If you are running an earlier version, you'll need the new file
+	in <span class="filename">vendor/password_compat</span>, and you can omit it otherwise. Add
+	it in anyway if you are not sure what version you are running.
 </p>
 
 <?php if (showTodoMessages()): ?>
@@ -964,13 +967,14 @@ __NEWFILE__
 
 <?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
 
+<p>Add skeleton for login screen</p>
+
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
 		Currently finished writing up to here.
 	</div>
 <?php endif ?>
 
-<p>Add skeleton for login screen</p>
 <?php renderDiff('61b6ddedaaaed08fc19c26473e862093d52f674d') ?>
 
 <p>Get login system mainly working</p>
