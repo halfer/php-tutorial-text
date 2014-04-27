@@ -2,10 +2,32 @@
 
 <h2>Tidy up</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		Currently finished writing up to here.
+	</div>
+<?php endif ?>
+
 <p>Fix bug - installer does not seem to forget its install attempt</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo" style="margin-top: 30px;">
+		There's a commit in here to move inline CSS to an existing file. This could be made
+		a new commit, merge with the next one, or merge in earlier?
+	</div>
+<?php endif ?>
+
 <?php renderDiff('87071e8f2e16ab24f2adb032e50fd23082f82395') ?>
 
 <p>Centralise CSS, switch various inline styles to classes</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		How shall we deal with tabs that overflow onto a second row? Maybe a fairly
+		prominent "More files..." pop-up device at the end of the tab block?
+	</div>
+<?php endif ?>
+
 <?php renderDiff('443350135cfe4f6e70e15843b3bc8b96a0e420cb') ?>
 
 <p>Various CSS improvements</p>

@@ -952,22 +952,117 @@ __NEWFILE__
 </p>
 
 <p>
-	So, let's make that improvement straight away. To do so, we'll need a library that is build
-	into PHP 5.5 (or later). If you are running an earlier version, you'll need the new file
-	in <span class="filename">vendor/password_compat</span>, and you can omit it otherwise. Add
-	it in anyway if you are not sure what version you are running.
+	So, let's make that improvement straight away. To do so, we'll need the library I talked about
+	at the start of the tutorial, stored here in <span class="filename">vendor/password_compat</span>.
+	The features it provides are so useful they have been built into PHP 5.5, so if you are running
+	this version (or later) you can skip adding the new file. However if you are running an earlier
+	version, or if you are not sure which version you have, copy it into place.
+</p>
+
+<?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
+
+<p>
+	So, what does the new code do? It makes use of a new function called
+	<code>password_hash()</code>, which takes a password as input and produces what is known as a
+	<em>hash</em>. A hash is a mathematical calculation that is strictly one way, which means that
+	if sometimes steals our database of password hashes, they will find it very difficult indeed
+	to recreate the passwords they were generated from.
+</p>
+
+<p>
+	Whether or not you are using it, by all means do have a read of the source code in
+	<span class="filename">password.php</span>. However, an in-depth exploration of it would be rather
+	advanced at this stage, so for our purposes we will assume it just works.
+</p>
+
+<p>
+	The next step is to add a login form, and a link from which to access it:
+</p>
+
+<?php renderDiff('61b6ddedaaaed08fc19c26473e862093d52f674d') ?>
+
+<p>
+	In the next change, we add our familiar block of business logic before the main HTML. In this
+	case, it checks to see if the form has been submitted; if it has, then it turns on the
+	session system (more about that in a minute), creates a hash of the submitted password,
+	and compares it with the hash stored in the database.
+</p>
+
+<p>
+	If the user gets their username wrong (e.g. it is not found) or the password wrong (the
+	password hash does not match the one for the username supplied) then we regard this as a login
+	failure. It is important for us not to be too helpful here (such as explaining that a username
+	does not exist), as this information might be useful to a system cracker.
+</p>
+
+<p>
+	If the password matches however, then we call <code>login()</code> to sign in the user, and
+	then we redirect to the home page using <code>redirectAndExit()</code>.
+</p>
+
+<blockquote class="sidebar">
+	<div class="heading">
+		<p>What are sessions?</p>
+	</div>
+	<p>
+		Sessions are an extremely useful feature that allow web applications to
+		remember per-user information. By default, every request to the server is seen in
+		isolation, so without sessions, an application would not be able to
+		remember that a user had signed in, or what their username was.
+	</p>
+
+	<p>
+		To make sessions work, PHP sends the user's browser a cookie containing a random
+		identifier, and for every subsequent visit, the browser supplies this back to the server.
+		This identifier corresponds to a file on the server containing the variables that have been
+		set for each user.
+	</p>
+
+	<p>
+		PHP makes this nice and simple for developers: we just turn on sessions using
+		<code>session_start()</code>, and then we can just read and write to the
+		<code>$_SESSION</code> array. Easy peasy!
+</blockquote>
+
+<p>
+	So, with that explained, let's add the changes:
 </p>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
-		Can we suppress submodules from appearing in diffs? I'm happy to just add notes on importing
-		this library manually.
+		Oops, we'll need to rebase in a code change to only load the library if the PHP version is
+		&lt;5.5, otherwise the <code>require()</code> will bomb out!
 	</div>
 <?php endif ?>
 
-<?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
+<?php renderDiff('92580f3fc0d0a7e3204acf1937f56109977f04af') ?>
 
-<p>Add skeleton for login screen</p>
+<p>
+	Now we have a way to determine whether users are logged in or not, let's switch that feature
+	on for all pages. Here we also modify the HTML snippet that contains the page header, so
+	it can show the appropriate login/logout link.
+</p>
+
+<?php renderDiff('742c052462c519480052d5367e46dd12a54e804a') ?>
+
+<p>
+	You may have noticed, if you tried the logout link, that this page does not yet exist. So let's
+	add that now in the following set of changes. Whilst we are at it, let's greet the user by
+	their username while they are logged in, as this makes the experience of the site a bit
+	more friendly.
+</p>
+
+<?php renderDiff('ef69990f063fa5eac2c6a4246a275d0c2babb3ac') ?>
+
+<p>
+	That's all for this chapter, so give your application a good test, especially the new
+	login and logout features. When you're ready, we'll proceed in the next chapter with some 
+	small tweaks to improve what we have.
+</p>
+
+__NEWFILE__
+
+<h2>Tidy up</h2>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
@@ -975,25 +1070,26 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php renderDiff('61b6ddedaaaed08fc19c26473e862093d52f674d') ?>
-
-<p>Get login system mainly working</p>
-<?php renderDiff('92580f3fc0d0a7e3204acf1937f56109977f04af') ?>
-
-<p>Switch on sessions in all pages, recognise logged in/out</p>
-<?php renderDiff('742c052462c519480052d5367e46dd12a54e804a') ?>
-
-<p>Add logout and username greeting</p>
-<?php renderDiff('ef69990f063fa5eac2c6a4246a275d0c2babb3ac') ?>
-
-__NEWFILE__
-
-<h2>Tidy up</h2>
-
 <p>Fix bug - installer does not seem to forget its install attempt</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo" style="margin-top: 30px;">
+		There's a commit in here to move inline CSS to an existing file. This could be made
+		a new commit, merge with the next one, or merge in earlier?
+	</div>
+<?php endif ?>
+
 <?php renderDiff('87071e8f2e16ab24f2adb032e50fd23082f82395') ?>
 
 <p>Centralise CSS, switch various inline styles to classes</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		How shall we deal with tabs that overflow onto a second row? Maybe a fairly
+		prominent "More files..." pop-up device at the end of the tab block?
+	</div>
+<?php endif ?>
+
 <?php renderDiff('443350135cfe4f6e70e15843b3bc8b96a0e420cb') ?>
 
 <p>Various CSS improvements</p>
