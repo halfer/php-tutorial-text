@@ -352,9 +352,9 @@
 
 <p>
 	Now, the SQL file won't do anything on its own: we need a program to send the commands to
-	the database. This is where the "install" file comes in; we'll run that whenever we want to
-	set up the blog (or to wipe it and start again). I'll describe its broad features here, but
-	do also read the comments in the code.
+	the database. This is where the <span class="filename">install.php</span> file comes in; we'll
+	run that whenever we want to set up the blog (or to wipe it and start again). I'll describe
+	its broad features here, but do also read the comments in the code.
 </p>
 
 <?php if (showTodoMessages()): ?>
@@ -371,8 +371,9 @@
 </p>
 
 <ul>
-	<li>Ensure the database has not been created in the "data.sqlite" file. If it has, we require the
-		file to be deleted manually, so that it is harder to accidentally overwrite data.
+	<li>Ensure the database has not been created in the <span class="filename">data.sqlite</span>
+		file. If it has, we require the file to be deleted manually, so that it is harder to
+		accidentally overwrite data.
 	</li>
 	<li>
 		SQLite will work fine with just an empty file, so we create one with <code>touch()</code>
