@@ -283,17 +283,18 @@
 
 <div class="intermission">~</div>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo">
-		This commit requires a directory being created. Let's walk the user through that?
-	</div>
-<?php endif ?>
-
 <p>
 	The next step we will take is to set up the database. We'll use a database system called
 	SQLite (pronounced "see-kwel light") as it is really easy to connect to, and does not
 	require a database server. Create the following two files in your project, paste in the contents,
-	and then we'll discuss what they do:
+	and then we'll discuss what they do.
+</p>
+
+<p>
+	You'll notice that some changes in this tutorial &mdash; including one of these files,
+	<span class="filename">data/init.sql</span> &mdash; has a name that contains a forward slash.
+	This means that the file is stored in a sub-directory, and that you'll need to create that
+	manually if it does not already exist.
 </p>
 
 <?php renderDiff('d3bad31f6e2f6e23009e9b033952904117350263') ?>
