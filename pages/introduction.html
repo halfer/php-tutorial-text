@@ -283,6 +283,12 @@
 
 <div class="intermission">~</div>
 
+<?php if (showTodoMessages()): ?>
+	<div class="todo">
+		This commit requires a directory being created. Let's walk the user through that?
+	</div>
+<?php endif ?>
+
 <p>
 	The next step we will take is to set up the database. We'll use a database system called
 	SQLite (pronounced "See-qwel Light") as it is really easy to connect to, and does not
