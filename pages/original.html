@@ -201,16 +201,17 @@
 		<p>What do the tags mean?</p>
 	</div>
 	<ul>
-		<li>DOCTYPE: this tells the browser to expect a particular dialect of HTML &mdash; in this
-			case HTML5</li>
-		<li>html: this is the "envelope" for the whole document. It acts as a container for
+		<li><code>DOCTYPE</code>: this tells the browser to expect a particular dialect of HTML
+			&mdash; in this case HTML5</li>
+		<li><code>html</code>: this is the "envelope" for the whole document. It acts as a container for
 			everything</li>
-		<li>head: this contains stuff about the document, such as the title</li>
-		<li>body: unsurprisingly, this contains the main part of the document</li>
-		<li>h1, h2, h3: title headings of decreasing importance</li>
-		<li>p: a paragraph of text</li>
-		<li>div: a "division", i.e. a section</li>
-		<li>a: a hyperlink</li>
+		<li><code>head</code>: this contains stuff about the document, such as the title</li>
+		<li><code>body</code>: unsurprisingly, this contains the main part of the document</li>
+		<li><code>h1</code>, <code>h2</code>, <code>h3</code>: title headings of decreasing
+			importance</li>
+		<li><code>p</code>: a paragraph of text</li>
+		<li><code>div</code>: a "division", i.e. a section</li>
+		<li><code>a</code>: a hyperlink</li>
 	</ul>
 
 	<p>We'll use a few more as we go on, but those are the main ones.</p>
@@ -246,7 +247,7 @@
 
 <ul>
 	<li>Delete the second article</li>
-	<li>Insert the start of the <code>for</code> loop before the first article, on a new line</li>
+	<li>Insert the start of the <code>for()</code> loop before the first article, on a new line</li>
 	<li>Insert the end of the loop (<code>endfor</code>) at the end of the first article, on a new
 		line</li>
 	<li>Indent the contents of the loop (in most editors, you can do this by selecting the article
@@ -267,7 +268,7 @@
 		<p>What are loops?</p>
 	</div>
 	<p>
-		The <code>for</code> and <code>endfor</code> you have seen form a <em>loop</em> block. This is
+		The <code>for()</code> and <code>endfor</code> you have seen form a <em>loop</em> block. This is
 		a way of telling PHP that you want the enclosed code to be run a number of times. In this
 		case, it sets a value to 1, and carries on looping whilst that value is less than or greater
 		than 3. For each iteration of the loop, the value is incremented by 1, which is carried out by
@@ -357,9 +358,9 @@
 <?php endif ?>
 
 <p>
-	The first half of the code is written in PHP. Here, we use a series of <code>if</code> statements
-	to ensure everything goes smoothly. The variable <code>$error</code> is set to an error message
-	if something goes wrong. Here are the steps we take:
+	The first half of the code is written in PHP. Here, we use a series of <code>if()</code>
+	statements to ensure everything goes smoothly. The variable <code>$error</code> is set to an
+	error message if something goes wrong. Here are the steps we take:
 </p>
 
 <ul>
@@ -367,8 +368,8 @@
 		file to be deleted manually, so that it is harder to accidentally overwrite data.
 	</li>
 	<li>
-		SQLite will work fine with just an empty file, so we create one with <code>touch</code> and
-		report if there was any problems doing that (such as being disallowed by file system
+		SQLite will work fine with just an empty file, so we create one with <code>touch()</code>
+		and report if there was any problems doing that (such as being disallowed by file system
 		permissions).
 	</li>
 	<li>
@@ -409,14 +410,14 @@ __NEWFILE__
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
-		There's no value in adding <code>realpath</code> to the code on line 4.
+		There's no value in adding <code>realpath()</code> to the code on line 4.
 	</div>
 <?php endif ?>
 
 <p>
 	The first few lines determine the file path to the database, and then we create a new PDO object with
-	<code>new PDO</code>, which we can use to access the database. We then use the <code>query</code>
-	method to run a SQL statement that reads the posts from the database.
+	<code>new PDO()</code>, which we can use to access the database. We then use the
+	<code>query()</code> method to run a SQL statement that reads the posts from the database.
 </p>
 
 <blockquote class="sidebar">
@@ -453,7 +454,7 @@ ORDER BY
 <p>
 	After connecting to the database, the query is used to retrieve column values for each table row,
 	returning ordering the rows in <code>created_at DESC</code> (i.e. in reverse creation order, or most
-	recent first). It then enters a loop (in this case a <code>while</code>) to render all the posts it
+	recent first). It then enters a loop (in this case a <code>while()</code>) to render all the posts it
 	finds.
 </p>
 
@@ -496,8 +497,8 @@ ORDER BY
 <p>
 	
 	The connection to the database is the same as before, but we now have a <code>WHERE</code> clause
-	in our <code>SELECT</code> statement, and we are we are now using <code>prepare</code> and
-	<code>execute</code> to send the statement to the database driver.
+	in our <code>SELECT</code> statement, and we are we are now using <code>prepare()</code> and
+	<code>execute()</code> to send the statement to the database driver.
 </p>
 	
 <p>
@@ -514,9 +515,9 @@ ORDER BY
 </p>
 
 <p>
-	The other change is swapping out the call to <code>query</code> with two new methods.
-	<code>prepare</code> is used to set up the statement, and indicates with a colon where values
-	should go (i.e. ":id"). The <code>execute</code> statement then runs the query, swapping
+	The other change is swapping out the call to <code>query()</code> with two new methods.
+	<code>prepare()</code> is used to set up the statement, and indicates with a colon where values
+	should go (i.e. ":id"). The <code>execute()</code> statement then runs the query, swapping
 	place-holders with real values (in this case, the number 1). This technique is known as
 	<em>parameterisation</em>, and is a good way to inject user-supplied input in a secure manner
 	(the post ID is not yet user-supplied, but it soon will be).
