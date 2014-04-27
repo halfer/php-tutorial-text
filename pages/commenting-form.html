@@ -4,16 +4,18 @@
 
 <p>
 	Righto, let's get onto a new solid block of functionality: allowing users to add comments.
-	This adds a new block of HTML in comment-form.php, which reports any errors when the comment
-	is made, a form to capture the usual comment information, and some business logic in
-	lib/view-post.php and view-post.php to glue it all together.
+	This adds a new block of HTML in <span class="filename">comment-form.php</span>, which
+	reports any errors when the comment is made, a form to capture the usual comment information,
+	and some business logic in <span class="filename">lib/view-post.php</span> and
+	<span class="filename">view-post.php</span> to glue it all together.
 </p>
 
 <?php renderDiff('109bd357fdc29c189081810f1da2fa0199661d6b') ?>
 
 <p>
-	Let us have a look in detail at view-post.php, which is the page called by the web server
-	when a single post is rendered. In the newly inserted code, we take these actions:
+	Let us have a look in detail at <span class="filename">view-post.php</span>, which is the page
+	called by the web server when a single post is rendered. In the newly inserted code, we take
+	these actions:
 </p>
 
 <ol>
@@ -90,7 +92,8 @@
 </p>
 
 <p>
-	Thus, we now set empty values for the GET case (no form submission) in view-post.php as well as
+	Thus, we now set empty values for the GET case (no form submission) in
+	<span class="filename">view-post.php</span> as well as
 	the already existing POST case. Where we output the user-supplied data, we pass it through
 	the PHP function <code>htmlspecialchars()</code>, which prevents any rendering problems if the
 	user has used any HTML characters such as angle brackets.
@@ -115,11 +118,13 @@
 <?php renderDiff('fcf4ab21a9bae2bf86f0d26cc0acc1309a0c789b') ?>
 
 <p>
-	A nice simple one is up next. The code for install.php was rather bloated by the presence of the
+	A nice simple one is up next. The code for <span class="filename">install.php</span> was
+	rather bloated by the presence of the
 	large function at the start, and there's no reason why this couldn't be stored separately,
 	making the installer page easier to maintain. We refactored this one a while ago, but it's
 	perfectly fine to refactor again &mdash; you can think of the process as fairly iterative
-	anyway. So here's the diff, resulting in new file lib/install.php:
+	anyway. So here's the diff, resulting in new file
+	<span class="filename">lib/install.php</span>:
 </p>
 
 <?php renderDiff('81865f2f16d7237a4f9864f3756e5dce05e9e147') ?>

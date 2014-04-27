@@ -133,15 +133,16 @@ ORDER BY
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
-		The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
-		this is not the case.
+		The code in <span class="filename">view-post.php</span> says the post ID is sanitised when
+		it retrieved from GET, but this is not the case.
 	</div>
 <?php endif ?>
 
 <?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
 
 <p>
-	Alright, so let's make some nice easy changes now. A look at our index.php and view-post.php
+	Alright, so let's make some nice easy changes now. A look at our
+	<span class="filename">index.php</span> and <span class="filename">view-post.php</span>
 	files shows that our blog title and synopsis is repeated in both files. That's not good, since
 	if these things need to be amended, we need to change them more than once. Happily, the
 	solution is easy: we create a PHP file for the duplicated snippet, and then use
@@ -152,7 +153,8 @@ ORDER BY
 
 <p>
 	Once that is done, we can see there is still some duplication, this time with the database
-	PHP code. So, let's fix that too! You'll notice here that we're using a subfolder for "lib";
+	PHP code. So, let's fix that too! You'll notice here that we're using a subfolder for
+	<span class="filename">lib</span>:
 	this is a very common name for library code folders.
 </p>
 
@@ -170,7 +172,8 @@ ORDER BY
 		<p>What is a function?</p>
 	</div>
 	<p>
-		We saw in the common.php library a set of code blocks that start with the word
+		We saw in the <span class="filename">common.php</span> library a set of code blocks that
+		start with the word
 		<code>function</code>. These are named blocks of code that can be called from different
 		places, and are an essential item in your toolkit. They help reduce duplication (since
 		you don't need to write code again) and they help improve modularity (since functions

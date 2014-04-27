@@ -151,7 +151,7 @@
 
 <p>
 	Let us first check that your server installation is working okay. Create a file called
-	<code>info.php</code> in the root of your project folder:
+	<span class="filename">info.php</span> in the root of your project folder:
 </p>
 
 	<?php include '../templates/info.php' ?>
@@ -176,9 +176,10 @@
 
 <p>
 	This is the initial file, so all we have to do is copy and paste it in. To do so, create
-	"index.php" in the root of your project folder, open it in your editor, and ensure it is empty
-	before pasting in the code. Then visit <code>http://localhost/index.php</code> in your browser,
-	to ensure that you can see the initial mock-up of our blog's home page.
+	<span class="filename">index.php</span> in the root of your project folder, open it in your
+	editor, and ensure it is empty before pasting in the code. Then visit
+	<code>http://localhost/index.php</code> in your browser, to ensure that you can see the
+	initial mock-up of our blog's home page.
 </p>
 
 <p>
@@ -528,15 +529,16 @@ ORDER BY
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
-		The code in view-post.php says the post ID is sanitised when it retrieved from GET, but
-		this is not the case.
+		The code in <span class="filename">view-post.php</span> says the post ID is sanitised when
+		it retrieved from GET, but this is not the case.
 	</div>
 <?php endif ?>
 
 <?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
 
 <p>
-	Alright, so let's make some nice easy changes now. A look at our index.php and view-post.php
+	Alright, so let's make some nice easy changes now. A look at our
+	<span class="filename">index.php</span> and <span class="filename">view-post.php</span>
 	files shows that our blog title and synopsis is repeated in both files. That's not good, since
 	if these things need to be amended, we need to change them more than once. Happily, the
 	solution is easy: we create a PHP file for the duplicated snippet, and then use
@@ -547,7 +549,8 @@ ORDER BY
 
 <p>
 	Once that is done, we can see there is still some duplication, this time with the database
-	PHP code. So, let's fix that too! You'll notice here that we're using a subfolder for "lib";
+	PHP code. So, let's fix that too! You'll notice here that we're using a subfolder for
+	<span class="filename">lib</span>:
 	this is a very common name for library code folders.
 </p>
 
@@ -565,7 +568,8 @@ ORDER BY
 		<p>What is a function?</p>
 	</div>
 	<p>
-		We saw in the common.php library a set of code blocks that start with the word
+		We saw in the <span class="filename">common.php</span> library a set of code blocks that
+		start with the word
 		<code>function</code>. These are named blocks of code that can be called from different
 		places, and are an essential item in your toolkit. They help reduce duplication (since
 		you don't need to write code again) and they help improve modularity (since functions
@@ -623,8 +627,8 @@ __NEWFILE__
 
 <p>
 	Since this involves database changes, we'll need to delete our database file, and re-run
-	the installer. So, delete the file in "data/data.sqlite" and then reinstall by visiting
-	<code>http://localhost/install.php</code> again.
+	the installer. So, delete the file in <span class="filename">data/data.sqlite</span> and then
+	reinstall by visiting <code>http://localhost/install.php</code> again.
 </p>
 
 <p>
@@ -723,7 +727,8 @@ __NEWFILE__
 <p>
 	Following on from our last bit of refactoring, here's another opportunity to tidy code. Arguably,
 	the view post page has too much business logic in it, and it would be more maintainable
-	to move this to a separate file. So, create "lib/view-post.php" and paste in the new content.
+	to move this to a separate file. So, create <span class="filename">lib/view-post.php</span>
+	and paste in the new content.
 </p>
 
 <?php renderDiff('5a02c57be7b99a97ee52a147a095e5a3f8080fb7') ?>
@@ -749,16 +754,18 @@ __NEWFILE__
 
 <p>
 	Righto, let's get onto a new solid block of functionality: allowing users to add comments.
-	This adds a new block of HTML in comment-form.php, which reports any errors when the comment
-	is made, a form to capture the usual comment information, and some business logic in
-	lib/view-post.php and view-post.php to glue it all together.
+	This adds a new block of HTML in <span class="filename">comment-form.php</span>, which
+	reports any errors when the comment is made, a form to capture the usual comment information,
+	and some business logic in <span class="filename">lib/view-post.php</span> and
+	<span class="filename">view-post.php</span> to glue it all together.
 </p>
 
 <?php renderDiff('109bd357fdc29c189081810f1da2fa0199661d6b') ?>
 
 <p>
-	Let us have a look in detail at view-post.php, which is the page called by the web server
-	when a single post is rendered. In the newly inserted code, we take these actions:
+	Let us have a look in detail at <span class="filename">view-post.php</span>, which is the page
+	called by the web server when a single post is rendered. In the newly inserted code, we take
+	these actions:
 </p>
 
 <ol>
@@ -835,7 +842,8 @@ __NEWFILE__
 </p>
 
 <p>
-	Thus, we now set empty values for the GET case (no form submission) in view-post.php as well as
+	Thus, we now set empty values for the GET case (no form submission) in
+	<span class="filename">view-post.php</span> as well as
 	the already existing POST case. Where we output the user-supplied data, we pass it through
 	the PHP function <code>htmlspecialchars()</code>, which prevents any rendering problems if the
 	user has used any HTML characters such as angle brackets.
@@ -860,11 +868,13 @@ __NEWFILE__
 <?php renderDiff('fcf4ab21a9bae2bf86f0d26cc0acc1309a0c789b') ?>
 
 <p>
-	A nice simple one is up next. The code for install.php was rather bloated by the presence of the
+	A nice simple one is up next. The code for <span class="filename">install.php</span> was
+	rather bloated by the presence of the
 	large function at the start, and there's no reason why this couldn't be stored separately,
 	making the installer page easier to maintain. We refactored this one a while ago, but it's
 	perfectly fine to refactor again &mdash; you can think of the process as fairly iterative
-	anyway. So here's the diff, resulting in new file lib/install.php:
+	anyway. So here's the diff, resulting in new file
+	<span class="filename">lib/install.php</span>:
 </p>
 
 <?php renderDiff('81865f2f16d7237a4f9864f3756e5dce05e9e147') ?>
@@ -924,7 +934,8 @@ __NEWFILE__
 </p>
 
 <p>
-	You'll have noticed a comment in lib/install.php noting that the password is stored in plaintext.
+	You'll have noticed a comment in <span class="filename">lib/install.php</span> noting that
+	the password is stored in plaintext.
 	This means that, as it stands, passwords would be stored literally, which is considered to be
 	very bad practice indeed. What we should do is to store passwords in an encoded, non-reversible
 	format, so that even if they are stolen they will be nearly impossible to read. This acts as a
