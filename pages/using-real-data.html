@@ -9,7 +9,7 @@
 	a page should contain, and where those elements should go. So, make these changes next:
 </p>
 
-<?php renderDiff('c651ad75057710db2d121bb3a63ceb33e8d9880e') ?>
+<?php renderDiffFromComment('Convert front page to read from database') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
@@ -88,7 +88,7 @@ ORDER BY
 	The next step is to create a page to show individual posts. Add the following file:
 </p>
 
-<?php renderDiff('536e6c16d114954fd16d98566a73d9aabaaba338') ?>
+<?php renderDiffFromComment('Add post view page') ?>
 
 <p>
 	Now, it is our intention to link this page from individual posts on the home page. However, we've
@@ -138,7 +138,7 @@ ORDER BY
 	</div>
 <?php endif ?>
 
-<?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
+<?php renderDiffFromComment('Wire in the view post page to the front page') ?>
 
 <p>
 	Alright, so let's make some nice easy changes now. A look at our
@@ -149,7 +149,7 @@ ORDER BY
 	<code>require</code> to pull it in.
 </p>
 
-<?php renderDiff('f2b8629358c962b9d2b2cc508edff4759e9edb86') ?>
+<?php renderDiffFromComment('Centralise title section of page in an HTML fragment') ?>
 
 <p>
 	Once that is done, we can see there is still some duplication, this time with the database
@@ -158,7 +158,7 @@ ORDER BY
 	this is a very common name for library code folders.
 </p>
 
-<?php renderDiff('2d30343a759c27e7e11e5153b7f0f46c58fd4b32') ?>
+<?php renderDiffFromComment('Centralise some database code') ?>
 
 <p>
 	The process of spotting code improvements (e.g. to reduce repetition) is known as

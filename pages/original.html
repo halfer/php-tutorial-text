@@ -171,7 +171,7 @@
 <p>Here's the first bit of code to add:</p>
 
 <div class="first">
-	<?php renderDiff('8b492805bfaea954a8511994fc7030beb7ab4faa') ?>
+	<?php renderDiffFromComment('Add skeleton front page') ?>
 </div>
 
 <p>
@@ -231,7 +231,7 @@
 	the usual monochrome versions).
 </p>
 
-<?php renderDiff('8e7743fc7c3c0e0f995619b54a60c338e454d7a3') ?>
+<?php renderDiffFromComment('Remove repetition and use a loop to generate dummy post data') ?>
 
 <p>
 	The rules for making these changes are simple: the code on the left is the old file, the code
@@ -297,7 +297,7 @@
 	manually if it does not already exist.
 </p>
 
-<?php renderDiff('d3bad31f6e2f6e23009e9b033952904117350263') ?>
+<?php renderDiffFromComment('Add data fixtures') ?>
 
 <p>
 	This change comprises of two new files, a SQL file and a PHP file. I'll discuss the SQL file
@@ -414,7 +414,7 @@ __NEWFILE__
 	a page should contain, and where those elements should go. So, make these changes next:
 </p>
 
-<?php renderDiff('c651ad75057710db2d121bb3a63ceb33e8d9880e') ?>
+<?php renderDiffFromComment('Convert front page to read from database') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
@@ -493,7 +493,7 @@ ORDER BY
 	The next step is to create a page to show individual posts. Add the following file:
 </p>
 
-<?php renderDiff('536e6c16d114954fd16d98566a73d9aabaaba338') ?>
+<?php renderDiffFromComment('Add post view page') ?>
 
 <p>
 	Now, it is our intention to link this page from individual posts on the home page. However, we've
@@ -543,7 +543,7 @@ ORDER BY
 	</div>
 <?php endif ?>
 
-<?php renderDiff('c9b46d47f522cfe625d5a18a8e70a80425406d08') ?>
+<?php renderDiffFromComment('Wire in the view post page to the front page') ?>
 
 <p>
 	Alright, so let's make some nice easy changes now. A look at our
@@ -554,7 +554,7 @@ ORDER BY
 	<code>require</code> to pull it in.
 </p>
 
-<?php renderDiff('f2b8629358c962b9d2b2cc508edff4759e9edb86') ?>
+<?php renderDiffFromComment('Centralise title section of page in an HTML fragment') ?>
 
 <p>
 	Once that is done, we can see there is still some duplication, this time with the database
@@ -563,7 +563,7 @@ ORDER BY
 	this is a very common name for library code folders.
 </p>
 
-<?php renderDiff('2d30343a759c27e7e11e5153b7f0f46c58fd4b32') ?>
+<?php renderDiffFromComment('Centralise some database code') ?>
 
 <p>
 	The process of spotting code improvements (e.g. to reduce repetition) is known as
@@ -603,7 +603,7 @@ __NEWFILE__
 	for a consistent navigation experience. So, let's do that now:
 </p>
 
-<?php renderDiff('6b674108db59a4763b772bad8166888833f99205') ?>
+<?php renderDiffFromComment('Make title link to the home page') ?>
 
 <p>
 	Next, let us add in some logic that interprets two carriage-returns in a post as a paragraph
@@ -617,14 +617,14 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php renderDiff('2db998b878d2c34119591c68cc754ea2fb756f4b') ?>
+<?php renderDiffFromComment('Put in real paragraphs in the article view') ?>
 
 <p>
 	Now, the default date style used around the application isn't very readable, so let's
 	improve that now:
 </p>
 
-<?php renderDiff('c0fd766e3056011a52a256c6469f4b9af99a47cf') ?>
+<?php renderDiffFromComment('Format the dates nicely') ?>
 
 <p>
 	Now we've done a bit of tidying, let's tackle a bigger item of functionality. We need
@@ -632,7 +632,7 @@ __NEWFILE__
 	prepare for that:
 </p>
 
-<?php renderDiff('60e4d9305ee4ee69f1d3289ce7f8016b01c689f0') ?>
+<?php renderDiffFromComment('Add comments to fixtures') ?>
 
 <p>
 	Since this involves database changes, we'll need to delete our database file, and re-run
@@ -654,13 +654,13 @@ __NEWFILE__
 	the number of rows that would be returned by a query:
 </p>
 
-<?php renderDiff('1dd2779ee8966241f1e609d08e0b7864c7632aef') ?>
+<?php renderDiffFromComment('Add comment counts to front page') ?>
 
 <p>
 	Also, we'll add a comment listing to individual post pages:
 </p>
 
-<?php renderDiff('e082b342676bfaef352d75465f684379ef3d4f35') ?>
+<?php renderDiffFromComment('Add comments/count to view post page') ?>
 
 <p>
 	So, give that a whirl. You will want to check the new count on the homepage, and the comments
@@ -699,13 +699,13 @@ __NEWFILE__
 	copy the whole thing over the top of the old version. So, here's the diff:
 </p>
 
-<?php renderDiff('5b249d64009b5587b88a80be393cee0342e5da5f') ?>
+<?php renderDiffFromComment('Get installer to install upon button press') ?>
 
 <p>
 	Finally, let's add some links so we can easily move to our next task after re-installing:
 </p>
 
-<?php renderDiff('5b007be9914dd76d71a077a89981eeabb7458a16') ?>
+<?php renderDiffFromComment('Add helpful links in installer to home page, and self') ?>
 
 <p>
 	As is our custom, delete your database file and re-run the installer. This time you should
@@ -731,7 +731,7 @@ __NEWFILE__
 	forget to re-run the installer to test it!
 </p>
 
-<?php renderDiff('0d117cf12fd4ecd973101bccd3709c90d8634cda') ?>
+<?php renderDiffFromComment('Convert all dates to datetimes') ?>
 
 <p>
 	Following on from our last bit of refactoring, here's another opportunity to tidy code. Arguably,
@@ -740,7 +740,7 @@ __NEWFILE__
 	and paste in the new content.
 </p>
 
-<?php renderDiff('5a02c57be7b99a97ee52a147a095e5a3f8080fb7') ?>
+<?php renderDiffFromComment('Refactor some business logic to separate library file') ?>
 
 <p>
 	One of the situations we have not yet catered for is the user requesting a blog article
@@ -749,7 +749,7 @@ __NEWFILE__
 	that if we cannot find a database row, we issue a browser redirect and show an error.
 </p>
 
-<?php renderDiff('6a1b41d4adea261b79f79abd26a602d57b861595') ?>
+<?php renderDiffFromComment('Handle requests for non-existent posts') ?>
 
 <p>
 	Since the browser redirect is useful, it has been written as a function, and re-used by
@@ -769,7 +769,7 @@ __NEWFILE__
 	<span class="filename">view-post.php</span> to glue it all together.
 </p>
 
-<?php renderDiff('109bd357fdc29c189081810f1da2fa0199661d6b') ?>
+<?php renderDiffFromComment('Add basic commenting form, validation and db error handling') ?>
 
 <p>
 	Let us have a look in detail at <span class="filename">view-post.php</span>, which is the page
@@ -842,7 +842,7 @@ __NEWFILE__
 	the date of comment creation. Let's fix that now:
 </p>
 	
-<?php renderDiff('56046941508c1d47b1e36180e2245e6dfa6bac9c') ?>
+<?php renderDiffFromComment('Add timestamp to insert so comment device works') ?>
 
 <p>
 	So, that gets the success case working. However, if you test a failure condition (empty name
@@ -858,7 +858,7 @@ __NEWFILE__
 	user has used any HTML characters such as angle brackets.
 </p>
 
-<?php renderDiff('51582d22e7ace119cee6d6023f2a0351cd0d6505') ?>
+<?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
@@ -874,7 +874,7 @@ __NEWFILE__
 	then made use of it:
 </p>
 
-<?php renderDiff('fcf4ab21a9bae2bf86f0d26cc0acc1309a0c789b') ?>
+<?php renderDiffFromComment('Render paragraphs in comments') ?>
 
 <p>
 	A nice simple one is up next. The code for <span class="filename">install.php</span> was
@@ -886,7 +886,7 @@ __NEWFILE__
 	<span class="filename">lib/install.php</span>:
 </p>
 
-<?php renderDiff('81865f2f16d7237a4f9864f3756e5dce05e9e147') ?>
+<?php renderDiffFromComment('Move install logic to separate file') ?>
 
 <p>
 	When a comment is created, we use a snippet of code to create a timestamp in a format suitable
@@ -894,7 +894,7 @@ __NEWFILE__
 	reusable function:
 </p>
 
-<?php renderDiff('38d6c09faf1721560de1b6182cb477afb4110aa1') ?>
+<?php renderDiffFromComment('Refactor SQL timestamp into new func, we\'ll need this next') ?>
 
 <p>
 	I noticed that the installer creates its own database connection. Although there was no
@@ -910,7 +910,7 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php renderDiff('ed6aaadb0045735b2d723bc67967076958589ae5') ?>
+<?php renderDiffFromComment('Send PDO object to create db function') ?>
 
 <p>
 	The last tweak is very easy: a re-reading of some of the code showed that I'd not updated
@@ -920,7 +920,7 @@ __NEWFILE__
 	following diff, and we're done for this chapter.
 </p>
 
-<?php renderDiff('d28456262905f8e334903bc827325c7d062119a2') ?>
+<?php renderDiffFromComment('Fix up out-of-date comment') ?>
 
 __NEWFILE__
 
@@ -933,7 +933,7 @@ __NEWFILE__
 	is run. So, make the following changes, and then re-create the database:
 </p>
 
-<?php renderDiff('6a97245ffe87c7ad3d5772af22f0d70a17ef9d0c') ?>
+<?php renderDiffFromComment('Add user table, create user row when installing') ?>
 
 <p>
 	There are two fields in the new user table that I added based on my experience rather than an
@@ -959,7 +959,7 @@ __NEWFILE__
 	version, or if you are not sure which version you have, copy it into place.
 </p>
 
-<?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
+<?php renderDiffFromComment('Add password hashing capability') ?>
 
 <p>
 	So, what does the new code do? It makes use of a new function called
@@ -979,7 +979,7 @@ __NEWFILE__
 	The next step is to add a login form, and a link from which to access it:
 </p>
 
-<?php renderDiff('61b6ddedaaaed08fc19c26473e862093d52f674d') ?>
+<?php renderDiffFromComment('Add skeleton for login screen') ?>
 
 <p>
 	In the next change, we add our familiar block of business logic before the main HTML. In this
@@ -1035,7 +1035,7 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php renderDiff('92580f3fc0d0a7e3204acf1937f56109977f04af') ?>
+<?php renderDiffFromComment('Get login system mainly working') ?>
 
 <p>
 	Now we have a way to determine whether users are logged in or not, let's switch that feature
@@ -1043,7 +1043,7 @@ __NEWFILE__
 	it can show the appropriate login/logout link.
 </p>
 
-<?php renderDiff('742c052462c519480052d5367e46dd12a54e804a') ?>
+<?php renderDiffFromComment('Switch on sessions in all pages, recognise logged in/out') ?>
 
 <p>
 	You may have noticed, if you tried the logout link, that this page does not yet exist. So let's
@@ -1052,7 +1052,7 @@ __NEWFILE__
 	more friendly.
 </p>
 
-<?php renderDiff('ef69990f063fa5eac2c6a4246a275d0c2babb3ac') ?>
+<?php renderDiffFromComment('Add logout and username greeting') ?>
 
 <p>
 	That's all for this chapter, so give your application a good test, especially the new
@@ -1079,7 +1079,7 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php renderDiff('87071e8f2e16ab24f2adb032e50fd23082f82395') ?>
+<?php renderDiffFromComment('Fix bug - installer does not seem to forget its install attempt') ?>
 
 <p>Centralise CSS, switch various inline styles to classes</p>
 
@@ -1090,76 +1090,76 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php renderDiff('443350135cfe4f6e70e15843b3bc8b96a0e420cb') ?>
+<?php renderDiffFromComment('Centralise CSS, switch various inline styles to classes') ?>
 
 <p>Various CSS improvements</p>
-<?php renderDiff('ec23888c90e976b540c44648f5cfd6fbbfce629f') ?>
+<?php renderDiffFromComment('Various CSS improvements') ?>
 
 <p>Add a PDO param to functions, for consistency</p>
-<?php renderDiff('aee403bdf2183401155e15f28775b612d2638ee7') ?>
+<?php renderDiffFromComment('Add a PDO param to functions, for consistency') ?>
 
 <p>Tidy up CSS for comment form</p>
-<?php renderDiff('3fc1afc5e4f802adc8964ad09aa94693146523da') ?>
+<?php renderDiffFromComment('Tidy up CSS for comment form') ?>
 
 <p>Enable foreign key constraints</p>
-<?php renderDiff('95a14b1921b24859811bf8491f3f4341006257bf') ?>
+<?php renderDiffFromComment('Enable foreign key constraints') ?>
 
 <p>Prevent direct downloaders nicking the database etc</p>
-<?php renderDiff('25b2c21c6e166f18de484fe2f9d31a19be506fe2') ?>
+<?php renderDiffFromComment('Prevent direct downloaders nicking the database etc') ?>
 
 __NEWFILE__
 
 <h2>New post creation</h2>
 
 <p>Add in skeleton for New Post form</p>
-<?php renderDiff('8af4812f676b4e3ae3f50d50e17f7325409fbf36') ?>
+<?php renderDiffFromComment('Add in skeleton for New Post form') ?>
 
 <p>Only allow authenticated users on the New Post page</p>
-<?php renderDiff('3ee3e79a2200b90fa25c95e7e7b4b2de2533cc03') ?>
+<?php renderDiffFromComment('Only allow authenticated users on the New Post page') ?>
 
 <p>Add basic new post functionality</p>
-<?php renderDiff('f121f19994388d691748a0625d09badfdc9fdd46') ?>
+<?php renderDiffFromComment('Add basic new post functionality') ?>
 
 <p>If a post ID is supplied, show that post in the editor</p>
-<?php renderDiff('36a0d2384a1cc3d7eb044bbc29db6a7515660aa0') ?>
+<?php renderDiffFromComment('If a post ID is supplied, show that post in the editor') ?>
 
 <p>Make amendments to posts an update rather than an insert</p>
-<?php renderDiff('51d719ab0cefbd0a7ecf18ae42eb71536e34bf12') ?>
+<?php renderDiffFromComment('Make amendments to posts an update rather than an insert') ?>
 
 __NEWFILE__
 
 <h2>Post editing</h2>
 
 <p>Separate the top menu into a new file</p>
-<?php renderDiff('d8e8929d7609a5c1b76dcf20975183abe0da6aea') ?>
+<?php renderDiffFromComment('Separate the top menu into a new file') ?>
 
 <p>Add in custom title in edit post</p>
-<?php renderDiff('d3730b26f67caa4a4c7806a0e72479db68719329') ?>
+<?php renderDiffFromComment('Add in custom title in edit post') ?>
 
 <p>Add in cancel link in edit post</p>
-<?php renderDiff('4ca47d08a26dc6ad4548a584f23162a91376a2fc') ?>
+<?php renderDiffFromComment('Add in cancel link in edit post') ?>
 
 <p>Add an edit link for users who are logged in</p>
-<?php renderDiff('671a0b5f2ee433d7c4eeb476e3703a446f9fa144') ?>
+<?php renderDiffFromComment('Add an edit link for users who are logged in') ?>
 
 <p>Redirect on login page if we're already logged in</p>
-<?php renderDiff('731e3278f246ebea4b76f1ec5104964ff4f4320e') ?>
+<?php renderDiffFromComment('Redirect on login page if we\'re already logged in') ?>
 
 __NEWFILE__
 
 <h2>All posts page</h2>
 
 <p>Add skeleton for All Posts screen</p>
-<?php renderDiff('ab9869b6b756d1f816654cadbbee461182b530fe') ?>
+<?php renderDiffFromComment('Add skeleton for All Posts screen') ?>
 
 <p>Only allow auth users to see the All Posts screen</p>
-<?php renderDiff('82d933c9fe2684b65d5e5a83fc2cbe58d2e16258') ?>
+<?php renderDiffFromComment('Only allow auth users to see the All Posts screen') ?>
 
 <p>Move home page logic to central location, so we can reuse it for All Posts</p>
-<?php renderDiff('848dfe0f76fdfa9640c90c0e32bb09e69a5b545f') ?>
+<?php renderDiffFromComment('Move home page logic to central location, so we can reuse it for All Posts') ?>
 
 <p>Improve the name of this variable</p>
-<?php renderDiff('f0a91ee830bdbe4d0cbd4dbe2551d5e239202418') ?>
+<?php renderDiffFromComment('Improve the name of this variable') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo">
@@ -1169,38 +1169,38 @@ __NEWFILE__
 <?php endif ?>
 
 <p>Add in creation time to All Posts</p>
-<?php renderDiff('4de1476a9620b19d9e604ec66a3c3ae0e3fea500') ?>
+<?php renderDiffFromComment('Add in creation time to All Posts') ?>
 
 <p>Wire in database calls for All Posts screen</p>
-<?php renderDiff('0e2ebab1baeb86bfc892809c38e61d7af77e0b64') ?>
+<?php renderDiffFromComment('Wire in database calls for All Posts screen') ?>
 
 <p>Add delete post feature</p>
-<?php renderDiff('b199d6e4ae28dce0cad0c66878a1724c7e083f57') ?>
+<?php renderDiffFromComment('Add delete post feature') ?>
 
 <p>Add in post count on All Posts page</p>
-<?php renderDiff('d3cda1443092ccadb74d062e9048ed276deaf447') ?>
+<?php renderDiffFromComment('Add in post count on All Posts page') ?>
 
 __NEWFILE__
 
 <h2>Comment handling</h2>
 
 <p>Move comments markup to separate template file</p>
-<?php renderDiff('d548fe247480ff022dcee17c5cc31acac630b780') ?>
+<?php renderDiffFromComment('Move comments markup to separate template file') ?>
 
 <p>Add delete button to comments for auth users</p>
-<?php renderDiff('916e0ba342ea803c90c634343495344425fd9f8f') ?>
+<?php renderDiffFromComment('Add delete button to comments for auth users') ?>
 
 <p>Make changes to pave way for determining which form is being used</p>
-<?php renderDiff('f0d66798c59f073cca9642374bcd2de48fd9cab4') ?>
+<?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
 
 <p>Move logic to function, to make room for action test</p>
-<?php renderDiff('da074f5f44f8ff9ac4839d0b053e32c1dce55d02') ?>
+<?php renderDiffFromComment('Move logic to function, to make room for action test') ?>
 
 <p>Get the delete comment feature working</p>
-<?php renderDiff('e7e4709e2f5a3b4997ee4c06ed451c954ec9e68c') ?>
+<?php renderDiffFromComment('Get the delete comment feature working') ?>
 
 <p>Add new comment delete function at the same level of abstraction as comment adding</p>
-<?php renderDiff('97bd36cb8d9bb0f7721021b36c669104be21e6f7') ?>
+<?php renderDiffFromComment('Add new comment delete function at the same level of abstraction as comment adding') ?>
 
 __NEWFILE__
 
@@ -1214,19 +1214,19 @@ __NEWFILE__
 <?php endif ?>
 
 <p>Add in home link for auth users</p>
-<?php renderDiff('714a41e119f4f537c99f619f4e52c2bc60e1c767') ?>
+<?php renderDiffFromComment('Add in home link for auth users') ?>
 
 <p>Add in comment count for each post</p>
-<?php renderDiff('fd822967dc7f84f3313b50b929e0ee6ec766e174') ?>
+<?php renderDiffFromComment('Add in comment count for each post') ?>
 
 <p>Add heading to All Posts table</p>
-<?php renderDiff('442dec0800a3f6718209d2eccfbb212458d58da5') ?>
+<?php renderDiffFromComment('Add heading to All Posts table') ?>
 
 <p>Merge comment-counting into get post query</p>
-<?php renderDiff('3d11714772f881d6269768cd568ef4d16f7285d8') ?>
+<?php renderDiffFromComment('Merge comment-counting into get post query') ?>
 
 <p>Allow posts that have comments to be deleted</p>
-<?php renderDiff('6e265a3557b2ef655acd95dc74463bec576a8926') ?>
+<?php renderDiffFromComment('Allow posts that have comments to be deleted') ?>
 
 <p>Upgrade login form with global CSS features</p>
-<?php renderDiff('f8950c9f935a105f9280014bf5624a2db82994b7') ?> 
+<?php renderDiffFromComment('Upgrade login form with global CSS features') ?> 

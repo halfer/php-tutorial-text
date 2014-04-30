@@ -7,7 +7,7 @@
 	for a consistent navigation experience. So, let's do that now:
 </p>
 
-<?php renderDiff('6b674108db59a4763b772bad8166888833f99205') ?>
+<?php renderDiffFromComment('Make title link to the home page') ?>
 
 <p>
 	Next, let us add in some logic that interprets two carriage-returns in a post as a paragraph
@@ -21,14 +21,14 @@
 	</div>
 <?php endif ?>
 
-<?php renderDiff('2db998b878d2c34119591c68cc754ea2fb756f4b') ?>
+<?php renderDiffFromComment('Put in real paragraphs in the article view') ?>
 
 <p>
 	Now, the default date style used around the application isn't very readable, so let's
 	improve that now:
 </p>
 
-<?php renderDiff('c0fd766e3056011a52a256c6469f4b9af99a47cf') ?>
+<?php renderDiffFromComment('Format the dates nicely') ?>
 
 <p>
 	Now we've done a bit of tidying, let's tackle a bigger item of functionality. We need
@@ -36,7 +36,7 @@
 	prepare for that:
 </p>
 
-<?php renderDiff('60e4d9305ee4ee69f1d3289ce7f8016b01c689f0') ?>
+<?php renderDiffFromComment('Add comments to fixtures') ?>
 
 <p>
 	Since this involves database changes, we'll need to delete our database file, and re-run
@@ -58,13 +58,13 @@
 	the number of rows that would be returned by a query:
 </p>
 
-<?php renderDiff('1dd2779ee8966241f1e609d08e0b7864c7632aef') ?>
+<?php renderDiffFromComment('Add comment counts to front page') ?>
 
 <p>
 	Also, we'll add a comment listing to individual post pages:
 </p>
 
-<?php renderDiff('e082b342676bfaef352d75465f684379ef3d4f35') ?>
+<?php renderDiffFromComment('Add comments/count to view post page') ?>
 
 <p>
 	So, give that a whirl. You will want to check the new count on the homepage, and the comments

@@ -9,7 +9,7 @@
 	is run. So, make the following changes, and then re-create the database:
 </p>
 
-<?php renderDiff('6a97245ffe87c7ad3d5772af22f0d70a17ef9d0c') ?>
+<?php renderDiffFromComment('Add user table, create user row when installing') ?>
 
 <p>
 	There are two fields in the new user table that I added based on my experience rather than an
@@ -35,7 +35,7 @@
 	version, or if you are not sure which version you have, copy it into place.
 </p>
 
-<?php renderDiff('e6094c2ee3a012a59f90515b648ecd4c8a098168') ?>
+<?php renderDiffFromComment('Add password hashing capability') ?>
 
 <p>
 	So, what does the new code do? It makes use of a new function called
@@ -55,7 +55,7 @@
 	The next step is to add a login form, and a link from which to access it:
 </p>
 
-<?php renderDiff('61b6ddedaaaed08fc19c26473e862093d52f674d') ?>
+<?php renderDiffFromComment('Add skeleton for login screen') ?>
 
 <p>
 	In the next change, we add our familiar block of business logic before the main HTML. In this
@@ -111,7 +111,7 @@
 	</div>
 <?php endif ?>
 
-<?php renderDiff('92580f3fc0d0a7e3204acf1937f56109977f04af') ?>
+<?php renderDiffFromComment('Get login system mainly working') ?>
 
 <p>
 	Now we have a way to determine whether users are logged in or not, let's switch that feature
@@ -119,7 +119,7 @@
 	it can show the appropriate login/logout link.
 </p>
 
-<?php renderDiff('742c052462c519480052d5367e46dd12a54e804a') ?>
+<?php renderDiffFromComment('Switch on sessions in all pages, recognise logged in/out') ?>
 
 <p>
 	You may have noticed, if you tried the logout link, that this page does not yet exist. So let's
@@ -128,7 +128,7 @@
 	more friendly.
 </p>
 
-<?php renderDiff('ef69990f063fa5eac2c6a4246a275d0c2babb3ac') ?>
+<?php renderDiffFromComment('Add logout and username greeting') ?>
 
 <p>
 	That's all for this chapter, so give your application a good test, especially the new

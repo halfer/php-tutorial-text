@@ -30,13 +30,13 @@
 	copy the whole thing over the top of the old version. So, here's the diff:
 </p>
 
-<?php renderDiff('5b249d64009b5587b88a80be393cee0342e5da5f') ?>
+<?php renderDiffFromComment('Get installer to install upon button press') ?>
 
 <p>
 	Finally, let's add some links so we can easily move to our next task after re-installing:
 </p>
 
-<?php renderDiff('5b007be9914dd76d71a077a89981eeabb7458a16') ?>
+<?php renderDiffFromComment('Add helpful links in installer to home page, and self') ?>
 
 <p>
 	As is our custom, delete your database file and re-run the installer. This time you should
@@ -62,7 +62,7 @@
 	forget to re-run the installer to test it!
 </p>
 
-<?php renderDiff('0d117cf12fd4ecd973101bccd3709c90d8634cda') ?>
+<?php renderDiffFromComment('Convert all dates to datetimes') ?>
 
 <p>
 	Following on from our last bit of refactoring, here's another opportunity to tidy code. Arguably,
@@ -71,7 +71,7 @@
 	and paste in the new content.
 </p>
 
-<?php renderDiff('5a02c57be7b99a97ee52a147a095e5a3f8080fb7') ?>
+<?php renderDiffFromComment('Refactor some business logic to separate library file') ?>
 
 <p>
 	One of the situations we have not yet catered for is the user requesting a blog article
@@ -80,7 +80,7 @@
 	that if we cannot find a database row, we issue a browser redirect and show an error.
 </p>
 
-<?php renderDiff('6a1b41d4adea261b79f79abd26a602d57b861595') ?>
+<?php renderDiffFromComment('Handle requests for non-existent posts') ?>
 
 <p>
 	Since the browser redirect is useful, it has been written as a function, and re-used by
