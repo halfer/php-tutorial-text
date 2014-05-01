@@ -324,7 +324,7 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="note aside">
+	<div class="note comment">
 		Shall I rebase <code>user_id</code> out of the code until later? This might be confusing.
 	</div>
 <?php endif ?>
@@ -672,7 +672,7 @@ __NEWFILE__
 <h2>Improving the installer</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		I think the first person voice here is okay - the tutorial starts off with it, so it's
 		consistent.
 	</div>
@@ -793,7 +793,7 @@ __NEWFILE__
 </ol>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		If we get stuck for space, we could move this sidebar to the earlier
 		place where we refactored the installer from GET to POST.
 	</div>
@@ -830,7 +830,7 @@ __NEWFILE__
 </div>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		I've added this hash deliberately in the wrong order - I felt it was best to do this before the
 		validation failure thing. In the long term maybe it would be simpler just to merge this
 		with the code that introduces the feature?
@@ -861,7 +861,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		These last five items are refactoring/tidying. If this page gets too long, we could move
 		a couple of them to the next page?
 	</div>
@@ -1174,7 +1174,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Improve the name of this variable') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		These last four items could go in a new page, if we feel this page is getting too
 		big.
 	</div>

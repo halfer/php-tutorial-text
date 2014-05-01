@@ -34,7 +34,7 @@
 </ol>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		If we get stuck for space, we could move this sidebar to the earlier
 		place where we refactored the installer from GET to POST.
 	</div>
@@ -71,7 +71,7 @@
 </div>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		I've added this hash deliberately in the wrong order - I felt it was best to do this before the
 		validation failure thing. In the long term maybe it would be simpler just to merge this
 		with the code that introduces the feature?
@@ -102,7 +102,7 @@
 <?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="aside note">
+	<div class="comment note">
 		These last five items are refactoring/tidying. If this page gets too long, we could move
 		a couple of them to the next page?
 	</div>
