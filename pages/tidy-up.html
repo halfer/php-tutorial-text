@@ -12,8 +12,7 @@
 
 <?php if (showTodoMessages()): ?>
 	<div class="todo note" style="margin-top: 30px;">
-		There's a commit in here to move inline CSS to an existing file. This might be better
-		as a new commit, merged with the next one, or merged in earlier?
+		There's a commit in here to move inline CSS to an existing file. Move to the next commit.
 	</div>
 <?php endif ?>
 
@@ -31,6 +30,12 @@
 
 <p>Tidy up CSS for comment form</p>
 <?php renderDiffFromComment('Tidy up CSS for comment form') ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I expect the user table has moved in order to get the constraint to work?
+	</div>
+<?php endif ?>
 
 <p>Enable foreign key constraints</p>
 <?php renderDiffFromComment('Enable foreign key constraints') ?>
