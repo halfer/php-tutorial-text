@@ -3,15 +3,15 @@
 <h2>Tidy up</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
-		Currently finished writing up to here.
+	<div class="critical note">
+		This page is not finished.
 	</div>
 <?php endif ?>
 
 <p>Fix bug - installer does not seem to forget its install attempt</p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo" style="margin-top: 30px;">
+	<div class="todo note" style="margin-top: 30px;">
 		There's a commit in here to move inline CSS to an existing file. This might be better
 		as a new commit, merged with the next one, or merged in earlier?
 	</div>

@@ -2,6 +2,12 @@
 
 <h2>Post editing</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
 <p>Separate the top menu into a new file</p>
 <?php renderDiffFromComment('Separate the top menu into a new file') ?>
 

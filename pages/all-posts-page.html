@@ -2,6 +2,12 @@
 
 <h2>All posts page</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
 <p>Add skeleton for All Posts screen</p>
 <?php renderDiffFromComment('Add skeleton for All Posts screen') ?>
 
@@ -15,7 +21,7 @@
 <?php renderDiffFromComment('Improve the name of this variable') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		These last four items could go in a new page, if we feel this page is getting too
 		big.
 	</div>

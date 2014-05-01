@@ -3,7 +3,13 @@
 <h2>Adding some polish</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note" style="margin-top: 80px;">
 		The login system should examine <code>is_enabled</code> in the users table - I'd like to
 		add that here rather than rebase-cheating in the login chapter!
 	</div>

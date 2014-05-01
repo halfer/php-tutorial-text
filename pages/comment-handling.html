@@ -2,6 +2,12 @@
 
 <h2>Comment handling</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
 <p>Move comments markup to separate template file</p>
 <?php renderDiffFromComment('Move comments markup to separate template file') ?>
 

@@ -2,6 +2,13 @@
 
 <h2>New post creation</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
+
 <p>Add in skeleton for New Post form</p>
 <?php renderDiffFromComment('Add in skeleton for New Post form') ?>
 

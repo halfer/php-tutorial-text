@@ -34,7 +34,7 @@
 </ol>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		If we get stuck for space, we could move this sidebar to the earlier
 		place where we refactored the installer from GET to POST.
 	</div>
@@ -71,8 +71,7 @@
 </div>
 
 <?php if (showTodoMessages()): ?>
-	<?php // Re-classify this as a note, not a todo ?>
-	<div class="todo">
+	<div class="aside note">
 		I've added this hash deliberately in the wrong order - I felt it was best to do this before the
 		validation failure thing. In the long term maybe it would be simpler just to merge this
 		with the code that introduces the feature?
@@ -103,7 +102,7 @@
 <?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		These last five items are refactoring/tidying. If this page gets too long, we could move
 		a couple of them to the next page?
 	</div>
@@ -146,7 +145,7 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="todo note">
 		The commit contains more than the comment describes - there is an additional
 		check on the database file size. Can we rebase this into the code earlier?
 	</div>

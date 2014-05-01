@@ -10,7 +10,7 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo in-progress">
+	<div class="in-progress note">
 		There's no value in adding <code>realpath()</code> to the code on line 4 (fixed in rebase1).
 	</div>
 <?php endif ?>
@@ -132,7 +132,7 @@ ORDER BY
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo in-progress">
+	<div class="in-progress note">
 		The code in <span class="filename">view-post.php</span> says the post ID is sanitised when
 		it retrieved from GET, but this is not the case (fixed in rebase1).
 	</div>

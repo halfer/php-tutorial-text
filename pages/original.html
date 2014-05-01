@@ -324,7 +324,7 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="note aside">
 		Shall I rebase <code>user_id</code> out of the code until later? This might be confusing.
 	</div>
 <?php endif ?>
@@ -358,7 +358,7 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="todo note">
 		Re-running the installer on a fresh vhost just now resulted in permission errors when
 		trying to create the file. Can we add a check in the script?
 	</div>
@@ -415,7 +415,7 @@ __NEWFILE__
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo in-progress">
+	<div class="in-progress note">
 		There's no value in adding <code>realpath()</code> to the code on line 4 (fixed in rebase1).
 	</div>
 <?php endif ?>
@@ -537,7 +537,7 @@ ORDER BY
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo in-progress">
+	<div class="in-progress note">
 		The code in <span class="filename">view-post.php</span> says the post ID is sanitised when
 		it retrieved from GET, but this is not the case (fixed in rebase1).
 	</div>
@@ -611,7 +611,7 @@ __NEWFILE__
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo in-progress">
+	<div class="in-progress note">
 		We have a closing <code>div</code> here that probably has only changed in whitespace terms.
 		Remove this error (fixed in rebase1).
 	</div>
@@ -672,7 +672,7 @@ __NEWFILE__
 <h2>Improving the installer</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		I think the first person voice here is okay - the tutorial starts off with it, so it's
 		consistent.
 	</div>
@@ -793,7 +793,7 @@ __NEWFILE__
 </ol>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		If we get stuck for space, we could move this sidebar to the earlier
 		place where we refactored the installer from GET to POST.
 	</div>
@@ -830,8 +830,7 @@ __NEWFILE__
 </div>
 
 <?php if (showTodoMessages()): ?>
-	<?php // Re-classify this as a note, not a todo ?>
-	<div class="todo">
+	<div class="aside note">
 		I've added this hash deliberately in the wrong order - I felt it was best to do this before the
 		validation failure thing. In the long term maybe it would be simpler just to merge this
 		with the code that introduces the feature?
@@ -862,7 +861,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		These last five items are refactoring/tidying. If this page gets too long, we could move
 		a couple of them to the next page?
 	</div>
@@ -905,7 +904,7 @@ __NEWFILE__
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="todo note">
 		The commit contains more than the comment describes - there is an additional
 		check on the database file size. Can we rebase this into the code earlier?
 	</div>
@@ -1030,7 +1029,7 @@ __NEWFILE__
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="todo note">
 		Oops, we'll need to rebase in a code change to only load the library if the PHP version is
 		&lt;5.5, otherwise the <code>require()</code> will bomb out!
 	</div>
@@ -1066,15 +1065,15 @@ __NEWFILE__
 <h2>Tidy up</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
-		Currently finished writing up to here.
+	<div class="critical note">
+		This page is not finished.
 	</div>
 <?php endif ?>
 
 <p>Fix bug - installer does not seem to forget its install attempt</p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo" style="margin-top: 30px;">
+	<div class="todo note" style="margin-top: 30px;">
 		There's a commit in here to move inline CSS to an existing file. This might be better
 		as a new commit, merged with the next one, or merged in earlier?
 	</div>
@@ -1105,6 +1104,13 @@ __NEWFILE__
 
 <h2>New post creation</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
+
 <p>Add in skeleton for New Post form</p>
 <?php renderDiffFromComment('Add in skeleton for New Post form') ?>
 
@@ -1123,6 +1129,12 @@ __NEWFILE__
 __NEWFILE__
 
 <h2>Post editing</h2>
+
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
 
 <p>Separate the top menu into a new file</p>
 <?php renderDiffFromComment('Separate the top menu into a new file') ?>
@@ -1143,6 +1155,12 @@ __NEWFILE__
 
 <h2>All posts page</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
 <p>Add skeleton for All Posts screen</p>
 <?php renderDiffFromComment('Add skeleton for All Posts screen') ?>
 
@@ -1156,7 +1174,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Improve the name of this variable') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="aside note">
 		These last four items could go in a new page, if we feel this page is getting too
 		big.
 	</div>
@@ -1177,6 +1195,12 @@ __NEWFILE__
 __NEWFILE__
 
 <h2>Comment handling</h2>
+
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
 
 <p>Move comments markup to separate template file</p>
 <?php renderDiffFromComment('Move comments markup to separate template file') ?>
@@ -1201,7 +1225,13 @@ __NEWFILE__
 <h2>Adding some polish</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo">
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note" style="margin-top: 80px;">
 		The login system should examine <code>is_enabled</code> in the users table - I'd like to
 		add that here rather than rebase-cheating in the login chapter!
 	</div>
