@@ -1065,20 +1065,22 @@ __NEWFILE__
 <h2>Tidy up</h2>
 
 <?php if (showTodoMessages()): ?>
+	<div class="in-progress note">
+		I merged commit 527609e778 into the next commit to put the CSS changes in the right
+		place. The fix to the session I merged into an earlier commit, 9513d196b4. This step
+		will then disappear.
+	</div>
+<?php endif ?>
+
+<p>No text required (see note).</p>
+
+<?php renderDiffFromComment('Fix bug - installer does not seem to forget its install attempt') ?>
+
+<?php if (showTodoMessages()): ?>
 	<div class="critical note">
 		This page is not finished.
 	</div>
 <?php endif ?>
-
-<p>Fix bug - installer does not seem to forget its install attempt</p>
-
-<?php if (showTodoMessages()): ?>
-	<div class="todo note" style="margin-top: 30px;">
-		There's a commit in here to move inline CSS to an existing file. Move to the next commit.
-	</div>
-<?php endif ?>
-
-<?php renderDiffFromComment('Fix bug - installer does not seem to forget its install attempt') ?>
 
 <p>Centralise CSS, switch various inline styles to classes</p>
 
