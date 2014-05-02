@@ -414,12 +414,6 @@ __NEWFILE__
 	a page should contain, and where those elements should go. So, make these changes next:
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="in-progress note">
-		There's no value in adding <code>realpath()</code> to the code on line 4 (fixed in rebase1).
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Convert front page to read from database') ?>
 
 <p>
@@ -536,13 +530,6 @@ ORDER BY
 	on each 'Read more' link shows the appropriate post.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="in-progress note">
-		The code in <span class="filename">view-post.php</span> says the post ID is sanitised when
-		it retrieved from GET, but this is not the case (fixed in rebase1).
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Wire in the view post page to the front page') ?>
 
 <p>
@@ -609,13 +596,6 @@ __NEWFILE__
 	Next, let us add in some logic that interprets two carriage-returns in a post as a paragraph
 	break. Here we go:
 </p>
-
-<?php if (showTodoMessages()): ?>
-	<div class="in-progress note">
-		We have a closing <code>div</code> here that probably has only changed in whitespace terms.
-		Remove this error (fixed in rebase1).
-	</div>
-<?php endif ?>
 
 <?php renderDiffFromComment('Put in real paragraphs in the article view') ?>
 
@@ -1063,18 +1043,6 @@ __NEWFILE__
 __NEWFILE__
 
 <h2>Tidy up</h2>
-
-<?php if (showTodoMessages()): ?>
-	<div class="in-progress note">
-		I merged commit 527609e778 into the next commit to put the CSS changes in the right
-		place. The fix to the session I merged into an earlier commit, 9513d196b4. This step
-		will then disappear.
-	</div>
-<?php endif ?>
-
-<p>No text required (see note).</p>
-
-<?php renderDiffFromComment('Fix bug - installer does not seem to forget its install attempt') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
