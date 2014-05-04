@@ -27,12 +27,21 @@
 	form of protection should a cracker get through our security and steal our database.
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I was originally of the view that the library should be loaded only if the PHP version
+		is &lt;5.5, but this feels a bit fussy. I think the note here to say that users
+		on 5.5+ can omit these changes if they wish is a cleaner.
+	</div>
+<?php endif ?>
+
 <p>
 	So, let's make that improvement straight away. To do so, we'll need the library I talked about
 	at the start of the tutorial, stored here in <span class="filename">vendor/password_compat</span>.
 	The features it provides are so useful they have been built into PHP 5.5, so if you are running
-	this version (or later) you can skip adding the new file. However if you are running an earlier
-	version, or if you are not sure which version you have, copy it into place.
+	this version (or later) you can skip adding the new file and the associated
+	<code>require_once</code>. However if you are running an earlier version, or if you are not
+	sure which version you have, add all of these changes.
 </p>
 
 <?php renderDiffFromComment('Add password hashing capability') ?>
@@ -103,13 +112,6 @@
 <p>
 	So, with that explained, let's add the changes:
 </p>
-
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Oops, we'll need to rebase in a code change to only load the library if the PHP version is
-		&lt;5.5, otherwise the <code>require()</code> will bomb out!
-	</div>
-<?php endif ?>
 
 <?php renderDiffFromComment('Get login system mainly working') ?>
 

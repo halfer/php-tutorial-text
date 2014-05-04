@@ -883,13 +883,6 @@ __NEWFILE__
 	passed to it, rather than the "hard-wired" one we have now removed.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		The commit contains more than the comment describes - there is an additional
-		check on the database file size. Can we rebase this into the code earlier?
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Send PDO object to create db function') ?>
 
 <p>
@@ -931,12 +924,21 @@ __NEWFILE__
 	form of protection should a cracker get through our security and steal our database.
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I was originally of the view that the library should be loaded only if the PHP version
+		is &lt;5.5, but this feels a bit fussy. I think the note here to say that users
+		on 5.5+ can omit these changes if they wish is a cleaner.
+	</div>
+<?php endif ?>
+
 <p>
 	So, let's make that improvement straight away. To do so, we'll need the library I talked about
 	at the start of the tutorial, stored here in <span class="filename">vendor/password_compat</span>.
 	The features it provides are so useful they have been built into PHP 5.5, so if you are running
-	this version (or later) you can skip adding the new file. However if you are running an earlier
-	version, or if you are not sure which version you have, copy it into place.
+	this version (or later) you can skip adding the new file and the associated
+	<code>require_once</code>. However if you are running an earlier version, or if you are not
+	sure which version you have, add all of these changes.
 </p>
 
 <?php renderDiffFromComment('Add password hashing capability') ?>
@@ -1008,13 +1010,6 @@ __NEWFILE__
 	So, with that explained, let's add the changes:
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Oops, we'll need to rebase in a code change to only load the library if the PHP version is
-		&lt;5.5, otherwise the <code>require()</code> will bomb out!
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Get login system mainly working') ?>
 
 <p>
@@ -1045,22 +1040,81 @@ __NEWFILE__
 <h2>Tidy up</h2>
 
 <?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
+	<div class="comment note">
+		Have I over-iterated the point about refactoring? Read through earlier material.
 	</div>
 <?php endif ?>
 
-<p>Centralise CSS, switch various inline styles to classes</p>
+<p>
+	We've got a nice set of features working, but there are a good number of improvements and
+	refactoring changes that can be made. Doing these periodically can make for easier and
+	happier development, which in turn can improve your development efficiency.
+</p>
+
+<p>
+	The first change is two-fold: pages were replicating some information in the header, and
+	various items (the top menu bar and system messages) were using inline style rules rather than
+	using class rules that need only be written once.
+</p>
 
 <?php renderDiffFromComment('Centralise CSS, switch various inline styles to classes') ?>
 
-<p>Various CSS improvements</p>
+<p>
+	Let's take a better look at the second change. Some of the original code was written like
+	this:
+</p>
+
+<blockquote>
+	<code>&lt;div style="border: 1px solid #ff6666; padding: 6px;"&gt; &hellip; &lt;/div&gt;</code>
+</blockquote>
+
+<p>
+	The purpose of the <code>style</code> attribute to specify CSS rules (otherwise known as
+	style rules) to the HTML within. Firstly, we have the <code>border</code> rule, which says
+	the content (an error message) should have a red border rendered in an unbroken line, and
+	the <code>padding</code> means that there should be six pixels of gap between the border and
+	the box around the content.
+</p>
+
+<p>
+	However, having to write that for every error message takes a bit of effort, and it's a
+	pain if we decide that error messages should have a magenta border and not a red one. Thus,
+	it makes life easier if we write this instead:
+</p>
+
+<blockquote>
+	<code>&lt;div class="error box"&gt; &hellip; &lt;/div&gt;</code>
+</blockquote>
+
+<p>
+	That applies two rules to the block: one called <code>error</code> and another called
+	<code>box</code>. That's much easier to remember, easier to read, and &mdash; since we
+	centralise the definitions in <span class="filename">assets/main.css</span> &mdash; easier
+	to change if we have to.
+</p>
+
+<p>
+	While we are dealing with CSS changes, let's add a few more. Here we add some rules for
+	article synopses, titles and dates on the home page, and comments on individual blog posts.
+</p>
+
 <?php renderDiffFromComment('Various CSS improvements') ?>
 
-<p>Add a PDO param to functions, for consistency</p>
+<p>
+	You may have noticed that some function calls that need to access the database create their
+	own connection rather than use one that we've already created. For low-volume systems this
+	might not matter a great deal, but programmers hate this sort of inefficiency, and where it is
+	trivial to fix, we should.
+</p>
+
 <?php renderDiffFromComment('Add a PDO param to functions, for consistency') ?>
 
-<p>Tidy up CSS for comment form</p>
+<p>
+	Now we improve the appearance of the comment form. It's worth opening up an article page
+	prior to making the improvements, so you can refresh it after the CSS is in place. This will
+	allow you to see the change quickly.
+</p>
+
 <?php renderDiffFromComment('Tidy up CSS for comment form') ?>
 
 <?php if (showTodoMessages()): ?>
@@ -1071,6 +1125,12 @@ __NEWFILE__
 
 <p>Enable foreign key constraints</p>
 <?php renderDiffFromComment('Enable foreign key constraints') ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		This page is not finished.
+	</div>
+<?php endif ?>
 
 <p>Prevent direct downloaders nicking the database etc</p>
 <?php renderDiffFromComment('Prevent direct downloaders nicking the database etc') ?>
