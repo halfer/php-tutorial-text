@@ -86,15 +86,67 @@
 	</div>
 <?php endif ?>
 
-<p>Enable foreign key constraints</p>
-<?php renderDiffFromComment('Enable foreign key constraints') ?>
+<p>
+	We now turn our attention to an improvement to the database. This consists of the tables
+	<code>post</code> and <code>user</code>, for blog posts and authors respectively. When
+	creating a post record, we insert our automatically generated <code>user.id</code> in
+	<code>post.user_id</code> to store which user has authored it (of course, we only have one 
+	user in our test data, but in practice we might have several).
+</p>
+
+<p>
+	However, it is possible to insert any number in <code>post.user_id</code>, so if we have
+	an undiscovered bug in our code, it might cause a non-existent user primary key to be stored
+	here. Since we rely on values here always pointing to a user row, if a bad value were to get
+	in, it might crash our application.
+</p>
+
+<p>
+	To protect against that scenario, many database systems will allow the use of <em>foreign key
+	constraints</em>. These allow us to specify that values inserted into a particular column must
+	exist in another column belonging to another table, and that an error must occur if this
+	condition is not met. SQLite offers this feature, although it is unusual in that it needs to
+	be turned on explicitly, using the <code>PRAGMA</code> command.
+</p>
+
+<p>
+	So, let's make these changes:
+</p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
+	<div class="todo note">
+		If we have an existing database, doesn't deleting the <code>user</code> table result
+		in a constraint violation? Or is that just applied to <code>DELETE</code> only in
+		SQLite? Try it!
 	</div>
 <?php endif ?>
 
-<p>Prevent direct downloaders nicking the database etc</p>
+<?php renderDiffFromComment('Enable foreign key constraints') ?>
+
+<p>
+	Here's what is new:
+</p>
+
+<ul>
+	<li>
+		Since we want posts to reference users, we need a user first. Thus, I've swapped the
+		order around, so the test user is created before the test post</li>
+	<li>
+		We now need the test user to be created immediately in order to satisfy the foreign key
+		constraint, so we <code>INSERT</code> that in the script with a dummy hash value, and
+		<code>UPDATE</code> it afterwards with the real hash generated in PHP</li>
+	<li>
+		Now when we make database connections in <span class="filename">common.php</span>, the
+		first thing we do is to switch on foreign key constraints</li>
+</ul>
+
+<p>
+	The last change is related to security. Since all of our files are in the web server's
+	public directory, a user who knows our directory structure would be able to download files
+	that we didn't intend to make accessible. Since SQLite uses a single file to store its data,
+	and since this file is often stored in a web-accessible location, it is of particular
+	importance to lock this down.
+</p>
+
 <?php renderDiffFromComment('Prevent direct downloaders nicking the database etc') ?>
 

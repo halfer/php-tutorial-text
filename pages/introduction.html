@@ -339,6 +339,18 @@
 </ul>
 
 <p>
+	The column <code>id</code> has two particular features:
+</p>
+
+<ul>
+	<li>We declare it as a <code>PRIMARY KEY</code> in order to mark it as the predominant unique
+		identifier for the row. This makes it suitable to refer to the row from another
+		table (which we will do later on)</li>
+	<li>We specify the <code>AUTOINCREMENT</code> option, so unique values are generated for us
+		by the database server automatically</li>
+</ul>
+
+<p>
 	A blog post is therefore just a row added to the posts table, since each row has space to store
 	all of these values. Once the table is created, we also create some dummy article data, using
 	<code>INSERT</code>. The format of this command, as used in the SQL script, is simply thus:
