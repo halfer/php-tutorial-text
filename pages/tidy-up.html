@@ -27,7 +27,7 @@
 	this:
 </p>
 
-<blockquote>
+<blockquote class="code">
 	<code>&lt;div style="border: 1px solid #ff6666; padding: 6px;"&gt; &hellip; &lt;/div&gt;</code>
 </blockquote>
 
@@ -36,7 +36,7 @@
 	style rules) to the HTML within. Firstly, we have the <code>border</code> rule, which says
 	the content (an error message) should have a red border rendered in an unbroken line, and
 	the <code>padding</code> means that there should be six pixels of gap between the border and
-	the box around the content.
+	an invisible box around the content.
 </p>
 
 <p>
@@ -45,7 +45,7 @@
 	it makes life easier if we write this instead:
 </p>
 
-<blockquote>
+<blockquote class="code">
 	<code>&lt;div class="error box"&gt; &hellip; &lt;/div&gt;</code>
 </blockquote>
 
@@ -80,12 +80,6 @@
 
 <?php renderDiffFromComment('Tidy up CSS for comment form') ?>
 
-<?php if (showTodoMessages()): ?>
-	<div class="comment note">
-		I expect the user table has moved in order to get the constraint to work?
-	</div>
-<?php endif ?>
-
 <p>
 	We now turn our attention to an improvement to the database. This consists of the tables
 	<code>post</code> and <code>user</code>, for blog posts and authors respectively. When
@@ -114,17 +108,17 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		If we have an existing database, doesn't deleting the <code>user</code> table result
-		in a constraint violation? Or is that just applied to <code>DELETE</code> only in
-		SQLite? Try it!
+	<div class="comment note">
+		If we have an existing database, deleting the <code>user</code> table does not result
+		in a constraint violation, since we refuse to run the SQL unless the database file is
+		manually deleted.
 	</div>
 <?php endif ?>
 
 <?php renderDiffFromComment('Enable foreign key constraints') ?>
 
 <p>
-	Here's what is new:
+	Here's what's new:
 </p>
 
 <ul>
@@ -139,6 +133,11 @@
 		Now when we make database connections in <span class="filename">common.php</span>, the
 		first thing we do is to switch on foreign key constraints</li>
 </ul>
+
+<p>
+	As usual: delete your database file, re-run the installer, and check all the changes appear
+	to work.
+</p>
 
 <p>
 	The last change is related to security. Since all of our files are in the web server's
