@@ -1158,7 +1158,7 @@ __NEWFILE__
 
 <?php if (showTodoMessages()): ?>
 	<div class="comment note">
-		If we have an existing database, deleting the <code>user</code> table does not result
+		Deleting the <code>user</code> table does not result
 		in a constraint violation, since we refuse to run the SQL unless the database file is
 		manually deleted.
 	</div>
@@ -1202,27 +1202,159 @@ __NEWFILE__
 
 <h2>New post creation</h2>
 
+<p>
+	Let's turn our attention to another major feature: writing a new article. We start off with
+	setting up a new page, laying out the necessary form input controls, and adding a new logged-in
+	menu item. There's also a change here to add a generic class <code>user-form</code>, so our
+	forms across the whole application can easily acquire a common look-and-feel; see how I've
+	gone back to existing form <span class="filename">comment-form.php</span> to update that too.
+</p>
+
+<?php renderDiffFromComment('Add in skeleton for New Post form') ?>
+
+<p>
+	Now, we only want to show this page for users who are logged in. Thus, if a user who is
+	not logged in tries to access it (by typing the URL in directly) we must redirect them
+	elsewhere; in this case, the home page will do fine.
+</p>
+
 <?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
+	<div class="todo note">
+		If the reader is running on a non-standard port, we need to ensure the redirect still
+		works. No need to cater for SSL, though!
 	</div>
 <?php endif ?>
 
 
-<p>Add in skeleton for New Post form</p>
-<?php renderDiffFromComment('Add in skeleton for New Post form') ?>
-
-<p>Only allow authenticated users on the New Post page</p>
 <?php renderDiffFromComment('Only allow authenticated users on the New Post page') ?>
 
-<p>Add basic new post functionality</p>
+<p>
+	While we are here, let's take a look at how <code>redirectAndExit()</code> works; this is in
+	<span class="filename">common.php</span>. It starts by reading the domain we are running
+	on (such as <code>localhost</code>), since it is good not to hardwire this into our code.
+	It then sends a <code>Location</code> HTTP header to the browser, which will cause it to
+	request the specified address. Since the PHP script would happily carry on running at this
+	point (until it has detected that the browser has disconnected) we also need to forcibly
+	exit and wait for the redirect.
+</p>
+
+<div class="sidebar">
+	<div class="heading">
+		<p>What are HTTP headers?</p>
+	</div>
+
+	<p>
+		HTTP is the protocol that the internet uses to request data - web pages, API requests and
+		file downloads can all be obtained this way. It's an open standard, which means that
+		a browser (or any other piece of software) that implements the standard correctly can
+		be assured of reliable inter-operability with other software on the web.
+	</p>
+
+	<p>
+		HTTP operations are comprised of two parts: a <em>request</em> from one party to another,
+		and a <em>response</em> back the other way. Part of the standard allows both requests
+		and responses to be supplied with header data that describes its content.
+	</p>
+
+	<p>
+		Some of the headers that can be supplied with a request are:
+	</p>
+
+	<ul>
+		<li>Some information about the browser and operating system in use
+			(the <code>User-Agent</code> header)</li>
+		<li>Which website we wish to view (<code>Host</code>)
+		<li>The cookies previously served by the domain (<code>Cookie</code>)
+	</ul>
+
+	<p>
+		And the following are some common response headers:
+	</p>
+
+	<ul>
+		<li>Some information about the server environment in use (<code>Server</code>)</li>
+		<li>The type of the content; web pages for example are served as "text/html"
+			(<code>Content-Type</code>)</li>
+	</ul>
+</div>
+
+<p>
+	Although we now have the structure of the new post feature, it does not work yet. So let us
+	fix that now:
+</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		The retrieval of the PK in edit-post.php looks like it has a race condition: I suspect
+		<code>SELECT last_insert_rowid();</code> would be better.
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('Add basic new post functionality') ?>
 
-<p>If a post ID is supplied, show that post in the editor</p>
+<p>
+	In a similar way to saving comments, we first test if we are in a post operation, using
+	<code>if ($_POST)</code>. This contains an array of input values that will be only be present
+	if a user has submitted the form.
+</p>
+
+<p>
+	We then make some simple checks to ensure the form data is acceptable prior to our attempting
+	to insert it into the database. This is a process known as <em>form validation</em> and is
+	a frequent task within web application development. If any checks fail, we allow the page to be
+	rendered in the POST request itself, plus error messages as appropriate, and it is only if the
+	checks succeed that we try to save the data and redirect back to the newly committed article.
+</p>
+
+<p>
+	However, as it stands this redirect will just display a new, empty post, since we have not
+	added the logic to render the edit facility for a specific row. Let's add that now:
+</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		Have I already explained the purpose of <code>htmlspecialchars()</code>?
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('If a post ID is supplied, show that post in the editor') ?>
 
-<p>Make amendments to posts an update rather than an insert</p>
+<p>
+	That was nice and easy: if we find we are not in a post operation <em>and</em> we have a
+	post primary key <em>and</em> that row exists, then show it in the edit form. You can see that
+	now we need the database connection (in <code>$pdo</code>) for two things, I've moved
+	that line so that it is always executed.
+</p>
+
+<p>
+	If you tried editing a post, you'll have found that this created a new post, rather than
+	updating the old one. So let's fix that also:
+</p>
+
 <?php renderDiffFromComment('Make amendments to posts an update rather than an insert') ?>
+
+<p>
+	I've moved the code to read the current post towards the start of the page, since this is
+	now useful in two situations. The first is when displaying an article for
+	editing, and the second is when submitting the edit form to save any changes.
+	In both cases, <code>$_GET['post_id']</code> will be available, and we can look up that row
+	from the post table, and obtain title/body data if it is read successfully.
+</p>
+
+<p>
+	Within a POST operation, we can then check <code>$postId</code>, and if it has a value we
+	know we are editing an existing article rather than creating a new one. Thus, if we are editing,
+	we call the new function <code>editPost()</code>, which will run the necessary
+	<code>UPDATE</code> command against the database, rather than <code>addPost()</code>, which
+	would run an <code>INSERT</code>.
+</p>
+
+<p>
+	You might have noticed that there has been no attempt to check whether the user editing a
+	post is the same as the user who wrote it. Whether one person may edit other person's posts is
+	a feature decision, but for the time being it is one that I have deliberately omitted, to
+	keep things simple.
+</p>
 
 __NEWFILE__
 
