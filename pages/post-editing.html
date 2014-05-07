@@ -2,24 +2,46 @@
 
 <h2>Post editing</h2>
 
-<?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
-	</div>
-<?php endif ?>
+<p>
+	In this chapter, we will build on our new editing functionality, but first, let's simplify
+	the title HTML block by moving the menu into a separate file:
+</p>
 
-<p>Separate the top menu into a new file</p>
 <?php renderDiffFromComment('Separate the top menu into a new file') ?>
 
-<p>Add in custom title in edit post</p>
+<p>
+	That change allows us to wire in the menu fragment separately, without the
+	title, so we can use a custom title in the edit page. You'll see that we set the title to
+	"New post" or "Edit post" depending on whether we can find a primary key in the query string.
+</p>
+
 <?php renderDiffFromComment('Add in custom title in edit post') ?>
 
-<p>Add in cancel link in edit post</p>
+<p>
+	Let's also add in a cancel link in the edit page, to make it easier to abandon an edit:
+</p>
+
 <?php renderDiffFromComment('Add in cancel link in edit post') ?>
 
-<p>Add an edit link for users who are logged in</p>
+<p>
+	On the home page, and for logged-in users only, I next added an edit link against each post,
+	like so:
+</p>
+
 <?php renderDiffFromComment('Add an edit link for users who are logged in') ?>
 
-<p>Redirect on login page if we're already logged in</p>
+<p>
+	You'll have noticed that the class name (<code>read-more</code>) of the wrapping div was no
+	longer accurate, so I changed this to something more generic. As it happens, this section
+	doesn't have any CSS rules specifically attached to it, but it's good to have something for
+	future styles to hook onto).
+</p>
+
+<p>
+	Lastly, let's make a another nice easy change - there's no point in rendering the login
+	page if we are already logged in. So, after the session is started, if we find we are logged
+	in already, redirect back to the home page.
+</p>
+
 <?php renderDiffFromComment('Redirect on login page if we\'re already logged in') ?>
 
