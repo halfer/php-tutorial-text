@@ -12,9 +12,10 @@
 <?php renderDiffFromComment('Convert front page to read from database') ?>
 
 <p>
-	The first few lines determine the file path to the database, and then we create a new PDO object with
-	<code>new PDO()</code>, which we can use to access the database. We then use the
-	<code>query()</code> method to run a SQL statement that reads the posts from the database.
+	The first few lines determine the file path to the database, and then we create a new PDO object
+	with <code>new PDO()</code>, which we can use to access the data. We then use the
+	<code>query()</code> method to run a SQL statement that reads articles from the <code>post</code>
+	table.
 </p>
 
 <blockquote class="sidebar">

@@ -429,9 +429,10 @@ __NEWFILE__
 <?php renderDiffFromComment('Convert front page to read from database') ?>
 
 <p>
-	The first few lines determine the file path to the database, and then we create a new PDO object with
-	<code>new PDO()</code>, which we can use to access the database. We then use the
-	<code>query()</code> method to run a SQL statement that reads the posts from the database.
+	The first few lines determine the file path to the database, and then we create a new PDO object
+	with <code>new PDO()</code>, which we can use to access the data. We then use the
+	<code>query()</code> method to run a SQL statement that reads articles from the <code>post</code>
+	table.
 </p>
 
 <blockquote class="sidebar">
@@ -1210,12 +1211,6 @@ __NEWFILE__
 	gone back to existing form <span class="filename">comment-form.php</span> to update that too.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		<span class="filename">main.css</span> needs a CR rebaseing out.
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Add in skeleton for New Post form') ?>
 
 <p>
@@ -1317,12 +1312,6 @@ __NEWFILE__
 	added the logic to render the edit facility for a specific row. Let's add that now:
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Have I already explained the purpose of <code>htmlspecialchars()</code>?
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('If a post ID is supplied, show that post in the editor') ?>
 
 <p>
@@ -1330,6 +1319,20 @@ __NEWFILE__
 	post primary key <em>and</em> that row exists, then show it in the edit form. You can see that
 	now we need the database connection (in <code>$pdo</code>) for two things, I've moved
 	that line so that it is always executed.
+</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		Whether to trust the user with raw HTML is a complex area - maybe add a sidebar on this?
+		Or is this too much detail?
+	</div>
+<?php endif ?>
+
+<p>
+	As we have done before, this code uses <code>htmlspecialchars()</code> to prevent users
+	from entering HTML, which could break our page layout or introduce security problems. It is
+	perhaps less of a worry here, since at least these users are authenticated, and hence
+	they might be considered more trustworthy than anonymous commenters.
 </p>
 
 <p>
@@ -1395,10 +1398,10 @@ __NEWFILE__
 <?php renderDiffFromComment('Add an edit link for users who are logged in') ?>
 
 <p>
-	You'll have noticed that the class name (<code>read-more</code>) of the wrapping div was no
-	longer accurate, so I changed this to something more generic. As it happens, this section
-	doesn't have any CSS rules specifically attached to it, but it's good to have something for
-	future styles to hook onto).
+	You may have noticed that the class name (<code>read-more</code>) of the wrapping div was no
+	longer accurate, which is why I changed this to something more generic. As it happens, this
+	section doesn't have any CSS rules specifically attached to it, but it's good to have something
+	for future styles to hook onto).
 </p>
 
 <p>
@@ -1419,8 +1422,8 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>Add skeleton for All Posts screen</p>
-<?php renderDiffFromComment('Add skeleton for All Posts screen') ?>
+<p>Add mockup of All Posts screen for admin users</p>
+<?php renderDiffFromComment('Add mockup of All Posts screen for admin users') ?>
 
 <p>Only allow auth users to see the All Posts screen</p>
 <?php renderDiffFromComment('Only allow auth users to see the All Posts screen') ?>
@@ -1491,7 +1494,7 @@ __NEWFILE__
 <?php if (showTodoMessages()): ?>
 	<div class="todo note" style="margin-top: 80px;">
 		The login system should examine <code>is_enabled</code> in the users table - I'd like to
-		add that here rather than rebase-cheating in the login chapter!
+		add that here rather than rebasing in a previous chapter.
 	</div>
 <?php endif ?>
 
