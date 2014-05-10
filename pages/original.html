@@ -1,5 +1,12 @@
 <h2>Introduction</h2>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		Comments, to-do items and critical notes appear in this sidebar, in test environments
+		only. These help collate and organise feedback.
+	</div>
+<?php endif ?>
+
 <p>
 	In this tutorial, I'll present how to write a simple blog system, using the PHP language and
 	the Apache web server. For the database, we'll use SQLite, to keep things simple. Don't worry
@@ -17,6 +24,14 @@
 	<b>functional</b>, <b>maintainable</b> and <b>secure</b> application, but there'll be much
 	that can still be improved on (which will likely make for a subsequent tutorial).
 </p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		The site has a working title of 'I ♥ PHP' (or "ilovephp" in URLs).
+		I did wonder if 'I love code' would be better, in case other languages might be added in
+		the future, but I think that might be too ambitious!
+	</div>
+<?php endif ?>
 
 <p>
 	If you are new to programming, it is possible that you might feel somewhat lost as you work
@@ -324,7 +339,7 @@
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="note comment">
+	<div class="comment note">
 		Shall I rebase <code>user_id</code> out of the code until later? This might be confusing.
 	</div>
 <?php endif ?>
