@@ -1445,6 +1445,80 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Only allow auth users to see the All Posts screen') ?>
 
+
+<p>
+	Great stuff. Don't forget to test it by logging out, and then trying to visit the page
+	manually!
+</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		Not sure about this sidebar heading - it sounds odd.
+	</div>
+<?php endif ?>
+
+<blockquote class="sidebar">
+	<div class="heading">
+		<p>What do square brackets in form elements do?</p>
+	</div>
+	<p>
+		Aha! Glad you asked. First, let's consider this simple form element:
+	</p>
+
+	<blockquote class="code">
+		<pre><code>&lt;input type="submit" name="save" value="Save" /&gt;</code></pre>
+	</blockquote>
+
+	<p>
+		This is pretty simple. If the button is pressed, the form is submitted, and the submitted
+		key <code>save</code> gets the value of the button, "Save".
+	</p>
+
+	<p>
+		However, consider the scenario where we need several submit buttons carrying out a similar
+		purpose, e.g. a delete button per database row. One solution is to add in the primary key
+		as part of the name:
+	</p>
+
+	<blockquote class="code">
+<pre><code>&lt;input type="submit" name="delete_1" value="Delete" /&gt;
+&lt;input type="submit" name="delete_2" value="Delete" /&gt;
+&lt;input type="submit" name="delete_3" value="Delete" /&gt;</code></pre>
+	</blockquote>
+
+	<p>
+		When this form gets submitted, we can search for keys matching this naming specific pattern,
+		and delete the matching row as appropriate. However, this is rather fiddly, so PHP
+		provides a cleaner solution - the square bracket syntax:
+	</p>
+
+	<blockquote class="code">
+<pre><code>&lt;input type="submit" name="delete[1]" value="Delete" /&gt;
+&lt;input type="submit" name="delete[2]" value="Delete" /&gt;
+&lt;input type="submit" name="delete[3]" value="Delete" /&gt;</code></pre>
+	</blockquote>
+
+	<p>
+		This helps up cheat by doing some of our parsing for us. Here's what happens in that form
+		if we press the second Delete button:
+	</p>
+
+	<blockquote class="code">
+<pre><code>Array
+(
+    [delete] => Array
+        (
+            [2] => Delete
+        )
+)</code></pre>
+	</blockquote>
+
+	<p>
+		This makes things nice and easy: we just look up the name of the element
+		(<code>delete</code>), and then grab the first key value.
+	</p>
+</blockquote>
+
 <p>
 	Now, the logic we use to read the posts for the front page will be useful also for this
 	new screen. Since we don't want to write this twice, let's move it to a function so we can
@@ -1468,16 +1542,10 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add in creation time to All Posts') ?>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Make sure we've not mentioned too much of this the last time we talked about mockups.
-	</div>
-<?php endif ?>
-
 <p>
-	This approach of creating mock-up HTML is useful because it is really quick to experiment
-	with ideas. At some point however, this needs to be declared ready to convert to a working
-	version. So, let's do that now: we'll add a loop and render table data in the HTML.
+	As with our mock-up approach before, once a layout contains everything required, it is time to
+	convert to a working version. So, let's do that now: we'll add a loop and render table data in
+	the HTML.
 </p>
 
 <?php renderDiffFromComment('Wire in database calls for All Posts screen') ?>
