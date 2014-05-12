@@ -1431,41 +1431,68 @@ __NEWFILE__
 
 <h2>All posts page</h2>
 
-<?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
-	</div>
-<?php endif ?>
+<p>
+	The next step is to add an All Posts screen for administrative users. We'll start with
+	a static mock-up with hard-wired post values:
+</p>
 
-<p>Add mockup of All Posts screen for admin users</p>
 <?php renderDiffFromComment('Add mockup of All Posts screen for admin users') ?>
 
-<p>Only allow auth users to see the All Posts screen</p>
+<p>
+	Of course, since this is a restricted screen, we must only allow authorised users to see it.
+	To do so, we redirect back to the home page, and exit as usual:
+</p>
+
 <?php renderDiffFromComment('Only allow auth users to see the All Posts screen') ?>
 
-<p>Move home page logic to central location, so we can reuse it for All Posts</p>
+<p>
+	Now, the logic we use to read the posts for the front page will be useful also for this
+	new screen. Since we don't want to write this twice, let's move it to a function so we can
+	reuse it later on.
+</p>
+
 <?php renderDiffFromComment('Move home page logic to central location, so we can reuse it for All Posts') ?>
 
-<p>Improve the name of this variable</p>
+<p>
+	While working on the home page, I noticed I'd used the variable name <code>$row</code>. This
+	is rather generic &mdash; most things read from a database are rows &mdash; so I swapped to
+	a better name for it. This is more readable, and fits in with the common naming convention
+	of using a plural name for an array and the corresponding singular name for each item.
+</p>
+
 <?php renderDiffFromComment('Improve the name of this variable') ?>
 
+<p>
+	Next, we'll modify the mock-up by adding in a creation time for posts:
+</p>
+
+<?php renderDiffFromComment('Add in creation time to All Posts') ?>
+
 <?php if (showTodoMessages()): ?>
-	<div class="comment note">
-		These last four items could go in a new page, if we feel this page is getting too
-		big.
+	<div class="todo note">
+		Make sure we've not mentioned too much of this the last time we talked about mockups.
 	</div>
 <?php endif ?>
 
-<p>Add in creation time to All Posts</p>
-<?php renderDiffFromComment('Add in creation time to All Posts') ?>
+<p>
+	This approach of creating mock-up HTML is useful because it is really quick to experiment
+	with ideas. At some point however, this needs to be declared ready to convert to a working
+	version. So, let's do that now: we'll add a loop and render table data in the HTML.
+</p>
 
-<p>Wire in database calls for All Posts screen</p>
 <?php renderDiffFromComment('Wire in database calls for All Posts screen') ?>
 
-<p>Add delete post feature</p>
+<p>
+	As it stands, the user may click on a delete button to remove a post, but this is not
+	presently handled. So, let's do that now:
+</p>
+
 <?php renderDiffFromComment('Add delete post feature') ?>
 
-<p>Add in post count on All Posts page</p>
+<p>
+	Finally let's add in a post count on this page:
+</p>
+
 <?php renderDiffFromComment('Add in post count on All Posts page') ?>
 
 __NEWFILE__
