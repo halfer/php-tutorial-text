@@ -1452,8 +1452,9 @@ __NEWFILE__
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Not sure about this sidebar heading - it sounds odd.
+	<div class="comment note">
+		This sidebar section might be slightly better melded into the text, which is
+		pretty light at the moment anyway.
 	</div>
 <?php endif ?>
 
@@ -1515,7 +1516,7 @@ __NEWFILE__
 
 	<p>
 		This makes things nice and easy: we just look up the name of the element
-		(<code>delete</code>), and then grab the first key value.
+		(i.e. <code>delete</code>), and then grab the first key value.
 	</p>
 </blockquote>
 
@@ -1565,7 +1566,21 @@ __NEWFILE__
 
 __NEWFILE__
 
-<h2>Comment handling</h2>
+<h2>Comment admin</h2>
+
+<p>
+	In this section, we'll allow authorised users to delete comments from posts. To kick us
+	off, here's a nice item of refactoring &mdash; the comments list within article pages is quite
+	large, and it would be more modular to store it in a separate file.
+</p>
+
+<?php renderDiffFromComment('Move comments markup to separate template file') ?>
+
+<p>
+	Let us now add a delete button next to comments on blog posts, for authorised users only.
+</p>
+
+<?php renderDiffFromComment('Add delete button to comments for auth users') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
@@ -1573,17 +1588,17 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>Move comments markup to separate template file</p>
-<?php renderDiffFromComment('Move comments markup to separate template file') ?>
-
-<p>Add delete button to comments for auth users</p>
-<?php renderDiffFromComment('Add delete button to comments for auth users') ?>
-
 <p>Make changes to pave way for determining which form is being used</p>
 <?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
 
 <p>Move logic to function, to make room for action test</p>
 <?php renderDiffFromComment('Move logic to function, to make room for action test') ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="critical note">
+		Security problem - we don't check for user authorisation for this commit!
+	</div>
+<?php endif ?>
 
 <p>Get the delete comment feature working</p>
 <?php renderDiffFromComment('Get the delete comment feature working') ?>
