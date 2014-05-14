@@ -11,10 +11,26 @@
 <?php renderDiffFromComment('Move comments markup to separate template file') ?>
 
 <p>
-	Let us now add a delete button next to comments on blog posts, for authorised users only.
+	Let us now add a delete button next to comments on blog posts, for authorised users only. I've
+	added a bit of extra CSS to get it to float to the right-hand side.
 </p>
 
 <?php renderDiffFromComment('Add delete button to comments for auth users') ?>
+
+<p>
+	Since we want to do more than one thing with comments (add and delete), we need to
+	make a change to explain what we are doing within the form submission. To do this, I've used
+	the query string, which sends these items of information:
+</p>
+
+<ul>
+	<li>The primary key of the post (<code>post_id</code>) upon which a comment is being added or
+		deleted</li>
+	<li>A name for the action (<code>add-comment</code> and <code>delete-comment</code>), which
+		can be read by our code to determine what the user wishes to do</li>
+</ul>
+
+<?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
@@ -22,10 +38,14 @@
 	</div>
 <?php endif ?>
 
-<p>Make changes to pave way for determining which form is being used</p>
-<?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
-
 <p>Move logic to function, to make room for action test</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		The comment in comment-form.php could be moved to an earlier commit
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('Move logic to function, to make room for action test') ?>
 
 <?php if (showTodoMessages()): ?>

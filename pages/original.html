@@ -757,6 +757,13 @@ __NEWFILE__
 	that if we cannot find a database row, we issue a browser redirect and show an error.
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I've tested the new redirect code in <span class="filename">common.php</span> on a
+		non-standard port, it works fine.
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('Handle requests for non-existent posts') ?>
 
 <p>
@@ -865,6 +872,13 @@ __NEWFILE__
 	the PHP function <code>htmlspecialchars()</code>, which prevents any rendering problems if the
 	user has used any HTML characters such as angle brackets.
 </p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		We <em>could</em> split the comment in <span class="filename">comment-form.php</span>
+		as one of those vars is already in use, but it's not important.
+	</div>
+<?php endif ?>
 
 <?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
@@ -1234,14 +1248,6 @@ __NEWFILE__
 	elsewhere; in this case, the home page will do fine.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		If the reader is running on a non-standard port, we need to ensure the redirect still
-		works. No need to cater for SSL, though!
-	</div>
-<?php endif ?>
-
-
 <?php renderDiffFromComment('Only allow authenticated users on the New Post page') ?>
 
 <p>
@@ -1577,10 +1583,26 @@ __NEWFILE__
 <?php renderDiffFromComment('Move comments markup to separate template file') ?>
 
 <p>
-	Let us now add a delete button next to comments on blog posts, for authorised users only.
+	Let us now add a delete button next to comments on blog posts, for authorised users only. I've
+	added a bit of extra CSS to get it to float to the right-hand side.
 </p>
 
 <?php renderDiffFromComment('Add delete button to comments for auth users') ?>
+
+<p>
+	Since we want to do more than one thing with comments (add and delete), we need to
+	make a change to explain what we are doing within the form submission. To do this, I've used
+	the query string, which sends these items of information:
+</p>
+
+<ul>
+	<li>The primary key of the post (<code>post_id</code>) upon which a comment is being added or
+		deleted</li>
+	<li>A name for the action (<code>add-comment</code> and <code>delete-comment</code>), which
+		can be read by our code to determine what the user wishes to do</li>
+</ul>
+
+<?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
 
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
@@ -1588,10 +1610,14 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>Make changes to pave way for determining which form is being used</p>
-<?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
-
 <p>Move logic to function, to make room for action test</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		The comment in comment-form.php could be moved to an earlier commit
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('Move logic to function, to make room for action test') ?>
 
 <?php if (showTodoMessages()): ?>

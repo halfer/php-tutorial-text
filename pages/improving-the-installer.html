@@ -80,6 +80,13 @@
 	that if we cannot find a database row, we issue a browser redirect and show an error.
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I've tested the new redirect code in <span class="filename">common.php</span> on a
+		non-standard port, it works fine.
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('Handle requests for non-existent posts') ?>
 
 <p>

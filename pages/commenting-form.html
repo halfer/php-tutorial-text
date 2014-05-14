@@ -99,6 +99,13 @@
 	user has used any HTML characters such as angle brackets.
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		We <em>could</em> split the comment in <span class="filename">comment-form.php</span>
+		as one of those vars is already in use, but it's not important.
+	</div>
+<?php endif ?>
+
 <?php renderDiffFromComment('Persist comment form data in case of validation') ?>
 
 <?php if (showTodoMessages()): ?>
