@@ -33,20 +33,24 @@
 <?php renderDiffFromComment('Make changes to pave way for determining which form is being used') ?>
 
 <?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
+	<div class="comment note">
+		We could add in a comment against the new line in <span class="filename">view-post.php</span>
+		to explain that this new function will redirect upon success.
 	</div>
 <?php endif ?>
 
-<p>Move logic to function, to make room for action test</p>
-
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		The comment in comment-form.php could be moved to an earlier commit
-	</div>
-<?php endif ?>
+<p>
+	Let us now make some room in our view post page, by moving some logic to a new function.
+</p>
 
 <?php renderDiffFromComment('Move logic to function, to make room for action test') ?>
+
+<p>
+	We now need to read the action key we set up, so we can decide what feature to call.
+	If the user is deleting a comment, the new function <code>deleteComment</code> is called;
+	although we could just delete by <code>comment.id</code>, to be sure of deleting the right
+	thing we filter additionally by <code>comment.post_id</code>.
+</p>
 
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
@@ -54,7 +58,6 @@
 	</div>
 <?php endif ?>
 
-<p>Get the delete comment feature working</p>
 <?php renderDiffFromComment('Get the delete comment feature working') ?>
 
 <p>Add new comment delete function at the same level of abstraction as comment adding</p>
