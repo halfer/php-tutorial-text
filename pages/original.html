@@ -1619,15 +1619,31 @@ __NEWFILE__
 
 <p>
 	We now need to read the action key we set up, so we can decide what feature to call.
-	If the user is deleting a comment, the new function <code>deleteComment</code> is called;
-	although we could just delete by <code>comment.id</code>, to be sure of deleting the right
-	thing we filter additionally by <code>comment.post_id</code>.
+	If the user is deleting a comment, the new function <code>deleteComment</code> in the next set
+	of changes is called; although we could just delete by <code>comment.id</code>, to be sure of
+	deleting the right thing we filter additionally by <code>comment.post_id</code>.
+</p>
+
+<p>
+	Note that we also add an <code>if()</code> clause to ensure that the delete operation is skipped if
+	the user is not logged in. Although we do not render delete buttons for anonymous users, it is
+	still possible for security crackers to fake a form submission that contains a valid deletion
+	request &mdash; this clause prevents that.
 </p>
 
 <?php renderDiffFromComment('Get the delete comment feature working') ?>
 
-<p>Add new comment delete function at the same level of abstraction as comment adding</p>
+<p>
+	Finally, I noticed that the logic to add a comment is contained within a function, but the
+	logic to delete one is still in the <code>switch()</code> block in
+	<span class="filename">view-post.php</span>. The following change just tidies that up:
+</p>
+
 <?php renderDiffFromComment('Add new comment delete function at the same level of abstraction as comment adding') ?>
+
+<p>
+	As ever, test everything to check it works, before we proceed to the final chapter!
+</p>
 
 __NEWFILE__
 
