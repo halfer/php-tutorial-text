@@ -52,12 +52,6 @@
 	thing we filter additionally by <code>comment.post_id</code>.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		Security problem - we don't check for user authorisation for this commit!
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Get the delete comment feature working') ?>
 
 <p>Add new comment delete function at the same level of abstraction as comment adding</p>
