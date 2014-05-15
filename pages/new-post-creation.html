@@ -75,13 +75,6 @@
 	fix that now:
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		The retrieval of the PK in edit-post.php looks like it has a race condition: I suspect
-		<code>SELECT last_insert_rowid();</code> would be better.
-	</div>
-<?php endif ?>
-
 <?php renderDiffFromComment('Add basic new post functionality') ?>
 
 <p>
