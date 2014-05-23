@@ -77,14 +77,30 @@
 	<li>SQLite PHP module</li>
 </ul>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I've swapped out references to MAMP and WAMP, as MAMP is quite restricted in the free
+		version (only one vhost) and it's nice to have one product for all systems.
+	</div>
+<?php endif ?>
+
 <p>
-	For Windows users, you can get all of this with <a href="http://www.wampserver.com/en/">WAMP</a>,
-	and for Mac users you can install <a href="http://www.mamp.info/en/">MAMP</a>. If you use Linux,
-	you may have all of this already. Also, <a href="https://www.apachefriends.org/">XAMPP</a>
-	works on all platforms. If you get stuck, turn to your favourite search engine, and
+	For Windows and Mac users, you can get all of this with
+	<a href="https://www.apachefriends.org/">XAMPP</a>. If you use Linux, you may have all of this
+	already &mdash; although XAMPP works on Linux too, and adds a user-friendly control panel.
+	If you get stuck, turn to your favourite search engine, and
 	ask "How do I install [whatever] on [Windows]". In 99% of cases, your question has already
 	been answered, so be persistent.
 </p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note" style="margin-top: 80px;">
+		It might be nice to recommend something lightweight too, in addition to NB.
+		<a href="http://brackets.io/">Brackets</a> and
+		<a href="http://www.lighttable.com/">Light Table</a> are both free, in frequent development
+		and x-platform - add one of these?
+	</div>
+<?php endif ?>
 
 <p>
 	You'll also need an editor to modify files. Most computers have a free text editor already

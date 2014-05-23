@@ -2,24 +2,59 @@
 
 <h2>Adding some polish</h2>
 
+<p>
+	Excellent, we're now on the home straight! Our functionality is finished, so we'll just
+	do a last round of sprucing up. To start, let's add in a home link for authorised users. This
+	is useful on the restricted pages, since they don't have a home link themselves:
+</p>
+
+<?php renderDiffFromComment('Add in home link for auth users') ?>
+
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
 		This page is not finished.
 	</div>
 <?php endif ?>
 
+<p>
+	Next, I thought it would be nice to have a comment count for each article on the All Posts page.
+	Add the following change:
+</p>
+
+<?php renderDiffFromComment('Add in comment count for each post') ?>
+
+<p>
+	Let's take a closer look at how the new query works. The query now looks like this:
+</p>
+
+<blockquote class="code">
+<pre><code>SELECT
+	id, title, created_at, body,
+	(SELECT COUNT(*) FROM comment WHERE comment.post_id = post.id) comment_count
+FROM
+	post
+ORDER BY
+	created_at DESC</code></pre>
+</blockquote>
+
+<p>
+	The new part of this is the bracketed expression on the third line. This
+	sort of SQL is known as a <em>sub-query</em> since it is a query contained inside another
+	one. The result of it can be read like a real column, which we explicitly name by adding
+	<code>comment_count</code> at the end of it.
+</p>
+
+<p>
+	This sub-query will count rows in the <code>comment</code> table, based on which post they
+	belong to. Since the job of the outer query is to list posts, we can filter the comment count
+	for each row by making a comparison to the outer table, <code>post</code>.
+</p>
+
 <?php if (showTodoMessages()): ?>
-	<div class="todo note" style="margin-top: 80px;">
-		The login system should examine <code>is_enabled</code> in the users table - I'd like to
-		add that here rather than rebasing in a previous chapter.
+	<div class="todo note">
+		Rebase in a code change to implement links from All Posts to each individual article.
 	</div>
 <?php endif ?>
-
-<p>Add in home link for auth users</p>
-<?php renderDiffFromComment('Add in home link for auth users') ?>
-
-<p>Add in comment count for each post</p>
-<?php renderDiffFromComment('Add in comment count for each post') ?>
 
 <p>Add heading to All Posts table</p>
 <?php renderDiffFromComment('Add heading to All Posts table') ?>
@@ -29,6 +64,13 @@
 
 <p>Allow posts that have comments to be deleted</p>
 <?php renderDiffFromComment('Allow posts that have comments to be deleted') ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		The login system should examine <code>is_enabled</code> in the users table - I'd like to
+		add that here rather than rebasing in a previous chapter.
+	</div>
+<?php endif ?>
 
 <p>Upgrade login form with global CSS features</p>
 <?php renderDiffFromComment('Upgrade login form with global CSS features') ?> 

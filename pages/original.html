@@ -77,14 +77,30 @@
 	<li>SQLite PHP module</li>
 </ul>
 
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		I've swapped out references to MAMP and WAMP, as MAMP is quite restricted in the free
+		version (only one vhost) and it's nice to have one product for all systems.
+	</div>
+<?php endif ?>
+
 <p>
-	For Windows users, you can get all of this with <a href="http://www.wampserver.com/en/">WAMP</a>,
-	and for Mac users you can install <a href="http://www.mamp.info/en/">MAMP</a>. If you use Linux,
-	you may have all of this already. Also, <a href="https://www.apachefriends.org/">XAMPP</a>
-	works on all platforms. If you get stuck, turn to your favourite search engine, and
+	For Windows and Mac users, you can get all of this with
+	<a href="https://www.apachefriends.org/">XAMPP</a>. If you use Linux, you may have all of this
+	already &mdash; although XAMPP works on Linux too, and adds a user-friendly control panel.
+	If you get stuck, turn to your favourite search engine, and
 	ask "How do I install [whatever] on [Windows]". In 99% of cases, your question has already
 	been answered, so be persistent.
 </p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note" style="margin-top: 80px;">
+		It might be nice to recommend something lightweight too, in addition to NB.
+		<a href="http://brackets.io/">Brackets</a> and
+		<a href="http://www.lighttable.com/">Light Table</a> are both free, in frequent development
+		and x-platform - add one of these?
+	</div>
+<?php endif ?>
 
 <p>
 	You'll also need an editor to modify files. Most computers have a free text editor already
@@ -1653,24 +1669,59 @@ __NEWFILE__
 
 <h2>Adding some polish</h2>
 
+<p>
+	Excellent, we're now on the home straight! Our functionality is finished, so we'll just
+	do a last round of sprucing up. To start, let's add in a home link for authorised users. This
+	is useful on the restricted pages, since they don't have a home link themselves:
+</p>
+
+<?php renderDiffFromComment('Add in home link for auth users') ?>
+
 <?php if (showTodoMessages()): ?>
 	<div class="critical note">
 		This page is not finished.
 	</div>
 <?php endif ?>
 
+<p>
+	Next, I thought it would be nice to have a comment count for each article on the All Posts page.
+	Add the following change:
+</p>
+
+<?php renderDiffFromComment('Add in comment count for each post') ?>
+
+<p>
+	Let's take a closer look at how the new query works. The query now looks like this:
+</p>
+
+<blockquote class="code">
+<pre><code>SELECT
+	id, title, created_at, body,
+	(SELECT COUNT(*) FROM comment WHERE comment.post_id = post.id) comment_count
+FROM
+	post
+ORDER BY
+	created_at DESC</code></pre>
+</blockquote>
+
+<p>
+	The new part of this is the bracketed expression on the third line. This
+	sort of SQL is known as a <em>sub-query</em> since it is a query contained inside another
+	one. The result of it can be read like a real column, which we explicitly name by adding
+	<code>comment_count</code> at the end of it.
+</p>
+
+<p>
+	This sub-query will count rows in the <code>comment</code> table, based on which post they
+	belong to. Since the job of the outer query is to list posts, we can filter the comment count
+	for each row by making a comparison to the outer table, <code>post</code>.
+</p>
+
 <?php if (showTodoMessages()): ?>
-	<div class="todo note" style="margin-top: 80px;">
-		The login system should examine <code>is_enabled</code> in the users table - I'd like to
-		add that here rather than rebasing in a previous chapter.
+	<div class="todo note">
+		Rebase in a code change to implement links from All Posts to each individual article.
 	</div>
 <?php endif ?>
-
-<p>Add in home link for auth users</p>
-<?php renderDiffFromComment('Add in home link for auth users') ?>
-
-<p>Add in comment count for each post</p>
-<?php renderDiffFromComment('Add in comment count for each post') ?>
 
 <p>Add heading to All Posts table</p>
 <?php renderDiffFromComment('Add heading to All Posts table') ?>
@@ -1680,6 +1731,13 @@ __NEWFILE__
 
 <p>Allow posts that have comments to be deleted</p>
 <?php renderDiffFromComment('Allow posts that have comments to be deleted') ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		The login system should examine <code>is_enabled</code> in the users table - I'd like to
+		add that here rather than rebasing in a previous chapter.
+	</div>
+<?php endif ?>
 
 <p>Upgrade login form with global CSS features</p>
 <?php renderDiffFromComment('Upgrade login form with global CSS features') ?> 
