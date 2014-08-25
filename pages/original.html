@@ -1663,15 +1663,9 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add in home link for auth users') ?>
 
-<?php if (showTodoMessages()): ?>
-	<div class="critical note">
-		This page is not finished.
-	</div>
-<?php endif ?>
-
 <p>
 	Next, I thought it would be nice to have a comment count for each article on the All Posts page.
-	Add the following change:
+	Add the following changes:
 </p>
 
 <?php renderDiffFromComment('Add in comment count for each post') ?>
@@ -1709,13 +1703,33 @@ ORDER BY
 	</div>
 <?php endif ?>
 
-<p>Add heading to All Posts table</p>
+<p>
+	The next change is another easy one: we'll add a header row to the All Posts table:
+</p>
+
 <?php renderDiffFromComment('Add heading to All Posts table') ?>
 
-<p>Merge comment-counting into get post query</p>
+<p>
+	Next up is a refactoring that simplifies the code (quite a bit is removed) and reduces the
+	number of calls made to the database. The essence of the modification is in
+	<span class="filename">lib/view-post.php</span> &mdash; we merge two SQL calls together via
+	another sub-query.
+</p>
+
+<p>
+	There's quite a few files to modify here, so make sure you get them all.
+</p>
+
 <?php renderDiffFromComment('Merge comment-counting into get post query') ?>
 
-<p>Allow posts that have comments to be deleted</p>
+<p>
+	I noticed when doing some testing at this point that posts which have comments cannot be
+	deleted - try that now. You'll get an error known as a <em>foreign key constraint violation</em>;
+	this is what happens when a row is deleted that a foreign key depends on (in our case we
+	are trying to delete a post to which comments are still attached). To fix this, comments
+	should be deleted first, prior to the post being deleted:
+</p>
+
 <?php renderDiffFromComment('Allow posts that have comments to be deleted') ?>
 
 <?php if (showTodoMessages()): ?>
@@ -1725,5 +1739,14 @@ ORDER BY
 	</div>
 <?php endif ?>
 
-<p>Upgrade login form with global CSS features</p>
+<p>
+	Our final improvement is to add some labels and make use of existing form CSS:
+</p>
+
 <?php renderDiffFromComment('Upgrade login form with global CSS features') ?> 
+
+<p>
+	Well done, you have finished the tutorial! If you wish, regenerate the database one last
+	time, and then give the whole application a thorough testing. Add some posts and comments, both
+	while logged in and while logged out, and delete comments in the admin interface.
+</p>
