@@ -44,17 +44,18 @@ ORDER BY
 	for each row by making a comparison to the outer table, <code>post</code>.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Rebase in a code change to implement links from All Posts to each individual article.
-	</div>
-<?php endif ?>
-
 <p>
 	The next change is another easy one: we'll add a header row to the All Posts table:
 </p>
 
 <?php renderDiffFromComment('Add heading to All Posts table') ?>
+
+<p>
+	While we are on the All Posts page, it would make sense to add in a link to the view page
+	for each article. So let's do that now:
+</p>
+
+<?php renderDiffFromComment('Add view link from All Posts admin page') ?>
 
 <p>
 	Next up is a refactoring that simplifies the code (quite a bit is removed) and reduces the
