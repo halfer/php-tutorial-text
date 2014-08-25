@@ -357,18 +357,11 @@
 	namely:
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Make a note in the text to say that <code>user_id</code> is for future use &mdash; I think
-		that would be better than rebasing it out.
-	</div>
-<?php endif ?>
-
 <ul>
 	<li>id: a unique identifier to help us tell posts apart</li>
 	<li>title: the heading</li>
 	<li>body: the main text of the article</li>
-	<li>user_id: which user created the article</li>
+	<li>user_id: which user created the article (we'll use this later on)</li>
 	<li>created_at: when the article was created</li>
 	<li>updated_at: when the article was updated</li>
 </ul>
