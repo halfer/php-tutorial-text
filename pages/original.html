@@ -1733,21 +1733,28 @@ ORDER BY
 
 <?php renderDiffFromComment('Allow posts that have comments to be deleted') ?>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		The login system should examine <code>is_enabled</code> in the users table - I'd like to
-		add that here rather than rebasing in a previous chapter.
-	</div>
-<?php endif ?>
+<p>
+	Whilst we are looking at the database side of things, I noticed that the
+	<code>user.is_enabled</code> field hasn't yet been used. This was intended mainly for future
+	enhancements (in particular for a user administration page), but the application can make an
+	initial use of it immediately, by disallowing authenticated features to non-enabled users.
+</p>
 
 <p>
-	Our final improvement is to add some labels and make use of existing form CSS:
+	The installer sets the test user to <code>is_enabled=1</code> already, so all we need
+	to do is to adjust the SQL statements that fetch data from the user table.
+</p>
+
+<?php renderDiffFromComment('Only look up users who are enabled') ?>
+
+<p>
+	Our final improvement is to add some labels and make use of existing form styles:
 </p>
 
 <?php renderDiffFromComment('Upgrade login form with global CSS features') ?> 
 
 <p>
-	Well done, you have finished the tutorial! If you wish, regenerate the database one last
+	Well done, you have finished the tutorial! It is a good idea to regenerate the database one last
 	time, and then give the whole application a thorough testing. Add some posts and comments, both
 	while logged in and while logged out, and delete comments in the admin interface.
 </p>
