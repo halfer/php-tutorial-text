@@ -22,11 +22,22 @@ See also the [code repo here](https://github.com/halfer/php-tutorial-project).
 Page build process
 ---
 
+The pages are held in a single file, using `__NEWFILE__` as a chapter separator. Menu titles are
+derived from the first `<h2>` in each section, and small amounts of PHP are permitted. The main use
+for PHP snippets is to render a diff from the code repo; to render a tabbed diff block, use this
+format:
+
+    <?php renderDiffFromComment('The comment text') ?>
+
+Comments are used here, as hashes will break if changes are rebased in. In the unlikely event the
+repo contains clashing comment texts, a simple date filter can be added.
+
+Once merged to this repo, pages are rebuilt by a script.
+
 Notes:
 
-- pages are built by a script
-- diffs are looked up by commit message, so that rebases in the code repo doesn't break stuff
-- in the unlikely event a commit message is not unique, I'll add a date filter
+- The single file format is fine for the moment, but if someone wants to see this split into
+separate files, that can be arranged
 - I'll add a code branch setting in this repo in due course, so multiple versions are supported. This
 allows users in the middle of the tutorial to carry on reading the version they started with
 - A good feedback loop for the text probably won't be initiated simply by making these repos public.
