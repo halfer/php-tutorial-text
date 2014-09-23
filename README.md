@@ -23,16 +23,25 @@ Page build process
 ---
 
 The pages are held in a single file, using `__NEWFILE__` as a chapter separator. Menu titles are
-derived from the first `<h2>` in each section, and small amounts of PHP are permitted. The main use
-for PHP snippets is to render a diff from the code repo; to render a tabbed diff block, use this
-format:
+derived from the first `<h2>` in each section, and small amounts of PHP are permitted. There are two
+main uses for PHP in this repo: to render diffs and conditionally render non-live notes. Here's
+how to render a tabbed (multi-file) diff block:
 
     <?php renderDiffFromComment('The comment text') ?>
 
 Comments are used here, as hashes will break if changes are rebased in. In the unlikely event the
 repo contains clashing comment texts, a simple date filter can be added.
 
-Once merged to this repo, pages are rebuilt by a script.
+Here's how to render a development mode note (the permitted note classes are `critical`, `todo`,
+`in-progress` and `comment`):
+
+	<?php if (showTodoMessages()): ?>
+		<div class="todo note">
+			Here's a note
+		</div>
+	<?php endif ?>
+
+Once merged to this repo, pages are rebuilt manually by a script.
 
 Notes:
 
