@@ -41,13 +41,17 @@ Here's how to render a development mode note (the permitted note classes are `cr
 		</div>
 	<?php endif ?>
 
-Once merged to this repo, pages are rebuilt manually by a script.
+Once merged to this repo, pages are rebuilt manually using a script. The file `project-branch`
+specifies the branch of the code repo to use for the diffs; this permits different versions of the
+chapter text to share a code repo, or to have their own, as the author decides.
+
+The ability to maintain different versions of the text and code will be reflected in the tutorial,
+so users who are currently working through the tutorial may carry on with an old version, rather
+than being forced to start again.
 
 Notes:
 
 - The single file format is fine for the moment, but if someone wants to see this split into
 separate files, that can be arranged
-- I'll add a code branch setting in this repo in due course, so multiple versions are supported. This
-allows users in the middle of the tutorial to carry on reading the version they started with
 - A good feedback loop for the text probably won't be initiated simply by making these repos public.
 I suspect good commenting tools on the site itself will also be necessary
