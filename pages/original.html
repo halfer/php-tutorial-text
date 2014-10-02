@@ -7,7 +7,7 @@
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-6249cf92f8" class="commentable">
 	In this tutorial, I'll present how to write a simple blog system, using the PHP language and
 	the Apache web server. For the database, we'll use SQLite, to keep things simple. Don't worry
 	if these terms don't mean anything yet, that's okay. I'm assuming readers are familiar
@@ -16,7 +16,7 @@
 	may wish to research unfamiliar keywords (usually on the PHP website).
 </p>
 
-<p>
+<p id="hash-e093b1a969" class="commentable">
 	The application we will build together was built prior to writing the tutorial. The text is
 	therefore written around the way I think development happens in real life; some steps may
 	introduce bugs, or be written in ways the purist might consider non-ideal. However, for the most
@@ -33,7 +33,7 @@
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-2faef7a255" class="commentable">
 	If you are new to programming, it is possible that you might feel somewhat lost as you work
 	through the material. Whilst any prior practice will always help, the before-and-after code
 	samples should see you right through to the end, even if you don't initially understand every
@@ -46,20 +46,20 @@
 	<h3>
 		A word about PHP tutorials on the web
 	</h3>
-	<p>
+	<p id="hash-84d0670a73" class="commentable">
 		To become proficient with a programming language, it makes sense to obtain your learning
 		materials from as wide a source as possible. PHP owes its success, I think, to its very
 		low barriers to entry, but that situation has given birth to plenty of tutorials on the
 		Internet that make two fundamental errors.
 	</p>
-	<p>
+	<p id="hash-702abdb011" class="commentable">
 		The first is that the <code>mysql_</code> library is still in use (a <em>library</em> is
 		just a package of useful functions). This has been a staple of database access
 		in PHP applications for some ten years, but has now been superceded by newer systems.
 		In particular, libraries such as PDO and mysqli offer <em>parameterisation</em>, a feature
 		that helps prevent miscreants and ne'erdowells from cracking system security.
 	</p>
-	<p>
+	<p id="hash-1af41b43e6" class="commentable">
 		The other problem I see a great deal of are tutorials that interleave <em>business logic</em>
 		(what an application does) with <em>layout</em> (what an application looks like).
 		This isn't wrong exactly, but having separation between the two does tend to make
@@ -67,11 +67,11 @@
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-856c1fc8c6" class="commentable">
 	I'll assume that your development environment is set up. Here's what you will need:
 </p>
 
-<ul>
+<ul id="hash-9610dc0ef6" class="commentable">
 	<li>Web server, usually Apache</li>
 	<li>PHP, any version after 5.4</li>
 	<li>SQLite PHP module</li>
@@ -84,7 +84,7 @@
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-3bd976af5f" class="commentable">
 	For Windows and Mac users, you can get all of this with
 	<a href="https://www.apachefriends.org/">XAMPP</a>. If you use Linux, you may have all of this
 	already &mdash; although XAMPP works on Linux too, and adds a user-friendly control panel.
@@ -102,7 +102,7 @@
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-2fea586e5c" class="commentable">
 	You'll also need an editor to modify files. Most computers have a free text editor already
 	installed, but these are rarely good enough. Use whatever you like, but if you have no
 	preference, download and install NetBeans.
@@ -110,7 +110,7 @@
 
 <div class="intermission">~</div>
 
-<p>
+<p id="hash-3a25f60975" class="commentable">
 	In designing this tutorial, I wrote out a list of things I thought would be great to have, and
 	then developed until I had a basic complete product. In retrospect, it would have been better to
 	decide this prior to development; regardless of whether you are setting up a business or programming
@@ -119,10 +119,10 @@
 	both).
 </p>
 
-<p>Here's the initial list of features/technologies I put on paper:</p>
+<p id="hash-277002af1f" class="commentable">Here's the initial list of features/technologies I put on paper:</p>
 
 <blockquote class="list">
-	<p>
+	<p id="hash-048efbdb7b" class="commentable">
 		Login, Logout, Add comment, Create user, Amend user, Delete user, Email validation for new user
 		accounts, Display post, Accept markdown format, Create post, Edit post, Unpublish post, Delete post,
 		Unit tests, List posts, AJAX posting/commenting, Database profiler, Internationalisation,
@@ -132,19 +132,19 @@
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-da10773400" class="commentable">
 	To illustrate how much an "initial working product" should trim the initial wishlist, here's
 	what made it into the first version:
 </p>
 
 <blockquote class="list">
-	<p>
+	<p id="hash-1c2b7c8acf" class="commentable">
 		Login, Logout, Add comment, Display post, Create post, Edit post, Delete post, List posts,
 		Delete comment, Foreign key constraints.
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-cfbe6c24b1" class="commentable">
 	It's worth pointing out that, with any software project, rejecting a feature <em>now</em> does
 	not mean you can never add that feature. It just means that you are prioritising getting
 	important things done, so that the product is in a releasable state quickly. Once it is out the
@@ -154,7 +154,7 @@
 	between steering things back on track, and going bust.
 </p>
 
-<p>
+<p id="hash-9f8d522367" class="commentable">
 	One of the other features of this tutorial is that it uses an absolute minimum of additional
 	software to get it working. Software projects nearly always make use of libraries,
 	each of which offer some particular pre-written functionality. These are well worth using in
@@ -164,7 +164,7 @@
 	libraries more than I would normally, and suspect this will be corrected in a second (more
 	advanced) tutorial.
 </p>
-<p>
+<p id="hash-b033947538" class="commentable">
 	I have made one exception for this rule, however, for reasons of password security. The login
 	system requires some cryptographic code, and this sort of thing is quite easy to get wrong. Whilst
 	this is just a tutorial, if it teaches readers to leave security to the experts (the
@@ -173,7 +173,7 @@
 
 <div class="intermission">~</div>
 
-<p>
+<p id="hash-6372f99fd0" class="commentable">
 	So, let us get started. I'll assume you know how to create, edit, save and delete files in your
 	editor, and that you can create folders as required. This might be in the root of your "htdocs"
 	or "www" folder, depending on what you used to install Apache. You can use a subfolder of "blog"
@@ -182,14 +182,14 @@
 	if your URL is somewhat different.
 </p>
 
-<p>
+<p id="hash-79ad16a7a2" class="commentable">
 	Let us first check that your server installation is working okay. Create a file called
 	<span class="filename">info.php</span> in the root of your project folder:
 </p>
 
 	<?php include '../templates/info.php' ?>
 
-<p>
+<p id="hash-4a26ddfcaf" class="commentable">
 	Then, run this in your browser, by accessing the URL <code>http://localhost/info.php</code>.
 	You should see a PHP configuration page. If you do, then check you are running a version later
 	than 5.4; if it is earlier than this then
@@ -197,17 +197,17 @@
 	the file in the right folder.
 </p>
 
-<p>
+<p id="hash-c2f256454e" class="commentable">
 	Once you have this working, and showing an acceptable version number, you can delete this file.
 </p>
 
-<p>Here's the first bit of code to add:</p>
+<p id="hash-4868732436" class="commentable">Here's the first bit of code to add:</p>
 
 <div class="first">
 	<?php renderDiffFromComment('Add skeleton front page') ?>
 </div>
 
-<p>
+<p id="hash-8030e067d3" class="commentable">
 	This is the initial file, so all we have to do is copy and paste it in. To do so, create
 	<span class="filename">index.php</span> in the root of your project folder, open it in your
 	editor, and ensure it is empty before pasting in the code. Then visit
@@ -215,7 +215,7 @@
 	initial mock-up of our blog's home page.
 </p>
 
-<p>
+<p id="hash-7ea2d06281" class="commentable">
 	If you can, then your first piece of coding is done! The language is HTML, which is understood
 	by your web browser as a way to describe documents on the web. HTML is not actually a
 	programming language: it is properly referred to as a <em>markup language</em>. The markup itself
@@ -233,7 +233,7 @@
 	<h3>
 		What do the tags mean?
 	</h3>
-	<ul>
+	<ul id="hash-2cd7d4ae34" class="commentable">
 		<li><code>DOCTYPE</code>: this tells the browser to expect a particular dialect of HTML
 			&mdash; in this case HTML5</li>
 		<li><code>html</code>: this is the "envelope" for the whole document. It acts as a container for
@@ -247,17 +247,17 @@
 		<li><code>a</code>: a hyperlink</li>
 	</ul>
 
-	<p>We'll use a few more as we go on, but those are the main ones.</p>
+	<p id="hash-0319f24754" class="commentable">We'll use a few more as we go on, but those are the main ones.</p>
 </blockquote>
 
-<p>
+<p id="hash-ff19bfbcda" class="commentable">
 	Let us start improving our skeleton home page. One of the observations we can make is that there
 	is a fair bit of repetition: there are two articles that both have a heading, date, summary
 	and hyperlink. Since this is just test data, let us add a loop around the first article block
 	and delete the second one.
 </p>
 
-<p>
+<p id="hash-331c81c7ae" class="commentable">
 	Here is how I am presenting the changes in this tutorial. This will be good practice for you,
 	since all changes will be shown in this way. The approach of showing code changes like this is
 	known as a <em>diff</em>, for obvious reasons (though the diffs I use are more colourful than
@@ -266,20 +266,20 @@
 
 <?php renderDiffFromComment('Remove repetition and use a loop to generate dummy post data') ?>
 
-<p>
+<p id="hash-bae34ae4af" class="commentable">
 	The rules for making these changes are simple: the code on the left shows the old file, and the
 	code on the right shows the new one. Also, red lines are deleted, green lines are added. So,
 	the two red blocks on the left are in the existing file, and can be removed. The green block
 	on the right should be added. Where you see a solid horizontal bar across the whole diff,
 	that's just a sign that some identical lines have been missed out for brevity.
 </p>
-<p>
+<p id="hash-9522216502" class="commentable">
 	Thus, if you wish, you can delete both article blocks and replace them with the new loop block
 	(containing the <code>for()</code> through to the <code>endfor</code>). However, the way this was
 	actually written was as follows:
 </p>
 
-<ul>
+<ul id="hash-203035c72e" class="commentable">
 	<li>Delete the second article</li>
 	<li>Insert the start of the <code>for()</code> loop before the first article, on a new line</li>
 	<li>Insert the end of the loop (<code>endfor</code>) at the end of the first article, on a new
@@ -290,7 +290,7 @@
 		article
 </ul>
 
-<p>
+<p id="hash-8ce56dda2a" class="commentable">
 	In summary, it doesn't matter too much how you apply these changes (or, indeed, any changes in
 	this tutorial). That said, understanding the way in which changes are written in real
 	life may help towards a greater understanding of the code. Don't worry though if you think you've
@@ -301,7 +301,7 @@
 	<h3>
 		What are loops?
 	</h3>
-	<p>
+	<p id="hash-7a7cb9f792" class="commentable">
 		The <code>for()</code> and <code>endfor</code> you have seen form a <em>loop</em> block. This is
 		a way of telling PHP that you want the enclosed code to be run a number of times. In this
 		case, it sets a value to 1, and carries on looping whilst that value is less than or greater
@@ -310,21 +310,21 @@
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-ad12a69598" class="commentable">
 	So, finally, refresh your browser screen, and make sure your changes work. You should now see
 	<em>three</em> articles, each with a different heading and paragraph.
 </p>
 
 <div class="intermission">~</div>
 
-<p>
+<p id="hash-e175959303" class="commentable">
 	The next step we will take is to set up the database. We'll use a database system called
 	SQLite (pronounced "see-kwel light") as it is really easy to connect to, and does not
 	require a database server. Create the following two files in your project, paste in the contents,
 	and then we'll discuss what they do.
 </p>
 
-<p>
+<p id="hash-52dd4d9b49" class="commentable">
 	You'll notice that some changes in this tutorial &mdash; including one of these files,
 	<span class="filename">data/init.sql</span> &mdash; has a name that contains a forward slash.
 	This means that the file is stored in a sub-directory, and that you'll need to create that
@@ -333,7 +333,7 @@
 
 <?php renderDiffFromComment('Add data fixtures') ?>
 
-<p>
+<p id="hash-96d5f928d5" class="commentable">
 	This change comprises of two new files, a SQL file and a PHP file. I'll discuss the SQL file
 	first.
 </p>
@@ -342,7 +342,7 @@
 	<h3>
 		What is SQL?
 	</h3>
-	<p>
+	<p id="hash-263f737e7c" class="commentable">
 		SQL is a programming language for databases. It has been mostly standardised between different
 		database systems, so it looks nearly the same regardless of whether you are connecting to
 		MySQL or PostgreSQL or (as we are) SQLite. We will use it to set up our database initially,
@@ -350,14 +350,14 @@
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-41f97a02b0" class="commentable">
 	Broadly, databases are stored in terms of <em>tables</em>, <em>columns</em> and <em>rows</em>. Each
 	different kind of data we wish to store needs its own table, but to start with, we only have one:
 	a post. The <code>CREATE TABLE</code> statement specifies which properties we want a post to have,
 	namely:
 </p>
 
-<ul>
+<ul id="hash-35855b6a1c" class="commentable">
 	<li>id: a unique identifier to help us tell posts apart</li>
 	<li>title: the heading</li>
 	<li>body: the main text of the article</li>
@@ -366,11 +366,11 @@
 	<li>updated_at: when the article was updated</li>
 </ul>
 
-<p>
+<p id="hash-f1b938d8f8" class="commentable">
 	The column <code>id</code> has two particular features:
 </p>
 
-<ul>
+<ul id="hash-5f5a683984" class="commentable">
 	<li>We declare it as a <code>PRIMARY KEY</code> in order to mark it as the predominant unique
 		identifier for the row. This makes it suitable to refer to the row from another
 		table (which we will do later on)</li>
@@ -378,19 +378,19 @@
 		by the database server automatically</li>
 </ul>
 
-<p>
+<p id="hash-af6c71ca2b" class="commentable">
 	A blog post is therefore just a row added to the posts table, since each row has space to store
 	all of these values. Once the table is created, we also create some dummy article data, using
 	<code>INSERT</code>. The format of this command, as used in the SQL script, is simply thus:
 </p>
 
-<p>
+<p id="hash-9267b3039d" class="commentable">
 	<code>
 		INSERT INTO table_name (column_1, column_2, ...) VALUES (value_1, value_2, ...);
 	</code>
 </p>
 
-<p>
+<p id="hash-bdb765e18d" class="commentable">
 	Now, the SQL file won't do anything on its own: we need a program to send the commands to
 	the database. This is where the <span class="filename">install.php</span> file comes in; we'll
 	run that whenever we want to set up the blog (or to wipe it and start again). I'll describe
@@ -404,13 +404,13 @@
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-6130bfd3fd" class="commentable">
 	The first half of the code is written in PHP. Here, we use a series of <code>if()</code>
 	statements to ensure everything goes smoothly. The variable <code>$error</code> is set to an
 	error message if something goes wrong. Here are the steps we take:
 </p>
 
-<ul>
+<ul id="hash-ce35bfadd1" class="commentable">
 	<li>Ensure the database has not been created in the <span class="filename">data.sqlite</span>
 		file. If it has, we require the file to be deleted manually, so that it is harder to
 		accidentally overwrite data.
@@ -434,11 +434,11 @@
 	</li>
 </ul>
 
-<p>
+<p id="hash-d5ea996e0a" class="commentable">
 	The second half of the file (from <code>&lt;!DOCTYPE html&gt;</code>) presents the results of
 	the script, in HTML.
 </p>
-<p>So, if you have not already tried it, visit <code>http://localhost/install.php</code> in your
+<p id="hash-7cf33d9f86" class="commentable">So, if you have not already tried it, visit <code>http://localhost/install.php</code> in your
 	browser, and make sure some posts are created. If you want to re-run it, delete the data.sqlite
 	file manually and refresh your browser page.
 </p>
@@ -447,7 +447,7 @@ __NEWFILE__
 
 <h2>Using real data</h2>
 
-<p>
+<p id="hash-cb352f0a29" class="commentable">
 	Since we now have some data in our database, we can change our home page to render that data, rather
 	than the mock data it has now. It's worth noting though that the process of designing the page
 	with dummy data hasn't been a waste of time; using a mock-up is often a valuable part of deciding what
@@ -456,7 +456,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Convert front page to read from database') ?>
 
-<p>
+<p id="hash-ee4a4d5436" class="commentable">
 	The first few lines determine the file path to the database, and then we create a new PDO object
 	with <code>new PDO()</code>, which we can use to access the data. We then use the
 	<code>query()</code> method to run a SQL statement that reads articles from the <code>post</code>
@@ -467,7 +467,7 @@ __NEWFILE__
 	<h3>
 		What is a SELECT statement?
 	</h3>
-	<p>
+	<p id="hash-cd338adb45" class="commentable">
 		The <code>SELECT</code> command is used to read from the database. For a single table, it takes a
 		format like this:
 	</p>
@@ -481,32 +481,32 @@ WHERE
 ORDER BY
 	(column names to sort on)</code></pre></blockquote>
 
-	<p>
+	<p id="hash-72e1bfc9d5" class="commentable">
 		The <code>WHERE</code> is optional, and is useful if we want to filter on some particular
 		feature of each row.
 	</p>
 
-	<p>The statement is often written on a single line, but it can be split up as here, for readability.</p>
+	<p id="hash-85734da7fa" class="commentable">The statement is often written on a single line, but it can be split up as here, for readability.</p>
 </blockquote>
 
-<p>
+<p id="hash-f4dc3c3ccf" class="commentable">
 	So, refresh your browser's view of <code>http://localhost/index.php</code>, and ensure that your
 	new changes render the posts from the database without errors. I'll then explain what is happening.
 </p>
 
-<p>
+<p id="hash-1806e0de19" class="commentable">
 	After connecting to the database, the query is used to retrieve column values for each table row,
 	returning ordering the rows in <code>created_at DESC</code> (i.e. in reverse creation order, or most
 	recent first). It then enters a loop (in this case a <code>while()</code>) to render all the posts it
 	finds.
 </p>
 
-<p>
+<p id="hash-80ace1514b" class="commentable">
 	We use <code>$stmt->fetch()</code> to read the next available row, until the point when there are no
 	rows left. When that happens, this method will return false and the loop will exit.
 </p>
 
-<p>
+<p id="hash-670cf489f7" class="commentable">
 	For every row, there are two observations worth making. Firstly, rows are returned in an array, so we
 	access them using the array syntax such as <code>$row['title']</code>. Secondly, you'll see that
 	where text strings are output, they are wrapped in the <code>htmlspecialchars()</code> function. The
@@ -515,7 +515,7 @@ ORDER BY
 	JavaScript that would be run on other people's computers.
 </p>
 
-<p>
+<p id="hash-15a8058389" class="commentable">
 	You'll notice that most of the PHP code to deal with the database side of things is in the top half
 	of the file, and the second half is predominantly HTML. This isn't an accident: this arrangement creates
 	a healthy separation between the two, which makes each easier to work with. Of course, there are a few
@@ -524,27 +524,27 @@ ORDER BY
 
 <div class="intermission">~</div>
 
-<p>
+<p id="hash-f3fd97750a" class="commentable">
 	The next step is to create a page to show individual posts. Add the following file:
 </p>
 
 <?php renderDiffFromComment('Add post view page') ?>
 
-<p>
+<p id="hash-f84a5c2243" class="commentable">
 	Now, it is our intention to link this page from individual posts on the home page. However, we've
 	not quite done that bit yet, so let's visit the new page manually, in order to test it. Open a
 	new tab, paste the link <code>http://localhost/view-post.php</code> into the address
 	bar, and check that a simple post appears.
 </p>
 
-<p>
+<p id="hash-2705f39593" class="commentable">
 	
 	The connection to the database is the same as before, but we now have a <code>WHERE</code> clause
 	in our <code>SELECT</code> statement, and we are we are now using <code>prepare()</code> and
 	<code>execute()</code> to send the statement to the database driver.
 </p>
 	
-<p>
+<p id="hash-7392ea620f" class="commentable">
 	Let's take the <code>WHERE</code> statement first. In the home page, we ran a query without
 	this, because we wanted everything in the table. However it is more often the case that we
 	want to limit returned rows to those matching one or more conditions. This is where the
@@ -552,12 +552,12 @@ ORDER BY
 	since "id" is unique, we know we won't get more than one).
 </p>
 
-<p>
+<p id="hash-9f86898619" class="commentable">
 	You'll notice that "id" is fixed to 1 (i.e. the first post). We'll fix that later, since of
 	course this should depend on the post the user clicks on.
 </p>
 
-<p>
+<p id="hash-7d0b117db1" class="commentable">
 	The other change is swapping out the call to <code>query()</code> with two new methods.
 	<code>prepare()</code> is used to set up the statement, and indicates with a colon where values
 	should go (i.e. ":id"). The <code>execute()</code> statement then runs the query, swapping
@@ -566,14 +566,14 @@ ORDER BY
 	(the post ID is not yet user-supplied, but it soon will be).
 </p>
 
-<p>
+<p id="hash-593455a286" class="commentable">
 	In fact, let's wire in the post page now. Make the following changes, and test that clicking
 	on each 'Read more' link shows the appropriate post.
 </p>
 
 <?php renderDiffFromComment('Wire in the view post page to the front page') ?>
 
-<p>
+<p id="hash-6937f08bc8" class="commentable">
 	Alright, so let's make some nice easy changes now. A look at our
 	<span class="filename">index.php</span> and <span class="filename">view-post.php</span>
 	files shows that our blog title and synopsis is repeated in both files. That's not good, since
@@ -584,7 +584,7 @@ ORDER BY
 
 <?php renderDiffFromComment('Centralise title section of page in an HTML fragment') ?>
 
-<p>
+<p id="hash-c2340ac4d6" class="commentable">
 	Once that is done, we can see there is still some duplication, this time with the database
 	PHP code. So, let's fix that too! You'll notice here that we're using a subfolder for
 	<span class="filename">lib</span>:
@@ -593,7 +593,7 @@ ORDER BY
 
 <?php renderDiffFromComment('Centralise some database code') ?>
 
-<p>
+<p id="hash-1135ba9023" class="commentable">
 	The process of spotting code improvements (e.g. to reduce repetition) is known as
 	<em>refactoring</em>, and it can be thought of as "cleaning as you go". Projects that are
 	subject to these improvements are, at least in theory, more maintainable than ones that only
@@ -604,7 +604,7 @@ ORDER BY
 	<h3>
 		What is a function?
 	</h3>
-	<p>
+	<p id="hash-9e9f699a25" class="commentable">
 		We saw in the <span class="filename">common.php</span> library a set of code blocks that
 		start with the word
 		<code>function</code>. These are named blocks of code that can be called from different
@@ -613,7 +613,7 @@ ORDER BY
 		can be stored in separate files).
 	</p>
 
-	<p>
+	<p id="hash-812f79c2f3" class="commentable">
 		The functions we've seen here all provide a <em>return value</em>, which is the result of
 		the function, and it can be of any type: a number, a string, whatever. This can either be
 		printed out to the screen, or more frequently, stored in a variable at the place it is
@@ -626,28 +626,28 @@ __NEWFILE__
 
 <h2>Adding more features</h2>
 
-<p>
+<p id="hash-593fb68474" class="commentable">
 	It is normal practice to link the main heading of a website to the home page, as this makes
 	for a consistent navigation experience. So, let's do that now:
 </p>
 
 <?php renderDiffFromComment('Make title link to the home page') ?>
 
-<p>
+<p id="hash-067ef2633d" class="commentable">
 	Next, let us add in some logic that interprets two carriage-returns in a post as a paragraph
 	break. Here we go:
 </p>
 
 <?php renderDiffFromComment('Put in real paragraphs in the article view') ?>
 
-<p>
+<p id="hash-1518a62bf2" class="commentable">
 	Now, the default date style used around the application isn't very readable, so let's
 	improve that now:
 </p>
 
 <?php renderDiffFromComment('Format the dates nicely') ?>
 
-<p>
+<p id="hash-8e5b25b5dd" class="commentable">
 	Now we've done a bit of tidying, let's tackle a bigger item of functionality. We need
 	to allow users to comment on articles, so let's make the necessary database changes to
 	prepare for that:
@@ -655,13 +655,13 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add comments to fixtures') ?>
 
-<p>
+<p id="hash-1fc2dda7cb" class="commentable">
 	Since this involves database changes, we'll need to delete our database file, and re-run
 	the installer. So, delete the file in <span class="filename">data/data.sqlite</span> and then
 	reinstall by visiting <code>http://localhost/install.php</code> again.
 </p>
 
-<p>
+<p id="hash-7ed0fbd538" class="commentable">
 	You might ask why we are putting so much effort into an installer when we're nowhere
 	near having a piece of finished software. The answer is that this installer is for us,
 	the developers, and not for end users. Thus, it is something we want to set up reasonably
@@ -669,7 +669,7 @@ __NEWFILE__
 	to recreate our useful test data quickly and easily.
 </p>
 
-<p>
+<p id="hash-4fae483f3a" class="commentable">
 	Now we're ready to start adding some comment-related changes. To start with, let's add
 	a count of comments on the front page. This uses the SQL command <code>COUNT()</code> to count
 	the number of rows that would be returned by a query:
@@ -677,13 +677,13 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add comment counts to front page') ?>
 
-<p>
+<p id="hash-161b9474ac" class="commentable">
 	Also, we'll add a comment listing to individual post pages:
 </p>
 
 <?php renderDiffFromComment('Add comments/count to view post page') ?>
 
-<p>
+<p id="hash-08127c45f4" class="commentable">
 	So, give that a whirl. You will want to check the new count on the homepage, and the comments
 	feature on individual posts. How's that looking?
 </p>
@@ -699,14 +699,14 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-bcdea87d6f" class="commentable">
 	At this juncture, I decided to tidy up the installer a bit more. Firstly, it would be nice to
 	see some data about what it has created; in the course of development you can expect
 	to wipe and recreate your test data hundreds of times, so it's worth making the output
 	useful.
 </p>
 
-<p>
+<p id="hash-f6dd3c92ae" class="commentable">
 	Secondly, as it stands it demonstrates non-optimal techniques, and fixing that gives me an
 	opportunity to explain how to improve upon it. Broadly, the problem is that visiting the URL
 	changes the database, but it does not take into account that web addresses can receive visits
@@ -715,20 +715,20 @@ __NEWFILE__
 	explained in more detail later).
 </p>
 
-<p>
+<p id="hash-92de01c470" class="commentable">
 	The changes here are quite substantial, so you may find it easier to download the file, and
 	copy the whole thing over the top of the old version. So, here's the diff:
 </p>
 
 <?php renderDiffFromComment('Get installer to install upon button press') ?>
 
-<p>
+<p id="hash-b57b724ea0" class="commentable">
 	Finally, let's add some links so we can easily move to our next task after re-installing:
 </p>
 
 <?php renderDiffFromComment('Add helpful links in installer to home page, and self') ?>
 
-<p>
+<p id="hash-7c47323fb2" class="commentable">
 	As is our custom, delete your database file and re-run the installer. This time you should
 	have an "Install" button. All being well, it will do the same installation when you click it,
 	and then you can opt to go straight to the blog's home page.
@@ -736,7 +736,7 @@ __NEWFILE__
 
 <div class="intermission">~</div>
 
-<p>
+<p id="hash-46cb7e1935" class="commentable">
 	Since our changes to the installer have been brief, let's do some refactoring and a couple of
 	minor functionality tweaks. Now, it could be said that this process of tidying seems rather
 	erratic, and that similar items of work should be neatly collected together. However, real-life
@@ -745,7 +745,7 @@ __NEWFILE__
 	available.
 </p>
 
-<p>
+<p id="hash-d37a78bad7" class="commentable">
 	So, here's our first small improvement task. One of the things you may have noticed is that
 	posts and comments are being marked as written on a particular day, but with no time
 	information. It is usual to record and show this sort of data, so let's do that now. Don't
@@ -754,7 +754,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Convert all dates to datetimes') ?>
 
-<p>
+<p id="hash-227af2f786" class="commentable">
 	Following on from our last bit of refactoring, here's another opportunity to tidy code. Arguably,
 	the view post page has too much business logic in it, and it would be more maintainable
 	to move this to a separate file. So, create <span class="filename">lib/view-post.php</span>
@@ -763,7 +763,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Refactor some business logic to separate library file') ?>
 
-<p>
+<p id="hash-fab5acac48" class="commentable">
 	One of the situations we have not yet catered for is the user requesting a blog article
 	that does not exist. We need to handle that based on the maxim that "if something can go
 	wrong, it will". There are a good few small changes here, but in essence our approach is
@@ -779,7 +779,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Handle requests for non-existent posts') ?>
 
-<p>
+<p id="hash-2712271a3e" class="commentable">
 	Since the browser redirect is useful, it has been written as a function, and re-used by
 	the installer. Although there is no new data to install, it is a good idea to delete your
 	database file and re-install at this point, just to check it still works.
@@ -789,7 +789,7 @@ __NEWFILE__
 
 <h2>Commenting form</h2>
 
-<p>
+<p id="hash-5c5d984470" class="commentable">
 	Righto, let's get onto a new solid block of functionality: allowing users to add comments.
 	This adds a new block of HTML in <span class="filename">comment-form.php</span>, which
 	reports any errors when the comment is made, a form to capture the usual comment information,
@@ -799,7 +799,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add basic commenting form, validation and db error handling') ?>
 
-<p>
+<p id="hash-442586a2e5" class="commentable">
 	Let us have a look in detail at <span class="filename">view-post.php</span>, which is the page
 	called by the web server when a single post is rendered. In the newly inserted code, we take
 	these actions:
@@ -832,25 +832,25 @@ __NEWFILE__
 		What are GET and POST?
 	</h3>
 
-	<p>
+	<p id="hash-b2fafa73d0" class="commentable">
 		I've used these phrases a few times without explaining them, so let me do that now. GET and
 		POST are two kinds of <strong>HTTP operation</strong>, and can be thought of rather like a
 		mode that a web-connected device (like a browser or a server) operates in. Any web address
 		can be visited in either mode, and the web application can take a different course of
 		action depending on the mode used.
 	</p>
-	<p>
+	<p id="hash-0fdeadea84" class="commentable">
 		When we visit a web site normally &mdash; such as the home page of our blog, say &mdash;
 		we are in GET mode. This is the state that is suitable for <em>reading</em> things from
 		a web server. Some pages containing a <code>&lt;form&gt;</code> also operate in GET mode,
 		such as search forms, since these too are used to read information.
 	</p>
-	<p>
+	<p id="hash-86fb207c7e" class="commentable">
 		Forms that may result in data being saved, on the other hand, should use POST. You can
 		see this with the comment form we just installed; have a look for the
 		<code>method="post"</code> declaration in the form tag.
 	</p>
-	<p>
+	<p id="hash-9ff5a43e51" class="commentable">
 		This was one of the reasons behind the earlier change to the installer: before the
 		modification, visiting the URL would reset the database, which breaks the rule that GET
 		operations are only for reading data. Swapping this to a POST form solved the issue.
@@ -865,20 +865,20 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-d5cb7b221e" class="commentable">
 	Adding a comment doesn't work yet, as the <code>INSERT</code> command is missing a value for
 	the date of comment creation. Let's fix that now:
 </p>
 	
 <?php renderDiffFromComment('Add timestamp to insert so comment device works') ?>
 
-<p>
+<p id="hash-ac47bac58f" class="commentable">
 	So, that gets the success case working. However, if you test a failure condition (empty name
 	field or an empty comment, the fields that <em>were</em> filled in now disappear. This is because
 	a form does not by default contain values, so we have to add them manually.	
 </p>
 
-<p>
+<p id="hash-a3cdbdfe98" class="commentable">
 	Thus, we now set empty values for the GET case (no form submission) in
 	<span class="filename">view-post.php</span> as well as
 	the already existing POST case. Where we output the user-supplied data, we pass it through
@@ -902,7 +902,7 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-518bd83d06" class="commentable">
 	And now for some more tidying. The first tweaking opportunity I noticed was that the code to
 	make a comment safe to render to the screen, and to swap newlines for paragraph tags, might be
 	useful elsewhere in the future. So I've generalised that snippet of code in a function, and
@@ -911,7 +911,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Render paragraphs in comments') ?>
 
-<p>
+<p id="hash-a248930764" class="commentable">
 	A nice simple one is up next. The code for <span class="filename">install.php</span> was
 	rather bloated by the presence of the
 	large function at the start, and there's no reason why this couldn't be stored separately,
@@ -923,7 +923,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Move install logic to separate file') ?>
 
-<p>
+<p id="hash-9e8478d051" class="commentable">
 	When a comment is created, we use a snippet of code to create a timestamp in a format suitable
 	for the database server. Since that'll be useful for other things, let's convert that to a
 	reusable function:
@@ -931,7 +931,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Refactor SQL timestamp into new func, we\'ll need this next') ?>
 
-<p>
+<p id="hash-ad06bde2ae" class="commentable">
 	I noticed that the installer creates its own database connection. Although there was no
 	pressing need to do so, I modified it so it uses a connection passed to it. This would make it
 	easier to run automated tests against it, for example &mdash; a custom test connection would be
@@ -940,7 +940,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Send PDO object to create db function') ?>
 
-<p>
+<p id="hash-855abdfe19" class="commentable">
 	The last tweak is very easy: a re-reading of some of the code showed that I'd not updated
 	a comment in line with a code change. Now, I could magic this away for the benefit of the
 	tutorial, but I rather like the opportunity to show that code is never perfect, and that
@@ -954,7 +954,7 @@ __NEWFILE__
 
 <h2>Adding a login system</h2>
 
-<p>
+<p id="hash-573d993da5" class="commentable">
 	The next thing I decided to implement was a log-on system. This will allow a blog administrator
 	to write, edit and delete posts, and to delete comments. In this set of changes, I add a
 	users table, and allow the installer to create an admin user with a new password each time it
@@ -963,14 +963,14 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add user table, create user row when installing') ?>
 
-<p>
+<p id="hash-be3b8f2a4d" class="commentable">
 	There are two fields in the new user table that I added based on my experience rather than an
 	immediate need. These are <code>created_at</code>, which holds the date and time when the user
 	was first set up, and <code>is_enabled</code>, which allows us to turn users on and off. Most
 	user systems will find a practical use for these simple features during their lifetime.
 </p>
 
-<p>
+<p id="hash-9aa6783303" class="commentable">
 	You'll have noticed a comment in <span class="filename">lib/install.php</span> noting that
 	the password is stored in plaintext.
 	This means that, as it stands, passwords would be stored literally, which is considered to be
@@ -987,7 +987,7 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-c2f889ee73" class="commentable">
 	So, let's make that improvement straight away. To do so, we'll need the library I talked about
 	at the start of the tutorial, stored here in <span class="filename">vendor/password_compat</span>.
 	The features it provides are so useful they have been built into PHP 5.5, so if you are running
@@ -998,7 +998,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add password hashing capability') ?>
 
-<p>
+<p id="hash-f3b0b1d093" class="commentable">
 	So, what does the new code do? It makes use of a new function called
 	<code>password_hash()</code>, which takes a password as input and produces what is known as a
 	<em>hash</em>. A hash is a mathematical calculation that is strictly one way, which means that
@@ -1006,33 +1006,33 @@ __NEWFILE__
 	to recreate the passwords they were generated from.
 </p>
 
-<p>
+<p id="hash-2da8f189f6" class="commentable">
 	Whether or not you are using it, by all means do have a read of the source code in
 	<span class="filename">password.php</span>. However, an in-depth exploration of it would be rather
 	advanced at this stage, so for our purposes we will assume it just works.
 </p>
 
-<p>
+<p id="hash-6a594573d4" class="commentable">
 	The next step is to add a login form, and a link from which to access it:
 </p>
 
 <?php renderDiffFromComment('Add skeleton for login screen') ?>
 
-<p>
+<p id="hash-c51754d5fe" class="commentable">
 	In the next change, we add our familiar block of business logic before the main HTML. In this
 	case, it checks to see if the form has been submitted; if it has, then it turns on the
 	session system (more about that in a minute), creates a hash of the submitted password,
 	and compares it with the hash stored in the database.
 </p>
 
-<p>
+<p id="hash-b22fbe2c85" class="commentable">
 	If the user gets their username wrong (e.g. it is not found) or the password wrong (the
 	password hash does not match the one for the username supplied) then we regard this as a login
 	failure. It is important for us not to be too helpful here (such as explaining that a username
 	does not exist), as this information might be useful to a system cracker.
 </p>
 
-<p>
+<p id="hash-21f080bc27" class="commentable">
 	If the password matches however, then we call <code>login()</code> to sign in the user, and
 	then we redirect to the home page using <code>redirectAndExit()</code>.
 </p>
@@ -1041,34 +1041,34 @@ __NEWFILE__
 	<h3>
 		What are sessions?
 	</h3>
-	<p>
+	<p id="hash-144636c9f0" class="commentable">
 		Sessions are an extremely useful feature that allow web applications to
 		remember per-user information. By default, every request to the server is seen in
 		isolation, so without sessions, an application would not be able to
 		remember that a user had signed in, or what their username was.
 	</p>
 
-	<p>
+	<p id="hash-342795edcd" class="commentable">
 		To make sessions work, PHP sends the user's browser a cookie containing a random
 		identifier, and for every subsequent visit, the browser supplies this back to the server.
 		This identifier corresponds to a file on the server containing the variables that have been
 		set for each user.
 	</p>
 
-	<p>
+	<p id="hash-0b1e79a4e3" class="commentable">
 		PHP makes this nice and simple for developers: we just turn on sessions using
 		<code>session_start()</code>, and then we can just read and write to the
 		<code>$_SESSION</code> array. Easy peasy!
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-ebe73351d4" class="commentable">
 	So, with that explained, let's add the changes:
 </p>
 
 <?php renderDiffFromComment('Get login system mainly working') ?>
 
-<p>
+<p id="hash-e1b8e1f861" class="commentable">
 	Now we have a way to determine whether users are logged in or not, let's switch that feature
 	on for all pages. Here we also modify the HTML snippet that contains the page header, so
 	it can show the appropriate login/logout link.
@@ -1076,7 +1076,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Switch on sessions in all pages, recognise logged in/out') ?>
 
-<p>
+<p id="hash-31275e2853" class="commentable">
 	You may have noticed, if you tried the logout link, that this page does not yet exist. So let's
 	add that now in the following set of changes. Whilst we are at it, let's greet the user by
 	their username while they are logged in, as this makes the experience of the site a bit
@@ -1085,7 +1085,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add logout and username greeting') ?>
 
-<p>
+<p id="hash-d4258455e9" class="commentable">
 	That's all for this chapter, so give your application a good test, especially the new
 	login and logout features. When you're ready, we'll proceed in the next chapter with some 
 	small tweaks to improve what we have.
@@ -1101,13 +1101,13 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-35242d071f" class="commentable">
 	We've got a nice set of features working, but there are a good number of improvements and
 	refactoring changes that can be made. Doing these periodically can make for easier and
 	happier development, which in turn can improve your development efficiency.
 </p>
 
-<p>
+<p id="hash-b0e66a9379" class="commentable">
 	The first change is two-fold: pages were replicating some information in the header, and
 	various items (the top menu bar and system messages) were using inline style rules rather than
 	using class rules that need only be written once.
@@ -1115,7 +1115,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Centralise CSS, switch various inline styles to classes') ?>
 
-<p>
+<p id="hash-52a2a7ddea" class="commentable">
 	Let's take a better look at the second change. Some of the original code was written like
 	this:
 </p>
@@ -1124,7 +1124,7 @@ __NEWFILE__
 	<code>&lt;div style="border: 1px solid #ff6666; padding: 6px;"&gt; &hellip; &lt;/div&gt;</code>
 </blockquote>
 
-<p>
+<p id="hash-bc1a538472" class="commentable">
 	The purpose of the <code>style</code> attribute to specify CSS rules (otherwise known as
 	style rules) to the HTML within. Firstly, we have the <code>border</code> rule, which says
 	the content (an error message) should have a red border rendered in an unbroken line, and
@@ -1132,7 +1132,7 @@ __NEWFILE__
 	an invisible box around the content.
 </p>
 
-<p>
+<p id="hash-9c57fd0171" class="commentable">
 	However, having to write that for every error message takes a bit of effort, and it's a
 	pain if we decide that error messages should have a magenta border and not a red one. Thus,
 	it makes life easier if we write this instead:
@@ -1142,21 +1142,21 @@ __NEWFILE__
 	<code>&lt;div class="error box"&gt; &hellip; &lt;/div&gt;</code>
 </blockquote>
 
-<p>
+<p id="hash-0a65acae2f" class="commentable">
 	That applies two rules to the block: one called <code>error</code> and another called
 	<code>box</code>. That's much easier to remember, easier to read, and &mdash; since we
 	centralise the definitions in <span class="filename">assets/main.css</span> &mdash; easier
 	to change if we have to.
 </p>
 
-<p>
+<p id="hash-1894650069" class="commentable">
 	While we are dealing with CSS changes, let's add a few more. Here we add some rules for
 	article synopses, titles and dates on the home page, and comments on individual blog posts.
 </p>
 
 <?php renderDiffFromComment('Various CSS improvements') ?>
 
-<p>
+<p id="hash-bb99e016ca" class="commentable">
 	You may have noticed that some function calls that need to access the database create their
 	own connection rather than use one that we've already created. For low-volume systems this
 	might not matter a great deal, but programmers hate this sort of inefficiency, and where it is
@@ -1165,7 +1165,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add a PDO param to functions, for consistency') ?>
 
-<p>
+<p id="hash-3875cbfc00" class="commentable">
 	Now we improve the appearance of the comment form. It's worth opening up an article page
 	prior to making the improvements, so you can refresh it after the CSS is in place. This will
 	allow you to see the change quickly.
@@ -1173,7 +1173,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Tidy up CSS for comment form') ?>
 
-<p>
+<p id="hash-6af37013b8" class="commentable">
 	We now turn our attention to an improvement to the database. This consists of the tables
 	<code>post</code> and <code>user</code>, for blog posts and authors respectively. When
 	creating a post record, we insert our automatically generated <code>user.id</code> in
@@ -1181,14 +1181,14 @@ __NEWFILE__
 	user in our test data, but in practice we might have several).
 </p>
 
-<p>
+<p id="hash-a7bb3250dd" class="commentable">
 	However, it is possible to insert any number in <code>post.user_id</code>, so if we have
 	an undiscovered bug in our code, it might cause a non-existent user primary key to be stored
 	here. Since we rely on values here always pointing to a user row, if a bad value were to get
 	in, it might crash our application.
 </p>
 
-<p>
+<p id="hash-08231e6de9" class="commentable">
 	To protect against that scenario, many database systems will allow the use of <em>foreign key
 	constraints</em>. These allow us to specify that values inserted into a particular column must
 	exist in another column belonging to another table, and that an error must occur if this
@@ -1196,7 +1196,7 @@ __NEWFILE__
 	be turned on explicitly, using the <code>PRAGMA</code> command.
 </p>
 
-<p>
+<p id="hash-efefdcef82" class="commentable">
 	So, let's make these changes:
 </p>
 
@@ -1210,11 +1210,11 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Enable foreign key constraints') ?>
 
-<p>
+<p id="hash-d5d27cf0df" class="commentable">
 	Here's what's new:
 </p>
 
-<ul>
+<ul id="hash-b1db3c91db" class="commentable">
 	<li>
 		Since we want posts to reference users, we need a user first. Thus, I've swapped the
 		order around, so the test user is created before the test post</li>
@@ -1227,12 +1227,12 @@ __NEWFILE__
 		first thing we do is to switch on foreign key constraints</li>
 </ul>
 
-<p>
+<p id="hash-6f833366f3" class="commentable">
 	As usual: delete your database file, re-run the installer, and check all the changes appear
 	to work.
 </p>
 
-<p>
+<p id="hash-c990791d71" class="commentable">
 	The last change is related to security. Since all of our files are in the web server's
 	public directory, a user who knows our directory structure would be able to download files
 	that we didn't intend to make accessible. Since SQLite uses a single file to store its data,
@@ -1246,7 +1246,7 @@ __NEWFILE__
 
 <h2>New post creation</h2>
 
-<p>
+<p id="hash-0d73a44e9b" class="commentable">
 	Let's turn our attention to another major feature: writing a new article. We start off with
 	setting up a new page, laying out the necessary form input controls, and adding a new logged-in
 	menu item. There's also a change here to add a generic class <code>user-form</code>, so our
@@ -1256,7 +1256,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add in skeleton for New Post form') ?>
 
-<p>
+<p id="hash-91fbdb2322" class="commentable">
 	Now, we only want to show this page for users who are logged in. Thus, if a user who is
 	not logged in tries to access it (by typing the URL in directly) we must redirect them
 	elsewhere; in this case, the home page will do fine.
@@ -1264,7 +1264,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Only allow authenticated users on the New Post page') ?>
 
-<p>
+<p id="hash-529b5a2e85" class="commentable">
 	While we are here, let's take a look at how <code>redirectAndExit()</code> works; this is in
 	<span class="filename">common.php</span>. It starts by reading the domain we are running
 	on (such as <code>localhost</code>), since it is good not to hardwire this into our code.
@@ -1279,55 +1279,55 @@ __NEWFILE__
 		What are HTTP headers?
 	</h3>
 
-	<p>
+	<p id="hash-72d32d0565" class="commentable">
 		HTTP is the protocol that the internet uses to request data - web pages, API requests and
 		file downloads can all be obtained this way. It's an open standard, which means that
 		a browser (or any other piece of software) that implements the standard correctly can
 		be assured of reliable inter-operability with other software on the web.
 	</p>
 
-	<p>
+	<p id="hash-c7e68d12db" class="commentable">
 		HTTP operations are comprised of two parts: a <em>request</em> from one party to another,
 		and a <em>response</em> back the other way. Part of the standard allows both requests
 		and responses to be supplied with header data that describes its content.
 	</p>
 
-	<p>
+	<p id="hash-e7002bd14e" class="commentable">
 		Some of the headers that can be supplied with a request are:
 	</p>
 
-	<ul>
+	<ul id="hash-b1bf43c21a" class="commentable">
 		<li>Some information about the browser and operating system in use
 			(the <code>User-Agent</code> header)</li>
 		<li>Which website we wish to view (<code>Host</code>)
 		<li>The cookies previously served by the domain (<code>Cookie</code>)
 	</ul>
 
-	<p>
+	<p id="hash-860391dc56" class="commentable">
 		And the following are some common response headers:
 	</p>
 
-	<ul>
+	<ul id="hash-ef2e7a5e4e" class="commentable">
 		<li>Some information about the server environment in use (<code>Server</code>)</li>
 		<li>The type of the content; web pages for example are served as "text/html"
 			(<code>Content-Type</code>)</li>
 	</ul>
 </div>
 
-<p>
+<p id="hash-a77f535997" class="commentable">
 	Although we now have the structure of the new post feature, it does not work yet. So let us
 	fix that now:
 </p>
 
 <?php renderDiffFromComment('Add basic new post functionality') ?>
 
-<p>
+<p id="hash-4deb61aa5c" class="commentable">
 	In a similar way to saving comments, we first test if we are in a post operation, using
 	<code>if ($_POST)</code>. This contains an array of input values that will be only be present
 	if a user has submitted the form.
 </p>
 
-<p>
+<p id="hash-075ecf9eda" class="commentable">
 	We then make some simple checks to ensure the form data is acceptable prior to our attempting
 	to insert it into the database. This is a process known as <em>form validation</em> and is
 	a frequent task within web application development. If any checks fail, we allow the page to be
@@ -1335,14 +1335,14 @@ __NEWFILE__
 	checks succeed that we try to save the data and redirect back to the newly committed article.
 </p>
 
-<p>
+<p id="hash-9843634ff6" class="commentable">
 	However, as it stands this redirect will just display a new, empty post, since we have not
 	added the logic to render the edit facility for a specific row. Let's add that now:
 </p>
 
 <?php renderDiffFromComment('If a post ID is supplied, show that post in the editor') ?>
 
-<p>
+<p id="hash-c3d80a8534" class="commentable">
 	That was nice and easy: if we find we are not in a post operation <em>and</em> we have a
 	post primary key <em>and</em> that row exists, then show it in the edit form. You can see that
 	now we need the database connection (in <code>$pdo</code>) for two things, I've moved
@@ -1356,21 +1356,21 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-794120cc9d" class="commentable">
 	As we have done before, this code uses <code>htmlspecialchars()</code> to prevent users
 	from entering HTML, which could break our page layout or introduce security problems. It is
 	perhaps less of a worry here, since at least these users are authenticated, and hence
 	they might be considered more trustworthy than anonymous commenters.
 </p>
 
-<p>
+<p id="hash-6bad8aecda" class="commentable">
 	If you tried editing a post, you'll have found that this created a new post, rather than
 	updating the old one. So let's fix that also:
 </p>
 
 <?php renderDiffFromComment('Make amendments to posts an update rather than an insert') ?>
 
-<p>
+<p id="hash-b4f936b026" class="commentable">
 	I've moved the code to read the current post towards the start of the page, since this is
 	now useful in two situations. The first is when displaying an article for
 	editing, and the second is when submitting the edit form to save any changes.
@@ -1378,7 +1378,7 @@ __NEWFILE__
 	from the post table, and obtain title/body data if it is read successfully.
 </p>
 
-<p>
+<p id="hash-2f40bb9fbc" class="commentable">
 	Within a POST operation, we can then check <code>$postId</code>, and if it has a value we
 	know we are editing an existing article rather than creating a new one. Thus, if we are editing,
 	we call the new function <code>editPost()</code>, which will run the necessary
@@ -1386,7 +1386,7 @@ __NEWFILE__
 	would run an <code>INSERT</code>.
 </p>
 
-<p>
+<p id="hash-fc28b3758f" class="commentable">
 	You might have noticed that there has been no attempt to check whether the user editing a
 	post is the same as the user who wrote it. Whether one person may edit other person's posts is
 	a feature decision, but for the time being it is one that I have deliberately omitted, to
@@ -1397,14 +1397,14 @@ __NEWFILE__
 
 <h2>Post editing</h2>
 
-<p>
+<p id="hash-44b29763b3" class="commentable">
 	In this chapter, we will build on our new editing functionality, but first, let's simplify
 	the title HTML block by moving the menu into a separate file:
 </p>
 
 <?php renderDiffFromComment('Separate the top menu into a new file') ?>
 
-<p>
+<p id="hash-30610a55ce" class="commentable">
 	That change allows us to wire in the menu fragment separately, without the
 	title, so we can use a custom title in the edit page. You'll see that we set the title to
 	"New post" or "Edit post" depending on whether we can find a primary key in the query string.
@@ -1412,27 +1412,27 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add in custom title in edit post') ?>
 
-<p>
+<p id="hash-b48675c765" class="commentable">
 	Let's also add in a cancel link in the edit page, to make it easier to abandon an edit:
 </p>
 
 <?php renderDiffFromComment('Add in cancel link in edit post') ?>
 
-<p>
+<p id="hash-5b9f415dc5" class="commentable">
 	On the home page, and for logged-in users only, I next added an edit link against each post,
 	like so:
 </p>
 
 <?php renderDiffFromComment('Add an edit link for users who are logged in') ?>
 
-<p>
+<p id="hash-77c37d159b" class="commentable">
 	You may have noticed that the class name (<code>read-more</code>) of the wrapping div was no
 	longer accurate, which is why I changed this to something more generic. As it happens, this
 	section doesn't have any CSS rules specifically attached to it, but it's good to have something
 	for future styles to hook onto).
 </p>
 
-<p>
+<p id="hash-bf80a0045d" class="commentable">
 	Lastly, let's make a another nice easy change - there's no point in rendering the login
 	page if we are already logged in. So, after the session is started, if we find we are logged
 	in already, redirect back to the home page.
@@ -1444,14 +1444,14 @@ __NEWFILE__
 
 <h2>All posts page</h2>
 
-<p>
+<p id="hash-28bc14bf2d" class="commentable">
 	The next step is to add an All Posts screen for administrative users. We'll start with
 	a static mock-up with hard-wired post values:
 </p>
 
 <?php renderDiffFromComment('Add mockup of All Posts screen for admin users') ?>
 
-<p>
+<p id="hash-ce82150da3" class="commentable">
 	Of course, since this is a restricted screen, we must only allow authorised users to see it.
 	To do so, we redirect back to the home page, and exit as usual:
 </p>
@@ -1459,7 +1459,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Only allow auth users to see the All Posts screen') ?>
 
 
-<p>
+<p id="hash-868047f98a" class="commentable">
 	Great stuff. Don't forget to test it by logging out, and then trying to visit the page
 	manually!
 </p>
@@ -1475,7 +1475,7 @@ __NEWFILE__
 	<h3>
 		What do square brackets in form elements do?
 	</h3>
-	<p>
+	<p id="hash-0f414e81f6" class="commentable">
 		Aha! Glad you asked. First, let's consider this simple form element:
 	</p>
 
@@ -1483,12 +1483,12 @@ __NEWFILE__
 		<pre><code>&lt;input type="submit" name="save" value="Save" /&gt;</code></pre>
 	</blockquote>
 
-	<p>
+	<p id="hash-580e462efc" class="commentable">
 		This is pretty simple. If the button is pressed, the form is submitted, and the submitted
 		key <code>save</code> gets the value of the button, "Save".
 	</p>
 
-	<p>
+	<p id="hash-d84dc9d1c1" class="commentable">
 		However, consider the scenario where we need several submit buttons carrying out a similar
 		purpose, e.g. a delete button per database row. One solution is to add in the primary key
 		as part of the name:
@@ -1500,7 +1500,7 @@ __NEWFILE__
 &lt;input type="submit" name="delete_3" value="Delete" /&gt;</code></pre>
 	</blockquote>
 
-	<p>
+	<p id="hash-9302bfb2f2" class="commentable">
 		When this form gets submitted, we can search for keys matching this naming specific pattern,
 		and delete the matching row as appropriate. However, this is rather fiddly, so PHP
 		provides a cleaner solution - the square bracket syntax:
@@ -1512,7 +1512,7 @@ __NEWFILE__
 &lt;input type="submit" name="delete[3]" value="Delete" /&gt;</code></pre>
 	</blockquote>
 
-	<p>
+	<p id="hash-2684da2ea3" class="commentable">
 		This helps up cheat by doing some of our parsing for us. Here's what happens in that form
 		if we press the second Delete button:
 	</p>
@@ -1527,13 +1527,13 @@ __NEWFILE__
 )</code></pre>
 	</blockquote>
 
-	<p>
+	<p id="hash-61b65dca96" class="commentable">
 		This makes things nice and easy: we just look up the name of the element
 		(i.e. <code>delete</code>), and then grab the first key value.
 	</p>
 </blockquote>
 
-<p>
+<p id="hash-39f00ce546" class="commentable">
 	Now, the logic we use to read the posts for the front page will be useful also for this
 	new screen. Since we don't want to write this twice, let's move it to a function so we can
 	reuse it later on.
@@ -1541,7 +1541,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Move home page logic to central location, so we can reuse it for All Posts') ?>
 
-<p>
+<p id="hash-2f8183c38d" class="commentable">
 	While working on the home page, I noticed I'd used the variable name <code>$row</code>. This
 	is rather generic &mdash; most things read from a database are rows &mdash; so I swapped to
 	a better name for it. This is more readable, and fits in with the common naming convention
@@ -1550,13 +1550,13 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Improve the name of this variable') ?>
 
-<p>
+<p id="hash-e963544e17" class="commentable">
 	Next, we'll modify the mock-up by adding in a creation time for posts:
 </p>
 
 <?php renderDiffFromComment('Add in creation time to All Posts') ?>
 
-<p>
+<p id="hash-6df1d1f3e8" class="commentable">
 	As with our mock-up approach before, once a layout contains everything required, it is time to
 	convert to a working version. So, let's do that now: we'll add a loop and render table data in
 	the HTML.
@@ -1564,14 +1564,14 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Wire in database calls for All Posts screen') ?>
 
-<p>
+<p id="hash-207288ed54" class="commentable">
 	As it stands, the user may click on a delete button to remove a post, but this is not
 	presently handled. So, let's do that now:
 </p>
 
 <?php renderDiffFromComment('Add delete post feature') ?>
 
-<p>
+<p id="hash-7c22050b9a" class="commentable">
 	Finally let's add in a post count on this page:
 </p>
 
@@ -1581,7 +1581,7 @@ __NEWFILE__
 
 <h2>Comment admin</h2>
 
-<p>
+<p id="hash-871ac01874" class="commentable">
 	In this section, we'll allow authorised users to delete comments from posts. To kick us
 	off, here's a nice item of refactoring &mdash; the comments list within article pages is quite
 	large, and it would be more modular to store it in a separate file.
@@ -1589,20 +1589,20 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Move comments markup to separate template file') ?>
 
-<p>
+<p id="hash-dff8784994" class="commentable">
 	Let us now add a delete button next to comments on blog posts, for authorised users only. I've
 	added a bit of extra CSS to get it to float to the right-hand side.
 </p>
 
 <?php renderDiffFromComment('Add delete button to comments for auth users') ?>
 
-<p>
+<p id="hash-270b1a6bd2" class="commentable">
 	Since we want to do more than one thing with comments (add and delete), we need to
 	make a change to explain what we are doing within the form submission. To do this, I've used
 	the query string, which sends these items of information:
 </p>
 
-<ul>
+<ul id="hash-df79797c41" class="commentable">
 	<li>The primary key of the post (<code>post_id</code>) upon which a comment is being added or
 		deleted</li>
 	<li>A name for the action (<code>add-comment</code> and <code>delete-comment</code>), which
@@ -1618,20 +1618,20 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<p>
+<p id="hash-a84718b209" class="commentable">
 	Let us now make some room in our view post page, by moving some logic to a new function.
 </p>
 
 <?php renderDiffFromComment('Move logic to function, to make room for action test') ?>
 
-<p>
+<p id="hash-e80bec847e" class="commentable">
 	We now need to read the action key we set up, so we can decide what feature to call.
 	If the user is deleting a comment, the new function <code>deleteComment</code> in the next set
 	of changes is called; although we could just delete by <code>comment.id</code>, to be sure of
 	deleting the right thing we filter additionally by <code>comment.post_id</code>.
 </p>
 
-<p>
+<p id="hash-bf00fe52d6" class="commentable">
 	Note that we also add an <code>if()</code> clause to ensure that the delete operation is skipped if
 	the user is not logged in. Although we do not render delete buttons for anonymous users, it is
 	still possible for security crackers to fake a form submission that contains a valid deletion
@@ -1640,7 +1640,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Get the delete comment feature working') ?>
 
-<p>
+<p id="hash-143117228e" class="commentable">
 	Finally, I noticed that the logic to add a comment is contained within a function, but the
 	logic to delete one is still in the <code>switch()</code> block in
 	<span class="filename">view-post.php</span>. The following change just tidies that up:
@@ -1648,7 +1648,7 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add new comment delete function at the same level of abstraction as comment adding') ?>
 
-<p>
+<p id="hash-d4a6a6860a" class="commentable">
 	As ever, test everything to check it works, before we proceed to the final chapter!
 </p>
 
@@ -1656,7 +1656,7 @@ __NEWFILE__
 
 <h2>Adding some polish</h2>
 
-<p>
+<p id="hash-362eec1ba3" class="commentable">
 	Excellent, we're now on the home straight! Our functionality is finished, so we'll just
 	do a last round of sprucing up. To start, let's add in a home link for authorised users. This
 	is useful on the restricted pages, since they don't have a home link themselves:
@@ -1664,14 +1664,14 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Add in home link for auth users') ?>
 
-<p>
+<p id="hash-3c7b396241" class="commentable">
 	Next, I thought it would be nice to have a comment count for each article on the All Posts page.
 	Add the following changes:
 </p>
 
 <?php renderDiffFromComment('Add in comment count for each post') ?>
 
-<p>
+<p id="hash-1e1a4c6bed" class="commentable">
 	Let's take a closer look at how the new query works. The query now looks like this:
 </p>
 
@@ -1685,46 +1685,46 @@ ORDER BY
 	created_at DESC</code></pre>
 </blockquote>
 
-<p>
+<p id="hash-90e74d4b90" class="commentable">
 	The new part of this is the bracketed expression on the third line. This
 	sort of SQL is known as a <em>sub-query</em> since it is a query contained inside another
 	one. The result of it can be read like a real column, which we explicitly name by adding
 	<code>comment_count</code> at the end of it.
 </p>
 
-<p>
+<p id="hash-77ed211b40" class="commentable">
 	This sub-query will count rows in the <code>comment</code> table, based on which post they
 	belong to. Since the job of the outer query is to list posts, we can filter the comment count
 	for each row by making a comparison to the outer table, <code>post</code>.
 </p>
 
-<p>
+<p id="hash-a9b83070fd" class="commentable">
 	The next change is another easy one: we'll add a header row to the All Posts table:
 </p>
 
 <?php renderDiffFromComment('Add heading to All Posts table') ?>
 
-<p>
+<p id="hash-e0f3ab2825" class="commentable">
 	While we are on the All Posts page, it would make sense to add in a link to the view page
 	for each article. So let's do that now:
 </p>
 
 <?php renderDiffFromComment('Add view link from All Posts admin page') ?>
 
-<p>
+<p id="hash-baeb33aa52" class="commentable">
 	Next up is a refactoring that simplifies the code (quite a bit is removed) and reduces the
 	number of calls made to the database. The essence of the modification is in
 	<span class="filename">lib/view-post.php</span> &mdash; we merge two SQL calls together via
 	another sub-query.
 </p>
 
-<p>
+<p id="hash-76f28e878e" class="commentable">
 	There's quite a few files to modify here, so make sure you get them all.
 </p>
 
 <?php renderDiffFromComment('Merge comment-counting into get post query') ?>
 
-<p>
+<p id="hash-955b0c7698" class="commentable">
 	I noticed when doing some testing at this point that posts which have comments cannot be
 	deleted - try that now. You'll get an error known as a <em>foreign key constraint violation</em>;
 	this is what happens when a row is deleted that a foreign key depends on (in our case we
@@ -1734,27 +1734,27 @@ ORDER BY
 
 <?php renderDiffFromComment('Allow posts that have comments to be deleted') ?>
 
-<p>
+<p id="hash-f9f1750da9" class="commentable">
 	Whilst we are looking at the database side of things, I noticed that the
 	<code>user.is_enabled</code> field hasn't yet been used. This was intended mainly for future
 	enhancements (in particular for a user administration page), but the application can make an
 	initial use of it immediately, by disallowing authenticated features to non-enabled users.
 </p>
 
-<p>
+<p id="hash-d8330f26cf" class="commentable">
 	The installer sets the test user to <code>is_enabled=1</code> already, so all we need
 	to do is to adjust the SQL statements that fetch data from the user table.
 </p>
 
 <?php renderDiffFromComment('Only look up users who are enabled') ?>
 
-<p>
+<p id="hash-d0f891bafb" class="commentable">
 	Our final improvement is to add some labels and make use of existing form styles:
 </p>
 
 <?php renderDiffFromComment('Upgrade login form with global CSS features') ?> 
 
-<p>
+<p id="hash-5483af5e41" class="commentable">
 	Well done, you have finished the tutorial! It is a good idea to regenerate the database one last
 	time, and then give the whole application a thorough testing. Add some posts and comments, both
 	while logged in and while logged out, and delete comments in the admin interface.
