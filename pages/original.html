@@ -506,6 +506,12 @@ ORDER BY
 	rows left. When that happens, this method will return false and the loop will exit.
 </p>
 
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		Add an explanation of the parameters to the HTML escaping function.
+	</div>
+<?php endif ?>
+
 <p id="hash-670cf489f7" class="commentable">
 	For every row, there are two observations worth making. Firstly, rows are returned in an array, so we
 	access them using the array syntax such as <code>$row['title']</code>. Secondly, you'll see that
@@ -621,6 +627,13 @@ ORDER BY
 		name of your web project on disk.
 	</p>
 </blockquote>
+
+<p>
+	Since the <code>htmlspecialchars()</code> calls have a few parameters we don't want to have to
+	keep typing in, let's also move that to its own function:
+</p>
+
+<?php renderDiffFromComment('Centralise HTML escaping functions') ?>
 
 __NEWFILE__
 
@@ -877,6 +890,13 @@ __NEWFILE__
 	field or an empty comment, the fields that <em>were</em> filled in now disappear. This is because
 	a form does not by default contain values, so we have to add them manually.	
 </p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note">
+		Should I change the reference to <code>htmlspecialchars()</code> now this has been
+		placed in a function?
+	</div>
+<?php endif ?>
 
 <p id="hash-a3cdbdfe98" class="commentable">
 	Thus, we now set empty values for the GET case (no form submission) in
@@ -1353,6 +1373,13 @@ __NEWFILE__
 	<div class="comment note">
 		Whether to trust the user with raw HTML is a complex area - maybe add a sidebar on this?
 		Or is this too much detail?
+	</div>
+<?php endif ?>
+
+<?php if (showTodoMessages()): ?>
+	<div class="todo note" style="margin-top: 160px;">
+		Again, maybe change the reference to <code>htmlspecialchars()</code> now this has been
+		placed in a function?
 	</div>
 <?php endif ?>
 
