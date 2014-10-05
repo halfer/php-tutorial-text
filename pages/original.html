@@ -908,19 +908,13 @@ __NEWFILE__
 	a form does not by default contain values, so we have to add them manually.	
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Should I change the reference to <code>htmlspecialchars()</code> now this has been
-		placed in a function?
-	</div>
-<?php endif ?>
-
 <p id="hash-a3cdbdfe98" class="commentable">
 	Thus, we now set empty values for the GET case (no form submission) in
 	<span class="filename">view-post.php</span> as well as
 	the already existing POST case. Where we output the user-supplied data, we pass it through
-	the PHP function <code>htmlspecialchars()</code>, which prevents any rendering problems if the
-	user has used any HTML characters such as angle brackets.
+	the PHP function <code>htmlspecialchars()</code> via our custom function <code>htmlEscape()</code>,
+	which prevents any rendering problems if the user has used any HTML characters such as angle
+	brackets.
 </p>
 
 <?php if (showTodoMessages()): ?>
@@ -1393,15 +1387,8 @@ __NEWFILE__
 	</div>
 <?php endif ?>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note" style="margin-top: 160px;">
-		Again, maybe change the reference to <code>htmlspecialchars()</code> now this has been
-		placed in a function?
-	</div>
-<?php endif ?>
-
 <p id="hash-794120cc9d" class="commentable">
-	As we have done before, this code uses <code>htmlspecialchars()</code> to prevent users
+	As we have done before, this code uses our <code>htmlEscape()</code> function to prevent users
 	from entering HTML, which could break our page layout or introduce security problems. It is
 	perhaps less of a worry here, since at least these users are authenticated, and hence
 	they might be considered more trustworthy than anonymous commenters.
