@@ -506,12 +506,6 @@ ORDER BY
 	rows left. When that happens, this method will return false and the loop will exit.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="todo note">
-		Add an explanation of the parameters to the HTML escaping function.
-	</div>
-<?php endif ?>
-
 <p id="hash-670cf489f7" class="commentable">
 	For every row, there are two observations worth making. Firstly, rows are returned in an array, so we
 	access them using the array syntax such as <code>$row['title']</code>. Secondly, you'll see that
@@ -520,6 +514,29 @@ ORDER BY
 	it could break the HTML used in the page layout, and worse, might let a user inject unauthorised
 	JavaScript that would be run on other people's computers.
 </p>
+
+<blockquote class="sidebar">
+	<h3>
+		What are the htmlspecialchars() parameters?
+	</h3>
+	<p>
+		The first parameter is, of course, the item of text we wish to safely output. The other
+		two are:
+	</p>
+	
+	<ul>
+		<li><code>ENT_HTML5</code>: this tells PHP to understand tags as HTML5, rather than any
+		other dialect of HTML</li>
+		<li><code>'UTF-8'</code>: this specifies how characters are encoded. UTF-8 is
+		now the standard approach to encoding text because it supports a large number
+		of language-specific characters</li>
+	</ul>
+
+	<p>It's worth noting that while the default character set for this function is 'UTF-8'
+		(and so we don't really need to set it), the PHP manual advises that it should be
+		specified explicitly.
+	</p>
+</blockquote>
 
 <p id="hash-15a8058389" class="commentable">
 	You'll notice that most of the PHP code to deal with the database side of things is in the top half
