@@ -68,44 +68,106 @@
 </blockquote>
 
 <p id="hash-856c1fc8c6" class="commentable">
-	I'll assume that your development environment is set up. Here's what you will need:
+	For your development environment, here's what you will need:
 </p>
 
-<ul id="hash-9610dc0ef6" class="commentable">
-	<li>Web server, usually Apache</li>
+<ol id="hash-9610dc0ef6" class="commentable">
+	<li>The Apache web server</li>
 	<li>PHP, any version after 5.4</li>
-	<li>SQLite PHP module</li>
-</ul>
+	<li>SQLite PHP module, for database access</li>
+	<li>Any programmer's editor, ideally with syntax highlighting</li>
+</ol>
 
 <?php if (showTodoMessages()): ?>
 	<div class="comment note">
 		I've swapped out references to MAMP and WAMP, as MAMP is quite restricted in the free
-		version (only one vhost) and it's nice to have one product for all systems.
+		version (only one vhost) and it's nice to have one product for all systems. Also, I'd
+		have liked to use PHP's built-in server, but htaccess is required!
 	</div>
 <?php endif ?>
 
 <p id="hash-3bd976af5f" class="commentable">
-	For Windows and Mac users, you can get all of this with
-	<a href="https://www.apachefriends.org/">XAMPP</a>. If you use Linux, you may have all of this
-	already &mdash; although XAMPP works on Linux too, and adds a user-friendly control panel.
-	If you get stuck, turn to your favourite search engine, and
-	ask "How do I install [whatever] on [Windows]". In 99% of cases, your question has already
-	been answered, so be persistent.
+	The first three things can be installed in one go, by installing
+	<a href="https://www.apachefriends.org/">XAMPP</a> &mdash; just download and run the appropriate
+	package for your operating system. Note that if you use Linux, PHP and Apache may be installed
+	already; there is often a ready-made web folder at <code>/var/www</code> from which you can run
+	your files. By all means use that, but if in doubt, XAMPP works on Linux too, and adds a
+	user-friendly control panel.
+</p>
+
+<p class="commentable">
+	You'll also need a programmer's editor. There are many different ones available, and the one
+	that you choose will depend on your preference as well as what you find works best on your
+	system. I'll therefore mention several, in no particular order, so you can decide for yourself.
+	In most cases you can download the appropriate installer, double-click it from your Downloads
+	folder, and install as you would any software.
+</p>
+
+<p class="commentable">
+	For convenience, I have supplied official download links for each product. If you like, you
+	can verify these links by exploring the appropriate website and looking for the 'Downloads'
+	section.
 </p>
 
 <?php if (showTodoMessages()): ?>
-	<div class="comment note" style="margin-top: 80px;">
-		It might be nice to recommend something lightweight too, in addition to NB.
-		<a href="http://brackets.io/">Brackets</a> and
-		<a href="http://www.lighttable.com/">Light Table</a> are both free, in frequent development
-		and x-platform - add one of these?
+	<div class="comment note">
+		Have had problems with both Light Table and Brackets on Ubuntu (both unusable out of the
+		box) but that's probably just Unity bugginess. The default Brackets installer bundles
+		proprietary Adobe software, but the direct download links avoid this.
 	</div>
 <?php endif ?>
 
-<p id="hash-2fea586e5c" class="commentable">
-	You'll also need an editor to modify files. Most computers have a free text editor already
-	installed, but these are rarely good enough. Use whatever you like, but if you have no
-	preference, download and install NetBeans.
+<p class="commentable">
+	First up is <a href="http://brackets.io/">Brackets</a>, which is available on all platforms.
+	Download here:
+</p>
+
+<ul class="commentable">
+	<li>
+		<a href="https://github.com/adobe/brackets/releases/download/release-1.0/Brackets.Release.1.0.msi">Windows</a>
+	</li>
+	<li>
+		<a href="https://github.com/adobe/brackets/releases/download/release-1.0/Brackets.Release.1.0.dmg">Mac OS X</a>
+	</li>
+	<li>
+		Linux <a href="https://github.com/adobe/brackets/releases/download/release-1.0/Brackets.Release.1.0.32-bit.deb">32-bit</a>
+		and <a href="https://github.com/adobe/brackets/releases/download/release-1.0/Brackets.Release.1.0.64-bit.deb">64-bit</a>
+	</li>
+</ul>
+
+<p class="commentable">
+	Next is <a href="http://lighttable.com/">Light Table</a>:
+</p>
+
+<ul class="commentable">
+	<li>
+		<a href="https://d35ac8ww5dfjyg.cloudfront.net/playground/bins/0.7.2/LightTableWin.zip">Windows</a>
+	</li>
+	<li>
+		<a href="https://d35ac8ww5dfjyg.cloudfront.net/playground/bins/0.7.2/LightTableMac.zip">Mac OS X</a>
+	</li>
+	<li>
+		Linux <a href="https://d35ac8ww5dfjyg.cloudfront.net/playground/bins/0.7.2/LightTableLinux.tar.gz">32-bit<a/>
+		and <a href="https://d35ac8ww5dfjyg.cloudfront.net/playground/bins/0.7.2/LightTableLinux64.tar.gz">64-bit</a>
+	</li>
+</ul>
+
+<p class="commentable">
+	If you are running Linux, have a look at <a href="https://wiki.gnome.org/Apps/Gedit">Gedit</a>,
+	which is pre-installed on the Ubuntu and Mint distributions (and probably others too). It does
+	syntax highlighting for PHP as standard.
+</p>
+
+<?php if (showTodoMessages()): ?>
+	<div class="comment note">
+		Also considered Atom from GitHub, but it tracks users via Google Analytics.
+	</div>
+<?php endif ?>
+
+<p class="commentable">
+	If the above editors don't work on your system, or you don't get on with them, that's no
+	problem &mdash; there's a <a href="https://en.wikipedia.org/wiki/List_of_text_editors">substantial
+	list of editors</a> on Wikipedia.
 </p>
 
 <div class="intermission">~</div>
@@ -197,8 +259,23 @@
 	the file in the right folder.
 </p>
 
+<p class="commentable">
+	It is also worth ensuring your PHP installation has the necessary database support. Double-check
+	this by searching the list of modules until you find the two modules highlighted in the
+	screenshot below: <code>PDO</code> and <code>pdo_sqlite</code>. It may help to know that the
+	modules are listed in alphabetical order:
+</p>
+
+<p style="text-align: center;">
+	<img
+		src="/images/pages/phpinfo.gif"
+		alt="Screenshot of PHP info output"	
+	/>
+</p>
+
 <p id="hash-c2f256454e" class="commentable">
-	Once you have this working, and showing an acceptable version number, you can delete this file.
+	Once you have this showing an acceptable version number and the required modules, you
+	can delete this file.
 </p>
 
 <p id="hash-4868732436" class="commentable">Here's the first bit of code to add:</p>
