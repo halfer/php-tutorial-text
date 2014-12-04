@@ -1,7 +1,7 @@
 Tutorial text for "I ♥ PHP"
 ===
 
-This repo contains the text for the [I ♥ PHP](http://ilovephp.jondh.me,uk) tutorial.
+This repo contains the text for the [I ♥ PHP](http://ilovephp.jondh.me.uk) tutorial.
 The tutorial has been designed for beginner and improving-beginner programmers wishing to learn
 some good practices in PHP web development. The code example uses PDO/SQLite, and demonstrates
 parameterisation, HTML escaping, logic/content separation, authentication, form handling, sessions
