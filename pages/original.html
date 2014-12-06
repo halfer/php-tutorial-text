@@ -1350,6 +1350,48 @@ __NEWFILE__
 
 <?php renderDiffFromComment('Prevent direct downloaders nicking the database etc') ?>
 
+<p class="commentable">
+	The file you've just added is used to set options for the web server, and in this case
+	for a module known as <code>mod_rewrite</code>. This module allows the creation of special rules
+	for various web addresses, and in our case to refuse to serve ones that are private.
+	I'll provide a little information about these rules below, but if you don't fully follow them,
+	don't worry. They are rather out of scope for a beginners' course, and we won't need to
+	consider them again.
+</p>
+
+<blockquote class="sidebar">
+	<h3>
+		What do the mod_rewrite commands do?
+	</h3>
+	
+	<p class="commentable">
+		The first command is simple: <code>RewriteEngine on</code> enables the module for the site.
+		After that, the <code>RewriteCond</code> sets up a condition (i.e. when the rule will
+		apply) and the <code>RewriteRule</code> does the action.
+	</p>
+	<p class="commentable">
+		The condition is looking at a placeholder known as <code>%{REQUEST_URI}</code>. This is the
+		URL of the page, relative to the domain. So it will always start with
+		<span class="filename">/</span> and then it will contain the address, e.g.
+		<span class="filename">/styles/assets/main.css</span> (our stylesheet) or
+		<span class="filename">/install.php</span> (a PHP page). However there are some resources
+		we want users specifically not to access directly.
+	</p>
+	<p class="commentable">
+		These ones are in the <span class="filename">data</span>, <span class="filename">lib</span>,
+		<span class="filename">templates</span> and <span class="filename">vendor</span> folders, so
+		we add those into the second part of this command. The bar character means "or" and the
+		<code>^</code> means "begins with". This format is known as a
+		<a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>, and is
+		a popular and flexible method of testing strings for certain conditions.
+	</p>
+	<p class="commentable">
+		The <code>RewriteRule</code> basically says if you get a match, then this is the
+		(<code>L</code>) last rule (i.e. don't process any more rules) and the server should
+		(<code>R</code>) redirect to a 404 page (a special server code for "not found").
+	</p>
+</blockquote>
+
 __NEWFILE__
 
 <h2>New post creation</h2>
