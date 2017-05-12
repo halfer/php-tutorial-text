@@ -1677,7 +1677,7 @@ __NEWFILE__
 </p>
 
 <blockquote class="code">
-<pre><code class="inline">SELECT
+<pre><code>SELECT
 	id, title, created_at, body,
 	(SELECT COUNT(*) FROM comment WHERE comment.post_id = post.id) comment_count
 FROM
