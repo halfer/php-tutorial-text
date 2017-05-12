@@ -53,7 +53,7 @@
 		Internet that make two fundamental errors.
 	</p>
 	<p id="hash-702abdb011" class="commentable">
-		The first is that the <code>mysql_</code> library is still in use (a <em>library</em> is
+		The first is that the <code class="inline">mysql_</code> library is still in use (a <em>library</em> is
 		just a package of useful functions). This has been a staple of database access
 		in PHP applications for some ten years, but has now been superceded by newer systems.
 		In particular, libraries such as PDO and mysqli offer <em>parameterisation</em>, a feature
@@ -178,7 +178,7 @@
 	editor, and that you can create folders as required. This might be in the root of your "htdocs"
 	or "www" folder, depending on what you used to install Apache. You can use a subfolder of "blog"
 	if you wish, or for more advanced users, feel free to set up a new vhost. So, when I use
-	<code>http://localhost/</code>, you can assume I am referring to the root of your project, even
+	<code class="inline">http://localhost/</code>, you can assume I am referring to the root of your project, even
 	if your URL is somewhat different.
 </p>
 
@@ -190,7 +190,7 @@
 	<?php include '../templates/info.php' ?>
 
 <p id="hash-4a26ddfcaf" class="commentable">
-	Then, run this in your browser, by accessing the URL <code>http://localhost/info.php</code>.
+	Then, run this in your browser, by accessing the URL <code class="inline">http://localhost/info.php</code>.
 	You should see a PHP configuration page. If you do, then check you are running a version later
 	than 5.4; if it is earlier than this then
 	you will need to upgrade. If you don't see this screen at all, then check that you have created
@@ -211,7 +211,7 @@
 	This is the initial file, so all we have to do is copy and paste it in. To do so, create
 	<span class="filename">index.php</span> in the root of your project folder, open it in your
 	editor, and ensure it is empty before pasting in the code. Then visit
-	<code>http://localhost/index.php</code> in your browser, to ensure that you can see the
+	<code class="inline">http://localhost/index.php</code> in your browser, to ensure that you can see the
 	initial mock-up of our blog's home page.
 </p>
 
@@ -219,14 +219,15 @@
 	If you can, then your first piece of coding is done! The language is HTML, which is understood
 	by your web browser as a way to describe documents on the web. HTML is not actually a
 	programming language: it is properly referred to as a <em>markup language</em>. The markup itself
-	is made up of <em>tags</em> such as <code>&lt;body&gt;</code> and <code>&lt;h1&gt;</code>, each
-	of which has an opening tag (without the slash) and a closing tag (with the slash).
+	is made up of <em>tags</em> such as <code class="inline">&lt;body&gt;</code> and
+    <code class="inline">&lt;h1&gt;</code>, each of which has an opening tag (without the slash)
+    and a closing tag (with the slash).
 
 	These
 	are nested to form a hierarchy in the same way as an ordinary letter is hierarchical: instead of
 	an envelope containing a document containing headings and paragraphs, we have an
-	<code>&lt;html&gt;</code> containing a <code>&lt;body&gt;</code> containing
-	<code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>. Easy peasy!
+	<code class="inline">&lt;html&gt;</code> containing a <code class="inline">&lt;body&gt;</code> containing
+	<code class="inline">&lt;h1&gt;</code> and <code class="inline">&lt;p&gt;</code>. Easy peasy!
 </p>
 
 <blockquote class="sidebar">
@@ -234,17 +235,17 @@
 		What do the tags mean?
 	</h3>
 	<ul id="hash-2cd7d4ae34" class="commentable">
-		<li><code>DOCTYPE</code>: this tells the browser to expect a particular dialect of HTML
+		<li><code class="inline">DOCTYPE</code>: this tells the browser to expect a particular dialect of HTML
 			&mdash; in this case HTML5</li>
-		<li><code>html</code>: this is the "envelope" for the whole document. It acts as a container for
+		<li><code class="inline">html</code>: this is the "envelope" for the whole document. It acts as a container for
 			everything</li>
-		<li><code>head</code>: this contains stuff about the document, such as the title</li>
-		<li><code>body</code>: unsurprisingly, this contains the main part of the document</li>
-		<li><code>h1</code>, <code>h2</code>, <code>h3</code>: title headings of decreasing
+		<li><code class="inline">head</code>: this contains stuff about the document, such as the title</li>
+		<li><code class="inline">body</code>: unsurprisingly, this contains the main part of the document</li>
+		<li><code class="inline">h1</code>, <code class="inline">h2</code>, <code class="inline">h3</code>: title headings of decreasing
 			importance</li>
-		<li><code>p</code>: a paragraph of text</li>
-		<li><code>div</code>: a "division", i.e. a section</li>
-		<li><code>a</code>: a hyperlink</li>
+		<li><code class="inline">p</code>: a paragraph of text</li>
+		<li><code class="inline">div</code>: a "division", i.e. a section</li>
+		<li><code class="inline">a</code>: a hyperlink</li>
 	</ul>
 
 	<p id="hash-0319f24754" class="commentable">We'll use a few more as we go on, but those are the main ones.</p>
@@ -275,18 +276,18 @@
 </p>
 <p id="hash-9522216502" class="commentable">
 	Thus, if you wish, you can delete both article blocks and replace them with the new loop block
-	(containing the <code>for()</code> through to the <code>endfor</code>). However, the way this was
+	(containing the <code class="inline">for()</code> through to the <code class="inline">endfor</code>). However, the way this was
 	actually written was as follows:
 </p>
 
 <ul id="hash-203035c72e" class="commentable">
 	<li>Delete the second article</li>
-	<li>Insert the start of the <code>for()</code> loop before the first article, on a new line</li>
-	<li>Insert the end of the loop (<code>endfor</code>) at the end of the first article, on a new
+	<li>Insert the start of the <code class="inline">for()</code> loop before the first article, on a new line</li>
+	<li>Insert the end of the loop (<code class="inline">endfor</code>) at the end of the first article, on a new
 		line</li>
 	<li>Indent the contents of the loop (in most editors, you can do this by selecting the article
 		markup and pressing the Tab key)</li>
-	<li>Finally, the two snippets of PHP to output the <code>$postId</code> are inserted into the
+	<li>Finally, the two snippets of PHP to output the <code class="inline">$postId</code> are inserted into the
 		article
 </ul>
 
@@ -302,11 +303,11 @@
 		What are loops?
 	</h3>
 	<p id="hash-7a7cb9f792" class="commentable">
-		The <code>for()</code> and <code>endfor</code> you have seen form a <em>loop</em> block. This is
+		The <code class="inline">for()</code> and <code class="inline">endfor</code> you have seen form a <em>loop</em> block. This is
 		a way of telling PHP that you want the enclosed code to be run a number of times. In this
 		case, it sets a value to 1, and carries on looping whilst that value is less than or equal
 		to 3. For each iteration of the loop, the value is incremented by 1, which is carried out by
-		the <code>++</code> operator.
+		the <code class="inline">++</code> operator.
 	</p>
 </blockquote>
 
@@ -353,7 +354,7 @@
 <p id="hash-41f97a02b0" class="commentable">
 	Broadly, databases are stored in terms of <em>tables</em>, <em>columns</em> and <em>rows</em>. Each
 	different kind of data we wish to store needs its own table, but to start with, we only have one:
-	a post. The <code>CREATE TABLE</code> statement specifies which properties we want a post to have,
+	a post. The <code class="inline">CREATE TABLE</code> statement specifies which properties we want a post to have,
 	namely:
 </p>
 
@@ -367,25 +368,25 @@
 </ul>
 
 <p id="hash-f1b938d8f8" class="commentable">
-	The column <code>id</code> has two particular features:
+	The column <code class="inline">id</code> has two particular features:
 </p>
 
 <ul id="hash-5f5a683984" class="commentable">
-	<li>We declare it as a <code>PRIMARY KEY</code> in order to mark it as the predominant unique
+	<li>We declare it as a <code class="inline">PRIMARY KEY</code> in order to mark it as the predominant unique
 		identifier for the row. This makes it suitable to refer to the row from another
 		table (which we will do later on)</li>
-	<li>We specify the <code>AUTOINCREMENT</code> option, so unique values are generated for us
+	<li>We specify the <code class="inline">AUTOINCREMENT</code> option, so unique values are generated for us
 		by the database server automatically</li>
 </ul>
 
 <p id="hash-af6c71ca2b" class="commentable">
 	A blog post is therefore just a row added to the posts table, since each row has space to store
 	all of these values. Once the table is created, we also create some dummy article data, using
-	<code>INSERT</code>. The format of this command, as used in the SQL script, is simply thus:
+	<code class="inline">INSERT</code>. The format of this command, as used in the SQL script, is simply thus:
 </p>
 
 <p id="hash-9267b3039d" class="commentable">
-	<code>
+	<code class="inline">
 		INSERT INTO table_name (column_1, column_2, ...) VALUES (value_1, value_2, ...);
 	</code>
 </p>
@@ -405,8 +406,8 @@
 <?php endif ?>
 
 <p id="hash-6130bfd3fd" class="commentable">
-	The first half of the code is written in PHP. Here, we use a series of <code>if()</code>
-	statements to ensure everything goes smoothly. The variable <code>$error</code> is set to an
+	The first half of the code is written in PHP. Here, we use a series of <code class="inline">if()</code>
+	statements to ensure everything goes smoothly. The variable <code class="inline">$error</code> is set to an
 	error message if something goes wrong. Here are the steps we take:
 </p>
 
@@ -416,17 +417,17 @@
 		accidentally overwrite data.
 	</li>
 	<li>
-		SQLite will work fine with just an empty file, so we create one with <code>touch()</code>
+		SQLite will work fine with just an empty file, so we create one with <code class="inline">touch()</code>
 		and report if there was any problems doing that (such as being disallowed by file system
 		permissions).
 	</li>
 	<li>
-		We then read the SQL script in using <code>file_get_contents()</code> and report an error
+		We then read the SQL script in using <code class="inline">file_get_contents()</code> and report an error
 		if the file cannot be found (this is unlikely, but it is good practice to check
 		everything that can go wrong!).
 	</li>
 	<li>
-		We then try running the SQL commands using <code>$pdo->exec()</code> and report any issues
+		We then try running the SQL commands using <code class="inline">$pdo->exec()</code> and report any issues
 		with that.
 	</li>
 	<li>
@@ -435,10 +436,10 @@
 </ul>
 
 <p id="hash-d5ea996e0a" class="commentable">
-	The second half of the file (from <code>&lt;!DOCTYPE html&gt;</code>) presents the results of
+	The second half of the file (from <code class="inline">&lt;!DOCTYPE html&gt;</code>) presents the results of
 	the script, in HTML.
 </p>
-<p id="hash-7cf33d9f86" class="commentable">So, if you have not already tried it, visit <code>http://localhost/install.php</code> in your
+<p id="hash-7cf33d9f86" class="commentable">So, if you have not already tried it, visit <code class="inline">http://localhost/install.php</code> in your
 	browser, and make sure some posts are created. If you want to re-run it, delete the data.sqlite
 	file manually and refresh your browser page.
 </p>
@@ -458,8 +459,8 @@ __NEWFILE__
 
 <p id="hash-ee4a4d5436" class="commentable">
 	The first few lines determine the file path to the database, and then we create a new PDO object
-	with <code>new PDO()</code>, which we can use to access the data. We then use the
-	<code>query()</code> method to run a SQL statement that reads articles from the <code>post</code>
+	with <code class="inline">new PDO()</code>, which we can use to access the data. We then use the
+	<code class="inline">query()</code> method to run a SQL statement that reads articles from the <code class="inline">post</code>
 	table.
 </p>
 
@@ -468,11 +469,11 @@ __NEWFILE__
 		What is a SELECT statement?
 	</h3>
 	<p id="hash-cd338adb45" class="commentable">
-		The <code>SELECT</code> command is used to read from the database. For a single table, it takes a
+		The <code class="inline">SELECT</code> command is used to read from the database. For a single table, it takes a
 		format like this:
 	</p>
 		
-	<blockquote class="code"><pre><code>SELECT
+	<blockquote class="code"><pre><code class="inline">SELECT
 	(column names in a list)
 FROM
 	(table)
@@ -482,7 +483,7 @@ ORDER BY
 	(column names to sort on)</code></pre></blockquote>
 
 	<p id="hash-72e1bfc9d5" class="commentable">
-		The <code>WHERE</code> is optional, and is useful if we want to filter on some particular
+		The <code class="inline">WHERE</code> is optional, and is useful if we want to filter on some particular
 		feature of each row.
 	</p>
 
@@ -490,26 +491,26 @@ ORDER BY
 </blockquote>
 
 <p id="hash-f4dc3c3ccf" class="commentable">
-	So, refresh your browser's view of <code>http://localhost/index.php</code>, and ensure that your
+	So, refresh your browser's view of <code class="inline">http://localhost/index.php</code>, and ensure that your
 	new changes render the posts from the database without errors. I'll then explain what is happening.
 </p>
 
 <p id="hash-1806e0de19" class="commentable">
 	After connecting to the database, the query is used to retrieve column values for each table row,
-	returning ordering the rows in <code>created_at DESC</code> (i.e. in reverse creation order, or most
-	recent first). It then enters a loop (in this case a <code>while()</code>) to render all the posts it
+	returning ordering the rows in <code class="inline">created_at DESC</code> (i.e. in reverse creation order, or most
+	recent first). It then enters a loop (in this case a <code class="inline">while()</code>) to render all the posts it
 	finds.
 </p>
 
 <p id="hash-80ace1514b" class="commentable">
-	We use <code>$stmt->fetch()</code> to read the next available row, until the point when there are no
+	We use <code class="inline">$stmt->fetch()</code> to read the next available row, until the point when there are no
 	rows left. When that happens, this method will return false and the loop will exit.
 </p>
 
 <p id="hash-670cf489f7" class="commentable">
 	For every row, there are two observations worth making. Firstly, rows are returned in an array, so we
-	access them using the array syntax such as <code>$row['title']</code>. Secondly, you'll see that
-	where text strings are output, they are wrapped in the <code>htmlspecialchars()</code> function. The
+	access them using the array syntax such as <code class="inline">$row['title']</code>. Secondly, you'll see that
+	where text strings are output, they are wrapped in the <code class="inline">htmlspecialchars()</code> function. The
 	reason for this is that, if user input (a blog title or blog post in this case) contains angle brackets,
 	it could break the HTML used in the page layout, and worse, might let a user inject unauthorised
 	JavaScript that would be run on other people's computers.
@@ -533,22 +534,22 @@ ORDER BY
 <p id="hash-f84a5c2243" class="commentable">
 	Now, it is our intention to link this page from individual posts on the home page. However, we've
 	not quite done that bit yet, so let's visit the new page manually, in order to test it. Open a
-	new tab, paste the link <code>http://localhost/view-post.php</code> into the address
+	new tab, paste the link <code class="inline">http://localhost/view-post.php</code> into the address
 	bar, and check that a simple post appears.
 </p>
 
 <p id="hash-2705f39593" class="commentable">
 	
-	The connection to the database is the same as before, but we now have a <code>WHERE</code> clause
-	in our <code>SELECT</code> statement, and we are now using <code>prepare()</code> and
-	<code>execute()</code> to send the statement to the database driver.
+	The connection to the database is the same as before, but we now have a <code class="inline">WHERE</code> clause
+	in our <code class="inline">SELECT</code> statement, and we are now using <code class="inline">prepare()</code> and
+	<code class="inline">execute()</code> to send the statement to the database driver.
 </p>
 	
 <p id="hash-7392ea620f" class="commentable">
-	Let's take the <code>WHERE</code> statement first. In the home page, we ran a query without
+	Let's take the <code class="inline">WHERE</code> statement first. In the home page, we ran a query without
 	this, because we wanted everything in the table. However it is more often the case that we
 	want to limit returned rows to those matching one or more conditions. This is where the
-	<code>WHERE</code> comes in. For our new page, we only want rows that have a specific id (and
+	<code class="inline">WHERE</code> comes in. For our new page, we only want rows that have a specific id (and
 	since "id" is unique, we know we won't get more than one).
 </p>
 
@@ -558,9 +559,9 @@ ORDER BY
 </p>
 
 <p id="hash-7d0b117db1" class="commentable">
-	The other change is swapping out the call to <code>query()</code> with two new methods.
-	<code>prepare()</code> is used to set up the statement, and indicates with a colon where values
-	should go (i.e. ":id"). The <code>execute()</code> statement then runs the query, swapping
+	The other change is swapping out the call to <code class="inline">query()</code> with two new methods.
+	<code class="inline">prepare()</code> is used to set up the statement, and indicates with a colon where values
+	should go (i.e. ":id"). The <code class="inline">execute()</code> statement then runs the query, swapping
 	place-holders with real values (in this case, the number 1). This technique is known as
 	<em>parameterisation</em>, and is a good way to inject user-supplied input in a secure manner
 	(the post ID is not yet user-supplied, but it soon will be).
@@ -579,7 +580,7 @@ ORDER BY
 	files shows that our blog title and synopsis is repeated in both files. That's not good, since
 	if these things need to be amended, we need to change them more than once. Happily, the
 	solution is easy: we create a PHP file for the duplicated snippet, and then use
-	<code>require</code> to pull it in.
+	<code class="inline">require</code> to pull it in.
 </p>
 
 <?php renderDiffFromComment('Centralise title section of page in an HTML fragment') ?>
@@ -607,7 +608,7 @@ ORDER BY
 	<p id="hash-9e9f699a25" class="commentable">
 		We saw in the <span class="filename">common.php</span> library a set of code blocks that
 		start with the word
-		<code>function</code>. These are named blocks of code that can be called from different
+		<code class="inline">function</code>. These are named blocks of code that can be called from different
 		places, and are an essential item in your toolkit. They help reduce duplication (since
 		you don't need to write code again) and they help improve modularity (since functions
 		can be stored in separate files).
@@ -617,7 +618,7 @@ ORDER BY
 		The functions we've seen here all provide a <em>return value</em>, which is the result of
 		the function, and it can be of any type: a number, a string, whatever. This can either be
 		printed out to the screen, or more frequently, stored in a variable at the place it is
-		called. For example, the function <code>getRootPath()</code> gets the full directory
+		called. For example, the function <code class="inline">getRootPath()</code> gets the full directory
 		name of your web project on disk.
 	</p>
 </blockquote>
@@ -658,7 +659,7 @@ __NEWFILE__
 <p id="hash-1fc2dda7cb" class="commentable">
 	Since this involves database changes, we'll need to delete our database file, and re-run
 	the installer. So, delete the file in <span class="filename">data/data.sqlite</span> and then
-	reinstall by visiting <code>http://localhost/install.php</code> again.
+	reinstall by visiting <code class="inline">http://localhost/install.php</code> again.
 </p>
 
 <p id="hash-7ed0fbd538" class="commentable">
@@ -671,7 +672,7 @@ __NEWFILE__
 
 <p id="hash-4fae483f3a" class="commentable">
 	Now we're ready to start adding some comment-related changes. To start with, let's add
-	a count of comments on the front page. This uses the SQL command <code>COUNT()</code> to count
+	a count of comments on the front page. This uses the SQL command <code class="inline">COUNT()</code> to count
 	the number of rows that would be returned by a query:
 </p>
 
@@ -810,8 +811,8 @@ __NEWFILE__
 	<li>Detect if we are in a POST operation. If we are not (i.e. the page is just being rendered
 		normally, rather than submitting a form) then don't do any more of this new stuff.</li>
 	<li>Get the author name, website URL and comment message, and pass them to new
-		function <code>addCommentToPost()</code> for validation and saving.</li>
-	<li>This will return any resulting errors into the <code>$errors</code> array.</li>
+		function <code class="inline">addCommentToPost()</code> for validation and saving.</li>
+	<li>This will return any resulting errors into the <code class="inline">$errors</code> array.</li>
 	<li>If the comment-adding function successfully saves a comment to the database,
 		redirect to self and exit. This will request the page again in GET mode.</li>
 	<li>If the comment save failed (perhaps because a mandatory field was not supplied) then
@@ -842,13 +843,13 @@ __NEWFILE__
 	<p id="hash-0fdeadea84" class="commentable">
 		When we visit a web site normally &mdash; such as the home page of our blog, say &mdash;
 		we are in GET mode. This is the state that is suitable for <em>reading</em> things from
-		a web server. Some pages containing a <code>&lt;form&gt;</code> also operate in GET mode,
+		a web server. Some pages containing a <code class="inline">&lt;form&gt;</code> also operate in GET mode,
 		such as search forms, since these too are used to read information.
 	</p>
 	<p id="hash-86fb207c7e" class="commentable">
 		Forms that may result in data being saved, on the other hand, should use POST. You can
 		see this with the comment form we just installed; have a look for the
-		<code>method="post"</code> declaration in the form tag.
+		<code class="inline">method="post"</code> declaration in the form tag.
 	</p>
 	<p id="hash-9ff5a43e51" class="commentable">
 		This was one of the reasons behind the earlier change to the installer: before the
@@ -866,7 +867,7 @@ __NEWFILE__
 <?php endif ?>
 
 <p id="hash-d5cb7b221e" class="commentable">
-	Adding a comment doesn't work yet, as the <code>INSERT</code> command is missing a value for
+	Adding a comment doesn't work yet, as the <code class="inline">INSERT</code> command is missing a value for
 	the date of comment creation. Let's fix that now:
 </p>
 	
@@ -882,7 +883,7 @@ __NEWFILE__
 	Thus, we now set empty values for the GET case (no form submission) in
 	<span class="filename">view-post.php</span> as well as
 	the already existing POST case. Where we output the user-supplied data, we pass it through
-	the PHP function <code>htmlspecialchars()</code>, which prevents any rendering problems if the
+	the PHP function <code class="inline">htmlspecialchars()</code>, which prevents any rendering problems if the
 	user has used any HTML characters such as angle brackets.
 </p>
 
@@ -965,8 +966,8 @@ __NEWFILE__
 
 <p id="hash-be3b8f2a4d" class="commentable">
 	There are two fields in the new user table that I added based on my experience rather than an
-	immediate need. These are <code>created_at</code>, which holds the date and time when the user
-	was first set up, and <code>is_enabled</code>, which allows us to turn users on and off. Most
+	immediate need. These are <code class="inline">created_at</code>, which holds the date and time when the user
+	was first set up, and <code class="inline">is_enabled</code>, which allows us to turn users on and off. Most
 	user systems will find a practical use for these simple features during their lifetime.
 </p>
 
@@ -992,7 +993,7 @@ __NEWFILE__
 	at the start of the tutorial, stored here in <span class="filename">vendor/password_compat</span>.
 	The features it provides are so useful they have been built into PHP 5.5, so if you are running
 	this version (or later) you can skip adding the new file and the associated
-	<code>require_once</code>. However if you are running an earlier version, or if you are not
+	<code class="inline">require_once</code>. However if you are running an earlier version, or if you are not
 	sure which version you have, add all of these changes.
 </p>
 
@@ -1000,7 +1001,7 @@ __NEWFILE__
 
 <p id="hash-f3b0b1d093" class="commentable">
 	So, what does the new code do? It makes use of a new function called
-	<code>password_hash()</code>, which takes a password as input and produces what is known as a
+	<code class="inline">password_hash()</code>, which takes a password as input and produces what is known as a
 	<em>hash</em>. A hash is a mathematical calculation that is strictly one way, which means that
 	if sometimes steals our database of password hashes, they will find it very difficult indeed
 	to recreate the passwords they were generated from.
@@ -1033,8 +1034,8 @@ __NEWFILE__
 </p>
 
 <p id="hash-21f080bc27" class="commentable">
-	If the password matches however, then we call <code>login()</code> to sign in the user, and
-	then we redirect to the home page using <code>redirectAndExit()</code>.
+	If the password matches however, then we call <code class="inline">login()</code> to sign in the user, and
+	then we redirect to the home page using <code class="inline">redirectAndExit()</code>.
 </p>
 
 <blockquote class="sidebar">
@@ -1057,8 +1058,8 @@ __NEWFILE__
 
 	<p id="hash-0b1e79a4e3" class="commentable">
 		PHP makes this nice and simple for developers: we just turn on sessions using
-		<code>session_start()</code>, and then we can just read and write to the
-		<code>$_SESSION</code> array. Easy peasy!
+		<code class="inline">session_start()</code>, and then we can just read and write to the
+		<code class="inline">$_SESSION</code> array. Easy peasy!
 	</p>
 </blockquote>
 
@@ -1121,14 +1122,14 @@ __NEWFILE__
 </p>
 
 <blockquote class="code">
-	<code>&lt;div style="border: 1px solid #ff6666; padding: 6px;"&gt; &hellip; &lt;/div&gt;</code>
+	<code class="inline">&lt;div style="border: 1px solid #ff6666; padding: 6px;"&gt; &hellip; &lt;/div&gt;</code>
 </blockquote>
 
 <p id="hash-bc1a538472" class="commentable">
-	The purpose of the <code>style</code> attribute to specify CSS rules (otherwise known as
-	style rules) to the HTML within. Firstly, we have the <code>border</code> rule, which says
+	The purpose of the <code class="inline">style</code> attribute to specify CSS rules (otherwise known as
+	style rules) to the HTML within. Firstly, we have the <code class="inline">border</code> rule, which says
 	the content (an error message) should have a red border rendered in an unbroken line, and
-	the <code>padding</code> means that there should be six pixels of gap between the border and
+	the <code class="inline">padding</code> means that there should be six pixels of gap between the border and
 	an invisible box around the content.
 </p>
 
@@ -1139,12 +1140,12 @@ __NEWFILE__
 </p>
 
 <blockquote class="code">
-	<code>&lt;div class="error box"&gt; &hellip; &lt;/div&gt;</code>
+	<code class="inline">&lt;div class="error box"&gt; &hellip; &lt;/div&gt;</code>
 </blockquote>
 
 <p id="hash-0a65acae2f" class="commentable">
-	That applies two rules to the block: one called <code>error</code> and another called
-	<code>box</code>. That's much easier to remember, easier to read, and &mdash; since we
+	That applies two rules to the block: one called <code class="inline">error</code> and another called
+	<code class="inline">box</code>. That's much easier to remember, easier to read, and &mdash; since we
 	centralise the definitions in <span class="filename">assets/main.css</span> &mdash; easier
 	to change if we have to.
 </p>
@@ -1175,14 +1176,14 @@ __NEWFILE__
 
 <p id="hash-6af37013b8" class="commentable">
 	We now turn our attention to an improvement to the database. This consists of the tables
-	<code>post</code> and <code>user</code>, for blog posts and authors respectively. When
-	creating a post record, we insert our automatically generated <code>user.id</code> in
-	<code>post.user_id</code> to store which user has authored it (of course, we only have one 
+	<code class="inline">post</code> and <code class="inline">user</code>, for blog posts and authors respectively. When
+	creating a post record, we insert our automatically generated <code class="inline">user.id</code> in
+	<code class="inline">post.user_id</code> to store which user has authored it (of course, we only have one 
 	user in our test data, but in practice we might have several).
 </p>
 
 <p id="hash-a7bb3250dd" class="commentable">
-	However, it is possible to insert any number in <code>post.user_id</code>, so if we have
+	However, it is possible to insert any number in <code class="inline">post.user_id</code>, so if we have
 	an undiscovered bug in our code, it might cause a non-existent user primary key to be stored
 	here. Since we rely on values here always pointing to a user row, if a bad value were to get
 	in, it might crash our application.
@@ -1193,7 +1194,7 @@ __NEWFILE__
 	constraints</em>. These allow us to specify that values inserted into a particular column must
 	exist in another column belonging to another table, and that an error must occur if this
 	condition is not met. SQLite offers this feature, although it is unusual in that it needs to
-	be turned on explicitly, using the <code>PRAGMA</code> command.
+	be turned on explicitly, using the <code class="inline">PRAGMA</code> command.
 </p>
 
 <p id="hash-efefdcef82" class="commentable">
@@ -1202,7 +1203,7 @@ __NEWFILE__
 
 <?php if (showTodoMessages()): ?>
 	<div class="comment note">
-		Deleting the <code>user</code> table does not result
+		Deleting the <code class="inline">user</code> table does not result
 		in a constraint violation, since we refuse to run the SQL unless the database file is
 		manually deleted.
 	</div>
@@ -1220,8 +1221,8 @@ __NEWFILE__
 		order around, so the test user is created before the test post</li>
 	<li>
 		We now need the test user to be created immediately in order to satisfy the foreign key
-		constraint, so we <code>INSERT</code> that in the script with a dummy hash value, and
-		<code>UPDATE</code> it afterwards with the real hash generated in PHP</li>
+		constraint, so we <code class="inline">INSERT</code> that in the script with a dummy hash value, and
+		<code class="inline">UPDATE</code> it afterwards with the real hash generated in PHP</li>
 	<li>
 		Now when we make database connections in <span class="filename">common.php</span>, the
 		first thing we do is to switch on foreign key constraints</li>
@@ -1249,7 +1250,7 @@ __NEWFILE__
 <p id="hash-0d73a44e9b" class="commentable">
 	Let's turn our attention to another major feature: writing a new article. We start off with
 	setting up a new page, laying out the necessary form input controls, and adding a new logged-in
-	menu item. There's also a change here to add a generic class <code>user-form</code>, so our
+	menu item. There's also a change here to add a generic class <code class="inline">user-form</code>, so our
 	forms across the whole application can easily acquire a common look-and-feel; see how I've
 	gone back to existing form <span class="filename">comment-form.php</span> to update that too.
 </p>
@@ -1265,10 +1266,10 @@ __NEWFILE__
 <?php renderDiffFromComment('Only allow authenticated users on the New Post page') ?>
 
 <p id="hash-529b5a2e85" class="commentable">
-	While we are here, let's take a look at how <code>redirectAndExit()</code> works; this is in
+	While we are here, let's take a look at how <code class="inline">redirectAndExit()</code> works; this is in
 	<span class="filename">common.php</span>. It starts by reading the domain we are running
-	on (such as <code>localhost</code>), since it is good not to hardwire this into our code.
-	It then sends a <code>Location</code> HTTP header to the browser, which will cause it to
+	on (such as <code class="inline">localhost</code>), since it is good not to hardwire this into our code.
+	It then sends a <code class="inline">Location</code> HTTP header to the browser, which will cause it to
 	request the specified address. Since the PHP script would happily carry on running at this
 	point (until it has detected that the browser has disconnected) we also need to forcibly
 	exit and wait for the redirect.
@@ -1298,9 +1299,9 @@ __NEWFILE__
 
 	<ul id="hash-b1bf43c21a" class="commentable">
 		<li>Some information about the browser and operating system in use
-			(the <code>User-Agent</code> header)</li>
-		<li>Which website we wish to view (<code>Host</code>)
-		<li>The cookies previously served by the domain (<code>Cookie</code>)
+			(the <code class="inline">User-Agent</code> header)</li>
+		<li>Which website we wish to view (<code class="inline">Host</code>)
+		<li>The cookies previously served by the domain (<code class="inline">Cookie</code>)
 	</ul>
 
 	<p id="hash-860391dc56" class="commentable">
@@ -1308,9 +1309,9 @@ __NEWFILE__
 	</p>
 
 	<ul id="hash-ef2e7a5e4e" class="commentable">
-		<li>Some information about the server environment in use (<code>Server</code>)</li>
+		<li>Some information about the server environment in use (<code class="inline">Server</code>)</li>
 		<li>The type of the content; web pages for example are served as "text/html"
-			(<code>Content-Type</code>)</li>
+			(<code class="inline">Content-Type</code>)</li>
 	</ul>
 </div>
 
@@ -1323,7 +1324,7 @@ __NEWFILE__
 
 <p id="hash-4deb61aa5c" class="commentable">
 	In a similar way to saving comments, we first test if we are in a post operation, using
-	<code>if ($_POST)</code>. This contains an array of input values that will be only be present
+	<code class="inline">if ($_POST)</code>. This contains an array of input values that will be only be present
 	if a user has submitted the form.
 </p>
 
@@ -1345,7 +1346,7 @@ __NEWFILE__
 <p id="hash-c3d80a8534" class="commentable">
 	That was nice and easy: if we find we are not in a post operation <em>and</em> we have a
 	post primary key <em>and</em> that row exists, then show it in the edit form. You can see that
-	now we need the database connection (in <code>$pdo</code>) for two things, I've moved
+	now we need the database connection (in <code class="inline">$pdo</code>) for two things, I've moved
 	that line so that it is always executed.
 </p>
 
@@ -1357,7 +1358,7 @@ __NEWFILE__
 <?php endif ?>
 
 <p id="hash-794120cc9d" class="commentable">
-	As we have done before, this code uses <code>htmlspecialchars()</code> to prevent users
+	As we have done before, this code uses <code class="inline">htmlspecialchars()</code> to prevent users
 	from entering HTML, which could break our page layout or introduce security problems. It is
 	perhaps less of a worry here, since at least these users are authenticated, and hence
 	they might be considered more trustworthy than anonymous commenters.
@@ -1374,16 +1375,16 @@ __NEWFILE__
 	I've moved the code to read the current post towards the start of the page, since this is
 	now useful in two situations. The first is when displaying an article for
 	editing, and the second is when submitting the edit form to save any changes.
-	In both cases, <code>$_GET['post_id']</code> will be available, and we can look up that row
+	In both cases, <code class="inline">$_GET['post_id']</code> will be available, and we can look up that row
 	from the post table, and obtain title/body data if it is read successfully.
 </p>
 
 <p id="hash-2f40bb9fbc" class="commentable">
-	Within a POST operation, we can then check <code>$postId</code>, and if it has a value we
+	Within a POST operation, we can then check <code class="inline">$postId</code>, and if it has a value we
 	know we are editing an existing article rather than creating a new one. Thus, if we are editing,
-	we call the new function <code>editPost()</code>, which will run the necessary
-	<code>UPDATE</code> command against the database, rather than <code>addPost()</code>, which
-	would run an <code>INSERT</code>.
+	we call the new function <code class="inline">editPost()</code>, which will run the necessary
+	<code class="inline">UPDATE</code> command against the database, rather than <code class="inline">addPost()</code>, which
+	would run an <code class="inline">INSERT</code>.
 </p>
 
 <p id="hash-fc28b3758f" class="commentable">
@@ -1426,7 +1427,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Add an edit link for users who are logged in') ?>
 
 <p id="hash-77c37d159b" class="commentable">
-	You may have noticed that the class name (<code>read-more</code>) of the wrapping div was no
+	You may have noticed that the class name (<code class="inline">read-more</code>) of the wrapping div was no
 	longer accurate, which is why I changed this to something more generic. As it happens, this
 	section doesn't have any CSS rules specifically attached to it, but it's good to have something
 	for future styles to hook onto).
@@ -1480,12 +1481,12 @@ __NEWFILE__
 	</p>
 
 	<blockquote class="code">
-		<pre><code>&lt;input type="submit" name="save" value="Save" /&gt;</code></pre>
+		<pre><code class="inline">&lt;input type="submit" name="save" value="Save" /&gt;</code></pre>
 	</blockquote>
 
 	<p id="hash-580e462efc" class="commentable">
 		This is pretty simple. If the button is pressed, the form is submitted, and the submitted
-		key <code>save</code> gets the value of the button, "Save".
+		key <code class="inline">save</code> gets the value of the button, "Save".
 	</p>
 
 	<p id="hash-d84dc9d1c1" class="commentable">
@@ -1495,7 +1496,7 @@ __NEWFILE__
 	</p>
 
 	<blockquote class="code">
-<pre><code>&lt;input type="submit" name="delete_1" value="Delete" /&gt;
+<pre><code class="inline">&lt;input type="submit" name="delete_1" value="Delete" /&gt;
 &lt;input type="submit" name="delete_2" value="Delete" /&gt;
 &lt;input type="submit" name="delete_3" value="Delete" /&gt;</code></pre>
 	</blockquote>
@@ -1507,7 +1508,7 @@ __NEWFILE__
 	</p>
 
 	<blockquote class="code">
-<pre><code>&lt;input type="submit" name="delete[1]" value="Delete" /&gt;
+<pre><code class="inline">&lt;input type="submit" name="delete[1]" value="Delete" /&gt;
 &lt;input type="submit" name="delete[2]" value="Delete" /&gt;
 &lt;input type="submit" name="delete[3]" value="Delete" /&gt;</code></pre>
 	</blockquote>
@@ -1518,7 +1519,7 @@ __NEWFILE__
 	</p>
 
 	<blockquote class="code">
-<pre><code>Array
+<pre><code class="inline">Array
 (
     [delete] => Array
         (
@@ -1529,7 +1530,7 @@ __NEWFILE__
 
 	<p id="hash-61b65dca96" class="commentable">
 		This makes things nice and easy: we just look up the name of the element
-		(i.e. <code>delete</code>), and then grab the first key value.
+		(i.e. <code class="inline">delete</code>), and then grab the first key value.
 	</p>
 </blockquote>
 
@@ -1542,7 +1543,7 @@ __NEWFILE__
 <?php renderDiffFromComment('Move home page logic to central location, so we can reuse it for All Posts') ?>
 
 <p id="hash-2f8183c38d" class="commentable">
-	While working on the home page, I noticed I'd used the variable name <code>$row</code>. This
+	While working on the home page, I noticed I'd used the variable name <code class="inline">$row</code>. This
 	is rather generic &mdash; most things read from a database are rows &mdash; so I swapped to
 	a better name for it. This is more readable, and fits in with the common naming convention
 	of using a plural name for an array and the corresponding singular name for each item.
@@ -1603,9 +1604,9 @@ __NEWFILE__
 </p>
 
 <ul id="hash-df79797c41" class="commentable">
-	<li>The primary key of the post (<code>post_id</code>) upon which a comment is being added or
+	<li>The primary key of the post (<code class="inline">post_id</code>) upon which a comment is being added or
 		deleted</li>
-	<li>A name for the action (<code>add-comment</code> and <code>delete-comment</code>), which
+	<li>A name for the action (<code class="inline">add-comment</code> and <code class="inline">delete-comment</code>), which
 		can be read by our code to determine what the user wishes to do</li>
 </ul>
 
@@ -1626,13 +1627,13 @@ __NEWFILE__
 
 <p id="hash-e80bec847e" class="commentable">
 	We now need to read the action key we set up, so we can decide what feature to call.
-	If the user is deleting a comment, the new function <code>deleteComment</code> in the next set
-	of changes is called; although we could just delete by <code>comment.id</code>, to be sure of
-	deleting the right thing we filter additionally by <code>comment.post_id</code>.
+	If the user is deleting a comment, the new function <code class="inline">deleteComment</code> in the next set
+	of changes is called; although we could just delete by <code class="inline">comment.id</code>, to be sure of
+	deleting the right thing we filter additionally by <code class="inline">comment.post_id</code>.
 </p>
 
 <p id="hash-bf00fe52d6" class="commentable">
-	Note that we also add an <code>if()</code> clause to ensure that the delete operation is skipped if
+	Note that we also add an <code class="inline">if()</code> clause to ensure that the delete operation is skipped if
 	the user is not logged in. Although we do not render delete buttons for anonymous users, it is
 	still possible for security crackers to fake a form submission that contains a valid deletion
 	request &mdash; this clause prevents that.
@@ -1642,7 +1643,7 @@ __NEWFILE__
 
 <p id="hash-143117228e" class="commentable">
 	Finally, I noticed that the logic to add a comment is contained within a function, but the
-	logic to delete one is still in the <code>switch()</code> block in
+	logic to delete one is still in the <code class="inline">switch()</code> block in
 	<span class="filename">view-post.php</span>. The following change just tidies that up:
 </p>
 
@@ -1676,7 +1677,7 @@ __NEWFILE__
 </p>
 
 <blockquote class="code">
-<pre><code>SELECT
+<pre><code class="inline">SELECT
 	id, title, created_at, body,
 	(SELECT COUNT(*) FROM comment WHERE comment.post_id = post.id) comment_count
 FROM
@@ -1689,13 +1690,13 @@ ORDER BY
 	The new part of this is the bracketed expression on the third line. This
 	sort of SQL is known as a <em>sub-query</em> since it is a query contained inside another
 	one. The result of it can be read like a real column, which we explicitly name by adding
-	<code>comment_count</code> at the end of it.
+	<code class="inline">comment_count</code> at the end of it.
 </p>
 
 <p id="hash-77ed211b40" class="commentable">
-	This sub-query will count rows in the <code>comment</code> table, based on which post they
+	This sub-query will count rows in the <code class="inline">comment</code> table, based on which post they
 	belong to. Since the job of the outer query is to list posts, we can filter the comment count
-	for each row by making a comparison to the outer table, <code>post</code>.
+	for each row by making a comparison to the outer table, <code class="inline">post</code>.
 </p>
 
 <p id="hash-a9b83070fd" class="commentable">
@@ -1736,13 +1737,13 @@ ORDER BY
 
 <p id="hash-f9f1750da9" class="commentable">
 	Whilst we are looking at the database side of things, I noticed that the
-	<code>user.is_enabled</code> field hasn't yet been used. This was intended mainly for future
+	<code class="inline">user.is_enabled</code> field hasn't yet been used. This was intended mainly for future
 	enhancements (in particular for a user administration page), but the application can make an
 	initial use of it immediately, by disallowing authenticated features to non-enabled users.
 </p>
 
 <p id="hash-d8330f26cf" class="commentable">
-	The installer sets the test user to <code>is_enabled=1</code> already, so all we need
+	The installer sets the test user to <code class="inline">is_enabled=1</code> already, so all we need
 	to do is to adjust the SQL statements that fetch data from the user table.
 </p>
 
