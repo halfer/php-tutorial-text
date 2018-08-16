@@ -73,7 +73,7 @@
 
 <ol id="hash-9610dc0ef6" class="commentable">
 	<li>The Apache web server</li>
-	<li>PHP, any version after 5.4</li>
+	<li>PHP, any version after 5.5</li>
 	<li>SQLite PHP module, for database access</li>
 	<li>Any programmer's editor, ideally with syntax highlighting</li>
 </ol>
@@ -217,20 +217,13 @@
 </p>
 
 <p id="hash-9f8d522367" class="commentable">
-	One of the other features of this tutorial is that it uses an absolute minimum of additional
+	One of the other features of this tutorial is that it uses no additional
 	software to get it working. Software projects nearly always make use of libraries,
 	each of which offer some particular pre-written functionality. These are well worth using in
 	proper development, since they are better-tested by more people than an individual can usually
 	achieve on their own. However, for a tutorial I think they can add integration complexity, and
 	explaining the advanced-level code within is usually quite a distraction. Thus, I have eschewed
-	libraries more than I would normally, and suspect this will be corrected in a second (more
-	advanced) tutorial.
-</p>
-<p id="hash-b033947538" class="commentable">
-	I have made one exception for this rule, however, for reasons of password security. The login
-	system requires some cryptographic code, and this sort of thing is quite easy to get wrong. Whilst
-	this is just a tutorial, if it teaches readers to leave security to the experts (the
-	library-writers), it has served a valuable purpose.
+	libraries more than I would normally.
 </p>
 
 <div class="intermission">~</div>
@@ -254,7 +247,7 @@
 <p id="hash-4a26ddfcaf" class="commentable">
 	Then, run this in your browser, by accessing the URL <code class="inline">http://localhost/info.php</code>.
 	You should see a PHP configuration page. If you do, then check you are running a version later
-	than 5.4; if it is earlier than this then
+	than 5.5; if it is earlier than this then
 	you will need to upgrade. If you don't see this screen at all, then check that you have created
 	the file in the right folder.
 </p>
@@ -1088,21 +1081,8 @@ __NEWFILE__
 	form of protection should a cracker get through our security and steal our database.
 </p>
 
-<?php if (showTodoMessages()): ?>
-	<div class="comment note">
-		I was originally of the view that the library should be loaded only if the PHP version
-		is &lt;5.5, but this feels a bit fussy. I think the note here to say that users
-		on 5.5+ can omit these changes if they wish is a cleaner.
-	</div>
-<?php endif ?>
-
 <p id="hash-c2f889ee73" class="commentable">
-	So, let's make that improvement straight away. To do so, we'll need the library I talked about
-	at the start of the tutorial, stored here in <span class="filename">vendor/password_compat</span>.
-	The features it provides are so useful they have been built into PHP 5.5, so if you are running
-	this version (or later) you can skip adding the new file and the associated
-	<code class="inline">require_once</code>. However if you are running an earlier version, or if you are not
-	sure which version you have, add all of these changes.
+	So, let's make that improvement straight away. Here are the changes:
 </p>
 
 <?php renderDiffFromComment('Add password hashing capability') ?>
@@ -1113,12 +1093,6 @@ __NEWFILE__
 	<em>hash</em>. A hash is a mathematical calculation that is strictly one way, which means that
 	if sometimes steals our database of password hashes, they will find it very difficult indeed
 	to recreate the passwords they were generated from.
-</p>
-
-<p id="hash-2da8f189f6" class="commentable">
-	Whether or not you are using it, by all means do have a read of the source code in
-	<span class="filename">password.php</span>. However, an in-depth exploration of it would be rather
-	advanced at this stage, so for our purposes we will assume it just works.
 </p>
 
 <p id="hash-6a594573d4" class="commentable">
